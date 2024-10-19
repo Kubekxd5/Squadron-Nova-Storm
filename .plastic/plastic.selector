@@ -1,0 +1,4 @@
+repository "Squadron Nova Storm@kubekxd5@cloud"
+  path "/"
+    br "/main"
+    co "/main"
