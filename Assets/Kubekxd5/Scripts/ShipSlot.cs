@@ -1,8 +1,6 @@
 using UnityEngine;
 
-using UnityEngine;
-
-public class ShipSlots : MonoBehaviour
+public class ShipSlot : MonoBehaviour
 {
     public enum WeaponMount
     {

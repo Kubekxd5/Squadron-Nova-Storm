@@ -4,10 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - PrimaryWeapon
-  - SecondaryWeapon
-  - HangarBay
   - Weapon
+  - ShipPart
+  - Enemy
+  - DamageParticle
+  - PlayerShip
   layers:
   - Default
   - TransparentFX
