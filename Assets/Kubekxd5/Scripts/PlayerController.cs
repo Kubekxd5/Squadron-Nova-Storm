@@ -6,14 +6,14 @@ public class PlayerController : MonoBehaviour
     public string playerName;
     public int score, scoreMultiplier;
 
-    private ShipController _shipController;
-    private SlotsManager _slotsManager;
+    public ShipController shipController;
+    public SlotsManager slotsManager;
     private ShipManager _shipManager;
 
     private void Start()
     {
-        _shipController = GetComponentInChildren<ShipController>();
-        _slotsManager = GetComponentInChildren<SlotsManager>();
+        shipController = GetComponentInChildren<ShipController>();
+        slotsManager = GetComponentInChildren<SlotsManager>();
     }
 
     private void Update()
@@ -23,16 +23,26 @@ public class PlayerController : MonoBehaviour
 
     private void HandleInput()
     {
-        _shipController.HandleMovement();
+        shipController.HandleMovement();
         
         if (Input.GetButtonDown("Fire1"))
         {
-            _slotsManager.FirePrimaryWeapons();
+            slotsManager.FirePrimaryWeapons();
         }
         
         if (Input.GetButtonDown("Fire2"))
         {
-            _slotsManager.FireSecondaryWeapons();
+            slotsManager.FireSecondaryWeapons();
+        }
+
+        if (Input.GetButtonDown("Jump"))
+        {
+            slotsManager.FireHangarBay();
+        }
+
+        if (Input.GetButtonDown("Fire3"))
+        {
+            slotsManager.FireSpecialWeapon();
         }
     }
 }

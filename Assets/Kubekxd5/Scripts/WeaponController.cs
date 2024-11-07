@@ -12,6 +12,7 @@ public class WeaponController : MonoBehaviour
         Explosive,
         Kinetic
     };
+
     [Header("Weapon Damage Type:")] 
     public WeaponDmgType weaponDmgType;
 
@@ -22,6 +23,7 @@ public class WeaponController : MonoBehaviour
         Hangar,
         Special
     };
+
     [Header("Weapon Mount:")] 
     public WeaponMount weaponMount;
 
@@ -49,27 +51,40 @@ public class WeaponController : MonoBehaviour
     public GameObject weaponUpgradeModule;
 
     [Header("Visual & Sound Effects:")] 
-    public ParticleSystem weaponVfx;
+    public ParticleSystem[] weaponVfx;
     public AudioSource weaponSfx;
     public ParticleSystem overheatEffect;
+
+    public bool isEquippedByPlayer;
 
     private float _nextFireTime;
 
     private void Start()
     {
         _nextFireTime = 0f;
+        if (GetComponentInParent<ShipSlot>())
+        {
+            GetComponentInParent<ShipSlot>().weaponController = this;
+            GetComponentInParent<ShipSlot>().AddNewWeapon();
+            Debug.Log($"{this.weaponName} equipped in {weaponMount} slot.");
+        }
+
+        ChangeProjectileLayerMask();
     }
 
     public void Shoot()
     {
-        if (Time.time >= _nextFireTime && ammoCurrent > 0 && ammoMax!=0)
+        if (Time.time >= _nextFireTime && ammoCurrent > 0 && ammoMax != 0)
         {
             _nextFireTime = Time.time + fireRate;
             ammoCurrent--;
-            weaponVfx.Play();
+            foreach (var weaponvfx in weaponVfx)
+            {
+                weaponvfx.Play();
+            }
             weaponSfx.Play();
         }
-        else if (ammoCurrent <= 0 && ammoMax!=0)
+        else if (ammoCurrent <= 0 && ammoMax != 0)
         {
             //Debug.Log("Out of ammo!");
         }
@@ -77,8 +92,41 @@ public class WeaponController : MonoBehaviour
         {
             _nextFireTime = Time.time + fireRate;
             ammoCurrent--;
-            weaponVfx.Play();
+            foreach (var weaponvfx in weaponVfx)
+            {
+                weaponvfx.Play();
+            }
             weaponSfx.Play();
+        }
+    }
+
+    public void EquipWeapon()
+    {
+        isEquippedByPlayer = true;
+        ChangeProjectileLayerMask();
+        Debug.Log($"{weaponName} is equipped by player.");
+    }
+
+    public void UnequipWeapon()
+    {
+        isEquippedByPlayer = false;
+        ChangeProjectileLayerMask();
+        Debug.Log($"{weaponName} is unequipped.");
+    }
+
+    private void ChangeProjectileLayerMask()
+    {
+        foreach (var particle in weaponVfx)
+        {
+            var collisionModule = particle.collision;
+            if (isEquippedByPlayer)
+            {
+                collisionModule.collidesWith = LayerMask.GetMask("Enemy");
+            }
+            else
+            {
+                collisionModule.collidesWith = LayerMask.GetMask("Player");
+            }
         }
     }
 }

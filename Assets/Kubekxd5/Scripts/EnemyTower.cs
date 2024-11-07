@@ -4,11 +4,18 @@ public class EnemyTower : MonoBehaviour
 {
     public Transform player;
     public GameObject weapon;
-    public ParticleSystem gunfireVfx;
+    public ParticleSystem[] gunfireVfx;
     public AudioSource gunfireSfx;
     public float shootInterval = 1f;
     public float rotationSpeed = 5f;
     private float _timer;
+    public float health=10;
+    private float _currentHealth;
+
+    private void Start()
+    {
+        _currentHealth = health;
+    }
 
     private void Update()
     {
@@ -29,8 +36,27 @@ public class EnemyTower : MonoBehaviour
         if (_timer >= shootInterval)
         {
             gunfireSfx.Play();
-            gunfireVfx.Play();
+            foreach (var gun in gunfireVfx)
+            {
+                gun.Play();
+            }
             _timer = 0f;
         }
+    }
+    
+    public void TakeDamage(float damage)
+    {
+        _currentHealth -= damage;
+        Debug.Log($"{gameObject.name} took {damage} damage. Current health: {_currentHealth}");
+        if (_currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        Debug.Log($"{gameObject.name} has been destroyed.");
+        Destroy(gameObject);
     }
 }

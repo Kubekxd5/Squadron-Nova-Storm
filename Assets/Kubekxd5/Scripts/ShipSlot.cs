@@ -16,15 +16,25 @@ public class ShipSlot : MonoBehaviour
     [Header("Equipment:")]
     public WeaponController weaponController;
 
-    private void Start()
+    public void AddNewWeapon()
     {
-        if (transform.childCount > 0)
+        SlotsManager slotsManager = transform.GetComponentInParent<SlotsManager>();
+        switch (weaponMount)
         {
-            weaponController = transform.GetChild(0).GetComponent<WeaponController>();
-            if (weaponController != null)
-            {
-                Debug.Log($"{weaponController.weaponName} equipped in {weaponMount} slot.");
-            }
+            case WeaponMount.Primary:
+                slotsManager.AddPrimaryWeapon(weaponController);
+                break;
+            case WeaponMount.Secondary:
+                slotsManager.AddSecondaryWeapon(weaponController);
+                break;
+            case WeaponMount.Hangar:
+                slotsManager.AddHangarBay(weaponController);
+                break;
+            case WeaponMount.Special:
+                slotsManager.AddSpecialWeapon(weaponController);
+                break;
+            default:
+                return;
         }
     }
 }

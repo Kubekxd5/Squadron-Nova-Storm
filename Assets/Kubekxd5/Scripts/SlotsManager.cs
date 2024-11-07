@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,20 +8,8 @@ public class SlotsManager : MonoBehaviour
     public List<WeaponController> secondaryWeapons = new List<WeaponController>();
     public List<WeaponController> hangarBayWeapons = new List<WeaponController>();
     public List<WeaponController> specialWeapons = new List<WeaponController>();
-
-    private void Start()
-    {
-        StartCoroutine(WeaponInitialization());
-    }
     
-    private IEnumerator WeaponInitialization()
-    {
-        yield return new WaitForSeconds(1f);
-
-        _InitializeWeapons();
-    }
-    
-    private void _InitializeWeapons()
+    /*public void InitializeWeapons()
     {
         ShipSlot[] shipSlots = GetComponentsInChildren<ShipSlot>();
         foreach (ShipSlot slot in shipSlots)
@@ -46,7 +33,7 @@ public class SlotsManager : MonoBehaviour
                 }
             }
         }
-    }
+    }*/
 
     public void FirePrimaryWeapons()
     {
@@ -56,11 +43,63 @@ public class SlotsManager : MonoBehaviour
         }
     }
 
+    public void AddPrimaryWeapon(WeaponController weapon)
+    {
+        primaryWeapons.Add(weapon);
+        foreach (var wa in primaryWeapons)
+        {
+            wa.EquipWeapon();
+        }
+    }
+    
     public void FireSecondaryWeapons()
     {
         foreach (var weapon in secondaryWeapons)
         {
             weapon.Shoot();
+        }
+    }
+    
+    public void AddSecondaryWeapon(WeaponController weapon)
+    {
+        secondaryWeapons.Add(weapon);
+        foreach (var wa in secondaryWeapons)
+        {
+            wa.EquipWeapon();
+        }
+    }
+    
+    public void FireHangarBay()
+    {
+        foreach (var hangar in hangarBayWeapons)
+        {
+            hangar.Shoot();
+        }
+    }
+    
+    public void AddHangarBay(WeaponController hangar)
+    {
+        hangarBayWeapons.Add(hangar);
+        foreach (var wa in hangarBayWeapons)
+        {
+            wa.EquipWeapon();
+        }
+    }
+    
+    public void FireSpecialWeapon()
+    {
+        foreach (var special in specialWeapons)
+        {
+            special.Shoot();
+        }
+    }
+    
+    public void AddSpecialWeapon(WeaponController weapon)
+    {
+        specialWeapons.Add(weapon);
+        foreach (var wa in specialWeapons)
+        {
+            wa.EquipWeapon();
         }
     }
 }

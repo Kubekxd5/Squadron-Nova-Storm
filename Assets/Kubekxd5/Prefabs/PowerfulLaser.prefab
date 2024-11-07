@@ -50,23 +50,25 @@ MonoBehaviour:
   weaponName: Laser
   weaponDmgType: 1
   weaponMount: 0
-  damageValue: 10
+  damageValue: 1
   damageMultiplier: 1
   piercing: 1
   explosionRadius: 0
   fireRate: 0.1
   range: 10
   weaponCooldown: 0.1
-  projectileSpeed: 1
+  projectileSpeed: 10
   projectileAmount: 1
   projectileInterval: 0
   overheatThreshold: 100
   ammoMax: 0
   ammoCurrent: 0
   weaponUpgradeModule: {fileID: 0}
-  weaponVfx: {fileID: 657478123639879477}
+  weaponVfx:
+  - {fileID: 657478123639879477}
   weaponSfx: {fileID: 7213287337775330490}
   overheatEffect: {fileID: 0}
+  isEquippedByPlayer: 0
 --- !u!1 &1691787214591720785
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,7 +286,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6e39ae71d09128a439e4ee7dec58348e, type: 2}
+  - {fileID: 2100000, guid: e46f1d3c5e691954896bb3e1dad33718, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -492,13 +494,34 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1944336638790981077, guid: 98ceb19843f2b674687e906f1e324a66, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6210973145462534289}
   m_SourcePrefab: {fileID: 100100000, guid: 98ceb19843f2b674687e906f1e324a66, type: 3}
 --- !u!198 &657478123639879477 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 662441435528584567, guid: 98ceb19843f2b674687e906f1e324a66, type: 3}
   m_PrefabInstance: {fileID: 13126139028138562}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1933462577675943831 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1944336638790981077, guid: 98ceb19843f2b674687e906f1e324a66, type: 3}
+  m_PrefabInstance: {fileID: 13126139028138562}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6210973145462534289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1933462577675943831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c93c02ec0f2974c45839eba7b9b3cd95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponController: {fileID: 0}
 --- !u!4 &2637687526958625773 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2644827889250572719, guid: 98ceb19843f2b674687e906f1e324a66, type: 3}

@@ -12,13 +12,15 @@ public class ShipController : MonoBehaviour
     private CameraController _mainCamera;
     private void Start()
     {
-        // Get the Rigidbody component if it exists
         _rb = GetComponent<Rigidbody>();
 
         // Setting up camera tracking on ship initialization
-        _mainCamera = GameObject.FindWithTag("MainCamera").GetComponent<CameraController>();
-        _mainCamera.FindPlayerShip();
-
+        if (transform.parent.GetComponent<PlayerController>() == true)
+        {
+            _mainCamera = GameObject.FindWithTag("MainCamera").GetComponent<CameraController>();
+            _mainCamera.FindPlayerShip();
+        }
+        
         // Let enemies know which new ship is the player
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (var enemy in enemies)
@@ -30,8 +32,6 @@ public class ShipController : MonoBehaviour
             }
         }
     }
-
-
     public void HandleMovement()
     {
         float forwardInput = Input.GetAxis("Vertical");

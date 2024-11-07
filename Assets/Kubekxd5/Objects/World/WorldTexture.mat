@@ -274,9 +274,9 @@ Material:
     - _OcclusionStrength: 1
     - _OcclusionUVSet: 0
     - _OpaqueLights: 1
-    - _Parallax: 0.01
+    - _Parallax: 0.02
     - _ParallaxOffset: 0
-    - _ParallaxSteps: 25
+    - _ParallaxSteps: 50
     - _QueueOffset: 0
     - _RainToggle: 0
     - _ReflCubeOverrideToggle: 0
