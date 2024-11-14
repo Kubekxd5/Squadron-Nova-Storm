@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 1037
   m_ShowMode: 4
-  m_Title: Hierarchy
+  m_Title: Project
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 321}
   m_MaxSize: {x: 10000, y: 10000}
@@ -301,7 +301,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Kubekxd5/Scripts
+    - Assets/Scenes
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -309,16 +309,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Kubekxd5/Scripts
+  - Assets/Scenes
   m_LastFoldersGridSize: -1
   m_LastProjectPath: F:\Unity\Projects\Squadron Nova Storm
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 74930000
-    m_LastClickedID: 37748
-    m_ExpandedIDs: 00000000d6910000d8910000da910000dc910000de910000e0910000e2910000e4910000e6910000e8910000ea910000ec910000ee91000000ca9a3b
+    m_SelectedIDs: ee890000
+    m_LastClickedID: 35310
+    m_ExpandedIDs: 000000004c8900004e89000050890000528900005489000056890000588900005a8900005c8900005e89000060890000628900006489000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -346,7 +346,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000d6910000d8910000da910000dc910000de910000e0910000e2910000e4910000e6910000e8910000ea910000ec910000ee910000
+    m_ExpandedIDs: 000000004c8900004e89000050890000528900005489000056890000588900005a8900005c8900005e890000608900006289000064890000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -373,7 +373,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000865f00008e5f0000148a00006cd400002a800000e4a0000048a000000817010050610100f61601000819010000000000e08300001a5e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -808,11 +808,11 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: 0.050412353, y: -0.9495408, z: 0.21133319, w: 0.2263741}
     speed: 2
-    m_Value: {x: 0.050727367, y: -0.94916403, z: 0.21124929, w: 0.2277895}
+    m_Value: {x: -0.050410435, y: 0.9495047, z: -0.21132515, w: -0.22636549}
   m_Size:
     m_Target: 17.1024
     speed: 2
-    m_Value: 17.102398
+    m_Value: 17.1024
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -1024,9 +1024,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 711
+    y: 714
     width: 1244
-    height: 328
+    height: 325
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -1077,7 +1077,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 00fbffff
+      m_ExpandedIDs: 42c8fffff4faffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
