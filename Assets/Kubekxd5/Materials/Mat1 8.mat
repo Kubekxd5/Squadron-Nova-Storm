@@ -196,10 +196,10 @@ Material:
     - _BakeryMode: 0
     - _BicubicLightmap: 1
     - _BlendMode: 0
-    - _Brightness: 5
+    - _Brightness: 6
     - _BrightnessDet: 1
     - _BrightnessEmiss: 1
-    - _BrightnessPost: 5
+    - _BrightnessPost: 6
     - _BrightnessReflShad: 100
     - _BumpScale: 3
     - _Contrast: 1
