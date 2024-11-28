@@ -14,15 +14,21 @@ public class EnemyTower : MonoBehaviour
 
     private void Start()
     {
+        player = GameObject.FindWithTag("PlayerShip")?.transform;
         _currentHealth = health;
     }
 
     private void Update()
     {
+        if (player == null)
+        {
+            player = GameObject.FindWithTag("PlayerShip")?.transform;
+            if (player == null) return;
+        }
+
         RotateTowardsPlayer();
         HandleShooting();
     }
-
     private void RotateTowardsPlayer()
     {
         Vector3 directionToPlayer = player.position - weapon.transform.position;

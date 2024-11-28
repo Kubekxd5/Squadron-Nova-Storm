@@ -283,7 +283,7 @@ MonoBehaviour:
   - {fileID: 9180646574505562636}
   gunfireSfx: {fileID: 7580560255904625830}
   shootInterval: 100
-  rotationSpeed: 0
+  rotationSpeed: 1
   health: 10
 --- !u!65 &880930068656119531
 BoxCollider:
