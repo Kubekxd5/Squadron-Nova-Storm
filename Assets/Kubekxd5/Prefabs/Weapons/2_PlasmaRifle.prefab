@@ -22,15 +22,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d26f5108aac22994396fd007761b43da, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.974865
+      value: -0.03154268
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d26f5108aac22994396fd007761b43da, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0376
+      value: -0.014813296
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d26f5108aac22994396fd007761b43da, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -14.1707
+      value: 0.047136515
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d26f5108aac22994396fd007761b43da, type: 3}
       propertyPath: m_LocalRotation.w
@@ -61,31 +61,31 @@ PrefabInstance:
       value: 360
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: d26f5108aac22994396fd007761b43da, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 29d7f143ba110b246ba3704f153061de, type: 2}
     - target: {fileID: -5503304612286738366, guid: d26f5108aac22994396fd007761b43da, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: f9842f744e64a2646b0aaea5b22d8bfb, type: 2}
     - target: {fileID: -5503304612286738366, guid: d26f5108aac22994396fd007761b43da, type: 3}
-      propertyPath: m_Materials.Array.data[1]
+      propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: c84534c4eae7f0744834517746e05340, type: 2}
     - target: {fileID: -4773093706969356913, guid: d26f5108aac22994396fd007761b43da, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: f9842f744e64a2646b0aaea5b22d8bfb, type: 2}
     - target: {fileID: -4773093706969356913, guid: d26f5108aac22994396fd007761b43da, type: 3}
-      propertyPath: m_Materials.Array.data[2]
+      propertyPath: 'm_Materials.Array.data[2]'
       value: 
       objectReference: {fileID: 2100000, guid: c84534c4eae7f0744834517746e05340, type: 2}
     - target: {fileID: -4773093706969356913, guid: d26f5108aac22994396fd007761b43da, type: 3}
-      propertyPath: m_Materials.Array.data[3]
+      propertyPath: 'm_Materials.Array.data[3]'
       value: 
       objectReference: {fileID: 2100000, guid: c95203e9e89267e40ac67ff33efb8f95, type: 2}
     - target: {fileID: -4773093706969356913, guid: d26f5108aac22994396fd007761b43da, type: 3}
-      propertyPath: m_Materials.Array.data[4]
+      propertyPath: 'm_Materials.Array.data[4]'
       value: 
       objectReference: {fileID: 2100000, guid: 42e54a841b970314b8531d29f50c203a, type: 2}
     - target: {fileID: 919132149155446097, guid: d26f5108aac22994396fd007761b43da, type: 3}
@@ -93,31 +93,73 @@ PrefabInstance:
       value: 2_PlasmaRifle
       objectReference: {fileID: 0}
     - target: {fileID: 7284107280824378328, guid: d26f5108aac22994396fd007761b43da, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 8031262c623a1284f9760857f5aac652, type: 2}
     - target: {fileID: 7284107280824378328, guid: d26f5108aac22994396fd007761b43da, type: 3}
-      propertyPath: m_Materials.Array.data[1]
+      propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: f9842f744e64a2646b0aaea5b22d8bfb, type: 2}
     - target: {fileID: 7284107280824378328, guid: d26f5108aac22994396fd007761b43da, type: 3}
-      propertyPath: m_Materials.Array.data[2]
+      propertyPath: 'm_Materials.Array.data[2]'
       value: 
       objectReference: {fileID: 2100000, guid: c95203e9e89267e40ac67ff33efb8f95, type: 2}
     - target: {fileID: 7679117616336186803, guid: d26f5108aac22994396fd007761b43da, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: f9842f744e64a2646b0aaea5b22d8bfb, type: 2}
     - target: {fileID: 7679117616336186803, guid: d26f5108aac22994396fd007761b43da, type: 3}
-      propertyPath: m_Materials.Array.data[1]
+      propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: 8031262c623a1284f9760857f5aac652, type: 2}
     - target: {fileID: 7679117616336186803, guid: d26f5108aac22994396fd007761b43da, type: 3}
-      propertyPath: m_Materials.Array.data[2]
+      propertyPath: 'm_Materials.Array.data[2]'
       value: 
       objectReference: {fileID: 2100000, guid: c84534c4eae7f0744834517746e05340, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d26f5108aac22994396fd007761b43da, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 3821868011791484751}
   m_SourcePrefab: {fileID: 100100000, guid: d26f5108aac22994396fd007761b43da, type: 3}
+--- !u!1 &8175387710128064747 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d26f5108aac22994396fd007761b43da, type: 3}
+  m_PrefabInstance: {fileID: 9058328878930081210}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3821868011791484751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8175387710128064747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c44e0055d33931c41808b457f4f0cbd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponName: Plasma Cannon
+  weaponDmgType: 0
+  weaponMount: 1
+  damageValue: 1
+  damageMultiplier: 1
+  piercing: 1
+  explosionRadius: 0
+  fireRate: 0.1
+  range: 100
+  weaponCooldown: 0.1
+  projectileSpeed: 100
+  projectileAmount: 1
+  projectileInterval: 0
+  overheatThreshold: 100
+  ammoMax: 0
+  ammoCurrent: 0
+  weaponUpgradeModule: {fileID: 0}
+  weaponVfx:
+  - {fileID: 0}
+  weaponSfx: {fileID: 0}
+  overheatEffect: {fileID: 0}
+  isEquippedByPlayer: 0

@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class ShipController : MonoBehaviour
 {
-    [Header("Ship Stats:")]
+    [Header("Ship Stats:")] public string shipName;
+    public ShipClass shipClass;
+    public enum ShipClass {Interceptor, Assault, Tank, Bomber, Stealth};
     public float health;
     public float hullIntegrity, energyShield, damageReduction;
     public float shieldRegenRate, healthRegenRate;
@@ -41,7 +43,7 @@ public class ShipController : MonoBehaviour
         
         if (Mathf.Abs(forwardInput) < 0.01f)
         {
-            _rb.velocity *= 0.99f;
+            _rb.linearVelocity *= 0.99f;
         }
         
         transform.Rotate(Vector3.up, turnInput * (maneuverability * 10) * Time.deltaTime);

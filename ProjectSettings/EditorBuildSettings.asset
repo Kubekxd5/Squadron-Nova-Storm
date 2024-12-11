@@ -4,5 +4,12 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/ShipGarage.unity
+    guid: 2558414a504614441a348398c50df634
+  - enabled: 1
+    path: Assets/Scenes/Models_WFC_Testing.unity
+    guid: ee24ade135149b147bc41aeaacaa51d8
   m_configObjects: {}
+  m_UseUCBPForAssetBundles: 0

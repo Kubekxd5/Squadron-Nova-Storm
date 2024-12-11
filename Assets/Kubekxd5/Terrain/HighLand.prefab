@@ -162,6 +162,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -244,7 +247,7 @@ MonoBehaviour:
   - {fileID: 9021061220663643161}
   - {fileID: 2719179012546713526}
   - {fileID: 6010472093655152570}
-  spawnChance: 0.1
+  spawnChance: 0.035
   canSpawn: 1
   buildings:
   - {fileID: 4946237678607886026, guid: f508ec1fc5ff1ca47a30cbd7eff764eb, type: 3}

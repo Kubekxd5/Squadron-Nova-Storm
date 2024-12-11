@@ -22,31 +22,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b64dee04c2435a048aa7bc3f5b1e2442, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.960484
+      value: -0.045923613
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b64dee04c2435a048aa7bc3f5b1e2442, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.037599944
+      value: -0.014813296
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b64dee04c2435a048aa7bc3f5b1e2442, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -14.1707
+      value: 0.047136515
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b64dee04c2435a048aa7bc3f5b1e2442, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: -0.70710677
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b64dee04c2435a048aa7bc3f5b1e2442, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.7071069
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b64dee04c2435a048aa7bc3f5b1e2442, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7071068
+      value: -0.00000011230213
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b64dee04c2435a048aa7bc3f5b1e2442, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.7071068
+      value: -0.00000010787593
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b64dee04c2435a048aa7bc3f5b1e2442, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -58,10 +58,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b64dee04c2435a048aa7bc3f5b1e2442, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 180
+      value: 360
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: b64dee04c2435a048aa7bc3f5b1e2442, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 29d7f143ba110b246ba3704f153061de, type: 2}
     - target: {fileID: 919132149155446097, guid: b64dee04c2435a048aa7bc3f5b1e2442, type: 3}
@@ -69,39 +69,81 @@ PrefabInstance:
       value: 1_PlasmaRifle
       objectReference: {fileID: 0}
     - target: {fileID: 7284107280824378328, guid: b64dee04c2435a048aa7bc3f5b1e2442, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 8031262c623a1284f9760857f5aac652, type: 2}
     - target: {fileID: 7284107280824378328, guid: b64dee04c2435a048aa7bc3f5b1e2442, type: 3}
-      propertyPath: m_Materials.Array.data[1]
+      propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: f9842f744e64a2646b0aaea5b22d8bfb, type: 2}
     - target: {fileID: 7284107280824378328, guid: b64dee04c2435a048aa7bc3f5b1e2442, type: 3}
-      propertyPath: m_Materials.Array.data[2]
+      propertyPath: 'm_Materials.Array.data[2]'
       value: 
       objectReference: {fileID: 2100000, guid: 42e54a841b970314b8531d29f50c203a, type: 2}
     - target: {fileID: 7284107280824378328, guid: b64dee04c2435a048aa7bc3f5b1e2442, type: 3}
-      propertyPath: m_Materials.Array.data[3]
+      propertyPath: 'm_Materials.Array.data[3]'
       value: 
       objectReference: {fileID: 2100000, guid: c95203e9e89267e40ac67ff33efb8f95, type: 2}
     - target: {fileID: 7284107280824378328, guid: b64dee04c2435a048aa7bc3f5b1e2442, type: 3}
-      propertyPath: m_Materials.Array.data[4]
+      propertyPath: 'm_Materials.Array.data[4]'
       value: 
       objectReference: {fileID: 2100000, guid: c84534c4eae7f0744834517746e05340, type: 2}
     - target: {fileID: 7679117616336186803, guid: b64dee04c2435a048aa7bc3f5b1e2442, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 8031262c623a1284f9760857f5aac652, type: 2}
     - target: {fileID: 7679117616336186803, guid: b64dee04c2435a048aa7bc3f5b1e2442, type: 3}
-      propertyPath: m_Materials.Array.data[1]
+      propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: f9842f744e64a2646b0aaea5b22d8bfb, type: 2}
     - target: {fileID: 7679117616336186803, guid: b64dee04c2435a048aa7bc3f5b1e2442, type: 3}
-      propertyPath: m_Materials.Array.data[2]
+      propertyPath: 'm_Materials.Array.data[2]'
       value: 
       objectReference: {fileID: 2100000, guid: c84534c4eae7f0744834517746e05340, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b64dee04c2435a048aa7bc3f5b1e2442, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 7545024788536061110}
   m_SourcePrefab: {fileID: 100100000, guid: b64dee04c2435a048aa7bc3f5b1e2442, type: 3}
+--- !u!1 &8916496634017487675 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b64dee04c2435a048aa7bc3f5b1e2442, type: 3}
+  m_PrefabInstance: {fileID: 8609945306535634538}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7545024788536061110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8916496634017487675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c44e0055d33931c41808b457f4f0cbd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponName: Twin-Plasma Rifle
+  weaponDmgType: 0
+  weaponMount: 0
+  damageValue: 1
+  damageMultiplier: 1
+  piercing: 1
+  explosionRadius: 0
+  fireRate: 0.1
+  range: 100
+  weaponCooldown: 0.1
+  projectileSpeed: 100
+  projectileAmount: 1
+  projectileInterval: 0
+  overheatThreshold: 100
+  ammoMax: 0
+  ammoCurrent: 0
+  weaponUpgradeModule: {fileID: 0}
+  weaponVfx:
+  - {fileID: 0}
+  weaponSfx: {fileID: 0}
+  overheatEffect: {fileID: 0}
+  isEquippedByPlayer: 0

@@ -22,7 +22,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 174934a45695222459bfc79d3f3a234b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.15060759
+      value: -0.12560758
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 174934a45695222459bfc79d3f3a234b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -61,31 +61,31 @@ PrefabInstance:
       value: 180
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 174934a45695222459bfc79d3f3a234b, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 29d7f143ba110b246ba3704f153061de, type: 2}
     - target: {fileID: -5439642436375544994, guid: 174934a45695222459bfc79d3f3a234b, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: f9842f744e64a2646b0aaea5b22d8bfb, type: 2}
     - target: {fileID: -3639538848855172074, guid: 174934a45695222459bfc79d3f3a234b, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 8031262c623a1284f9760857f5aac652, type: 2}
     - target: {fileID: -3639538848855172074, guid: 174934a45695222459bfc79d3f3a234b, type: 3}
-      propertyPath: m_Materials.Array.data[2]
+      propertyPath: 'm_Materials.Array.data[2]'
       value: 
       objectReference: {fileID: 2100000, guid: 87858f841225a034e88a69165fe0934d, type: 2}
     - target: {fileID: 309903246243971387, guid: 174934a45695222459bfc79d3f3a234b, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 3f52ef61700aa5f4581362a81510a179, type: 2}
     - target: {fileID: 309903246243971387, guid: 174934a45695222459bfc79d3f3a234b, type: 3}
-      propertyPath: m_Materials.Array.data[1]
+      propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: 3f52ef61700aa5f4581362a81510a179, type: 2}
     - target: {fileID: 309903246243971387, guid: 174934a45695222459bfc79d3f3a234b, type: 3}
-      propertyPath: m_Materials.Array.data[2]
+      propertyPath: 'm_Materials.Array.data[2]'
       value: 
       objectReference: {fileID: 2100000, guid: 87858f841225a034e88a69165fe0934d, type: 2}
     - target: {fileID: 919132149155446097, guid: 174934a45695222459bfc79d3f3a234b, type: 3}
@@ -97,23 +97,65 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7284107280824378328, guid: 174934a45695222459bfc79d3f3a234b, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 8031262c623a1284f9760857f5aac652, type: 2}
     - target: {fileID: 7284107280824378328, guid: 174934a45695222459bfc79d3f3a234b, type: 3}
-      propertyPath: m_Materials.Array.data[1]
+      propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: f9842f744e64a2646b0aaea5b22d8bfb, type: 2}
     - target: {fileID: 7284107280824378328, guid: 174934a45695222459bfc79d3f3a234b, type: 3}
-      propertyPath: m_Materials.Array.data[2]
+      propertyPath: 'm_Materials.Array.data[2]'
       value: 
       objectReference: {fileID: 2100000, guid: c95203e9e89267e40ac67ff33efb8f95, type: 2}
     - target: {fileID: 7284107280824378328, guid: 174934a45695222459bfc79d3f3a234b, type: 3}
-      propertyPath: m_Materials.Array.data[3]
+      propertyPath: 'm_Materials.Array.data[3]'
       value: 
       objectReference: {fileID: 2100000, guid: 87858f841225a034e88a69165fe0934d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 174934a45695222459bfc79d3f3a234b, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 4240112498332553847}
   m_SourcePrefab: {fileID: 100100000, guid: 174934a45695222459bfc79d3f3a234b, type: 3}
+--- !u!1 &4534349307975667500 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 174934a45695222459bfc79d3f3a234b, type: 3}
+  m_PrefabInstance: {fileID: 3615360782526624381}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4240112498332553847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4534349307975667500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c44e0055d33931c41808b457f4f0cbd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponName: Ship-mounted Railgun
+  weaponDmgType: 3
+  weaponMount: 0
+  damageValue: 1
+  damageMultiplier: 1
+  piercing: 1
+  explosionRadius: 0
+  fireRate: 0.1
+  range: 100
+  weaponCooldown: 0.1
+  projectileSpeed: 100
+  projectileAmount: 1
+  projectileInterval: 0
+  overheatThreshold: 100
+  ammoMax: 0
+  ammoCurrent: 0
+  weaponUpgradeModule: {fileID: 0}
+  weaponVfx:
+  - {fileID: 0}
+  weaponSfx: {fileID: 0}
+  overheatEffect: {fileID: 0}
+  isEquippedByPlayer: 0
