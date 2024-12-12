@@ -223,7 +223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Double-mounted Flak Cannon
   weaponDmgType: 3
-  weaponMount: 1
+  weaponMount: 0
   damageValue: 1
   damageMultiplier: 1
   piercing: 1

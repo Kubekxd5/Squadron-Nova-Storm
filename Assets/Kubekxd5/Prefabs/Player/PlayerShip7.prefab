@@ -734,7 +734,7 @@ GameObject:
   - component: {fileID: -11511950169838088}
   m_Layer: 6
   m_Name: PlayerShip7
-  m_TagString: Untagged
+  m_TagString: PlayerShip
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -769,6 +769,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e977ec966dab4d4a830fa781162fca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slotManagerRef: {fileID: 8016691015039915098}
   shipName: Mig
   shipClass: 0
   health: 100

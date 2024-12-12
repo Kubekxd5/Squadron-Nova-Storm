@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class ShipController : MonoBehaviour
 {
+    public SlotsManager slotManagerRef;
+    
     [Header("Ship Stats:")] public string shipName;
     public ShipClass shipClass;
     public enum ShipClass {Interceptor, Assault, Tank, Bomber, Stealth};

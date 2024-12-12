@@ -58,9 +58,11 @@ public class WeaponController : MonoBehaviour
     public bool isEquippedByPlayer;
 
     private float _nextFireTime;
+    private ShipSlot _parentSlot;
 
     private void Start()
     {
+        _parentSlot = gameObject.GetComponentInParent<ShipSlot>();
         _nextFireTime = 0f;
         if (GetComponentInParent<ShipSlot>())
         {

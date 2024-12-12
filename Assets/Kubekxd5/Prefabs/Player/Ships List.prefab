@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1209122786070384620
 Transform:
   m_ObjectHideFlags: 0
@@ -52,10 +52,6 @@ PrefabInstance:
     - target: {fileID: 5850449557047147579, guid: ebc08273840c74548a4a52bb8e5f3e88, type: 3}
       propertyPath: m_Name
       value: PlayerShip6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5850449557047147579, guid: ebc08273840c74548a4a52bb8e5f3e88, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6519849194890634881, guid: ebc08273840c74548a4a52bb8e5f3e88, type: 3}
       propertyPath: m_LocalPosition.x
@@ -119,10 +115,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerShip4
       objectReference: {fileID: 0}
-    - target: {fileID: 5850449557047147579, guid: fe8272207ff095d4f8ef23807fea6e76, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6519849194890634881, guid: fe8272207ff095d4f8ef23807fea6e76, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4
@@ -184,10 +176,6 @@ PrefabInstance:
     - target: {fileID: 7442391461383334891, guid: 576a4522579d65f41a96470926a09280, type: 3}
       propertyPath: m_Name
       value: PlayerShip
-      objectReference: {fileID: 0}
-    - target: {fileID: 7442391461383334891, guid: 576a4522579d65f41a96470926a09280, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7783204454648983889, guid: 576a4522579d65f41a96470926a09280, type: 3}
       propertyPath: m_LocalPosition.x
@@ -251,10 +239,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerShip7
       objectReference: {fileID: 0}
-    - target: {fileID: 5850449557047147579, guid: 7978f0fd08019b14ebbf8f57a56833f3, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6519849194890634881, guid: 7978f0fd08019b14ebbf8f57a56833f3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7
@@ -316,10 +300,6 @@ PrefabInstance:
     - target: {fileID: 5850449557047147579, guid: db57ff6cd1881f048997cc8bb1dce76d, type: 3}
       propertyPath: m_Name
       value: PlayerShip10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5850449557047147579, guid: db57ff6cd1881f048997cc8bb1dce76d, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6519849194890634881, guid: db57ff6cd1881f048997cc8bb1dce76d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -383,10 +363,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerShip9
       objectReference: {fileID: 0}
-    - target: {fileID: 5850449557047147579, guid: 42bfe9bf0a9fb3242b0e1349b9c3acb5, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6519849194890634881, guid: 42bfe9bf0a9fb3242b0e1349b9c3acb5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9
@@ -448,10 +424,6 @@ PrefabInstance:
     - target: {fileID: 7442391461383334891, guid: c77c7bdc3ffb32c478e4fcb97c875498, type: 3}
       propertyPath: m_Name
       value: PlayerShip2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7442391461383334891, guid: c77c7bdc3ffb32c478e4fcb97c875498, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7783204454648983889, guid: c77c7bdc3ffb32c478e4fcb97c875498, type: 3}
       propertyPath: m_LocalPosition.x
@@ -515,10 +487,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerShip3
       objectReference: {fileID: 0}
-    - target: {fileID: 5850449557047147579, guid: 66186465f0dc1f24e9fb806bed091718, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6519849194890634881, guid: 66186465f0dc1f24e9fb806bed091718, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3
@@ -581,10 +549,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerShip8
       objectReference: {fileID: 0}
-    - target: {fileID: 5850449557047147579, guid: a15f655ccbcec5d4b8b3afbcd196b1dc, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6519849194890634881, guid: a15f655ccbcec5d4b8b3afbcd196b1dc, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8
@@ -646,10 +610,6 @@ PrefabInstance:
     - target: {fileID: 5850449557047147579, guid: 72435f9d11bd94445823b0e6251d69af, type: 3}
       propertyPath: m_Name
       value: PlayerShip5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5850449557047147579, guid: 72435f9d11bd94445823b0e6251d69af, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6519849194890634881, guid: 72435f9d11bd94445823b0e6251d69af, type: 3}
       propertyPath: m_LocalPosition.x

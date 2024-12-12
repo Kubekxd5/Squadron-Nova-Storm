@@ -9,32 +9,48 @@ public class SlotsManager : MonoBehaviour
     public List<WeaponController> hangarBayWeapons = new List<WeaponController>();
     public List<WeaponController> specialWeapons = new List<WeaponController>();
     
-    /*public void InitializeWeapons()
+    [Header("Slots transform")]
+    public Transform[] primarySlot;
+    public Transform[] secondarySlot;
+    public Transform[] hangarBaySlot;
+    public Transform[] specialSlot;
+    
+    public Transform GetSlotTransform(string category, int index)
     {
-        ShipSlot[] shipSlots = GetComponentsInChildren<ShipSlot>();
-        foreach (ShipSlot slot in shipSlots)
+        switch (category)
         {
-            if (slot.weaponController != null)
-            {
-                switch (slot.weaponMount)
-                {
-                    case ShipSlot.WeaponMount.Primary:
-                        primaryWeapons.Add(slot.weaponController);
-                        break;
-                    case ShipSlot.WeaponMount.Secondary:
-                        secondaryWeapons.Add(slot.weaponController);
-                        break;
-                    case ShipSlot.WeaponMount.Hangar:
-                        hangarBayWeapons.Add(slot.weaponController);
-                        break;
-                    case ShipSlot.WeaponMount.Special:
-                        specialWeapons.Add(slot.weaponController);
-                        break;
-                }
-            }
+            case "Primary":
+                return primarySlot[index];
+            case "Secondary":
+                return secondarySlot[index];
+            case "Hangar":
+                return hangarBaySlot[index];
+            case "Special":
+                return specialSlot[index];
+            default:
+                return null;
         }
-    }*/
-
+    }
+    
+    public void AddWeaponToCategory(WeaponController weapon, string category)
+    {
+        switch (category)
+        {
+            case "Primary":
+                primaryWeapons.Add(weapon);
+                break;
+            case "Secondary":
+                secondaryWeapons.Add(weapon);
+                break;
+            case "Hangar":
+                hangarBayWeapons.Add(weapon);
+                break;
+            case "Special":
+                specialWeapons.Add(weapon);
+                break;
+        }
+    }
+    
     public void FirePrimaryWeapons()
     {
         foreach (var weapon in primaryWeapons)

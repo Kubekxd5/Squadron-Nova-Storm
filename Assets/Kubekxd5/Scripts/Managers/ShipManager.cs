@@ -15,10 +15,20 @@ public class ShipManager : MonoBehaviour
     {
         PopulateAvailableShips();
         PopulateAvailableWeapons();
-        LoadShipData();
+
+        if (PlayerPrefs.HasKey("SelectedShipData"))
+        {
+            LoadShipData();
+        }
+        else
+        {
+            Debug.LogWarning("No saved ship data found. Default ship will be used.");
+        }
+
         GameObject playerCamera = GameObject.FindWithTag("MainCamera");
         playerCamera.GetComponent<CameraController>().FindPlayerShip();
     }
+
 
     private void PopulateAvailableShips()
     {
@@ -41,19 +51,21 @@ public class ShipManager : MonoBehaviour
         string jsonData = PlayerPrefs.GetString("SelectedShipData", null);
         if (string.IsNullOrEmpty(jsonData))
         {
-            Debug.LogWarning("No ship data found!");
+            Debug.LogWarning("No ship data found, using a default ship.");
+            currentShip = InstantiateDefaultShip();
             return;
         }
 
         ShipData shipData = JsonUtility.FromJson<ShipData>(jsonData);
         Debug.Log($"Loaded Ship Data: {jsonData}");
 
-        GameObject selectedShipPrefab = availableShips.Find(ship => 
+        GameObject selectedShipPrefab = availableShips.Find(ship =>
             ship.GetComponent<ShipController>().shipName == shipData.shipName);
 
         if (selectedShipPrefab == null)
         {
-            Debug.LogError($"Ship prefab '{shipData.shipName}' not found!");
+            Debug.LogError($"Ship prefab '{shipData.shipName}' not found, using default.");
+            currentShip = InstantiateDefaultShip();
             return;
         }
 
@@ -64,6 +76,13 @@ public class ShipManager : MonoBehaviour
 
         EquipWeapons(currentShip, shipData);
     }
+
+    private GameObject InstantiateDefaultShip()
+    {
+        GameObject defaultShipPrefab = availableShips[0]; // Assuming the first ship is the default.
+        return Instantiate(defaultShipPrefab, shipSlot.position, shipSlot.rotation, shipSlot);
+    }
+
 
     private void EquipWeapons(GameObject ship, ShipData shipData)
     {
