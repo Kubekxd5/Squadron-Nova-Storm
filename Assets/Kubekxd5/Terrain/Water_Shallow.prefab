@@ -60,11 +60,14 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 29d7f143ba110b246ba3704f153061de, type: 2}
-  - {fileID: 2100000, guid: e4a6154b87f392e469800d85293c4538, type: 2}
+  - {fileID: 2100000, guid: f47ca9078220d544385f01f9fd18641f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -136,3 +139,8 @@ MonoBehaviour:
   - {fileID: -109970805314949542, guid: ac120e5f73e5cc640977f02f973ff5bc, type: 3}
   - {fileID: 5564099794088149296}
   - {fileID: -2079152192882818857, guid: 9dfcdbc9685a8d640b2754a6e1894ecc, type: 3}
+  points: []
+  spawnChance: 0.5
+  canSpawn: 0
+  buildings: []
+  buildingWeights: []
