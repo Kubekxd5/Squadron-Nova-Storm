@@ -18,14 +18,12 @@ public class ShipController : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
 
-        // Setting up camera tracking on ship initialization
         if (transform.parent.GetComponent<PlayerController>() == true)
         {
             _mainCamera = GameObject.FindWithTag("MainCamera").GetComponent<CameraController>();
             _mainCamera.FindPlayerShip();
         }
         
-        // Let enemies know which new ship is the player
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (var enemy in enemies)
         {

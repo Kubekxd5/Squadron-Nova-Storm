@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class SlotsManager : MonoBehaviour
 {
@@ -8,30 +8,26 @@ public class SlotsManager : MonoBehaviour
     public List<WeaponController> secondaryWeapons = new List<WeaponController>();
     public List<WeaponController> hangarBayWeapons = new List<WeaponController>();
     public List<WeaponController> specialWeapons = new List<WeaponController>();
-    
+
     [Header("Slots transform")]
     public Transform[] primarySlot;
     public Transform[] secondarySlot;
     public Transform[] hangarBaySlot;
     public Transform[] specialSlot;
     
-    public Transform GetSlotTransform(string category, int index)
+    public IEnumerable<Transform> allSlots
     {
-        switch (category)
+        get
         {
-            case "Primary":
-                return primarySlot[index];
-            case "Secondary":
-                return secondarySlot[index];
-            case "Hangar":
-                return hangarBaySlot[index];
-            case "Special":
-                return specialSlot[index];
-            default:
-                return null;
+            List<Transform> slots = new List<Transform>();
+            if (primarySlot != null) slots.AddRange(primarySlot);
+            if (secondarySlot != null) slots.AddRange(secondarySlot);
+            if (hangarBaySlot != null) slots.AddRange(hangarBaySlot);
+            if (specialSlot != null) slots.AddRange(specialSlot);
+            return slots;
         }
     }
-    
+
     public void AddWeaponToCategory(WeaponController weapon, string category)
     {
         switch (category)
@@ -50,21 +46,31 @@ public class SlotsManager : MonoBehaviour
                 break;
         }
     }
+    public void AddPrimaryWeapon(WeaponController weapon)
+    {
+        AddWeaponToCategory(weapon, "Primary");
+    }
+
+    public void AddSecondaryWeapon(WeaponController weapon)
+    {
+        AddWeaponToCategory(weapon, "Secondary");
+    }
+
+    public void AddHangarBay(WeaponController weapon)
+    {
+        AddWeaponToCategory(weapon, "Hangar");
+    }
+
+    public void AddSpecialWeapon(WeaponController weapon)
+    {
+        AddWeaponToCategory(weapon, "Special");
+    }
     
     public void FirePrimaryWeapons()
     {
         foreach (var weapon in primaryWeapons)
         {
             weapon.Shoot();
-        }
-    }
-
-    public void AddPrimaryWeapon(WeaponController weapon)
-    {
-        primaryWeapons.Add(weapon);
-        foreach (var wa in primaryWeapons)
-        {
-            wa.EquipWeapon();
         }
     }
     
@@ -76,29 +82,11 @@ public class SlotsManager : MonoBehaviour
         }
     }
     
-    public void AddSecondaryWeapon(WeaponController weapon)
-    {
-        secondaryWeapons.Add(weapon);
-        foreach (var wa in secondaryWeapons)
-        {
-            wa.EquipWeapon();
-        }
-    }
-    
     public void FireHangarBay()
     {
         foreach (var hangar in hangarBayWeapons)
         {
             hangar.Shoot();
-        }
-    }
-    
-    public void AddHangarBay(WeaponController hangar)
-    {
-        hangarBayWeapons.Add(hangar);
-        foreach (var wa in hangarBayWeapons)
-        {
-            wa.EquipWeapon();
         }
     }
     
@@ -109,14 +97,4 @@ public class SlotsManager : MonoBehaviour
             special.Shoot();
         }
     }
-    
-    public void AddSpecialWeapon(WeaponController weapon)
-    {
-        specialWeapons.Add(weapon);
-        foreach (var wa in specialWeapons)
-        {
-            wa.EquipWeapon();
-        }
-    }
 }
-

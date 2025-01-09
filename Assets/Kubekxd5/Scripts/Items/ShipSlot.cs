@@ -9,10 +9,10 @@ public class ShipSlot : MonoBehaviour
         Hangar,
         Special
     };
-    
+
     [Header("Weapon Mount:")]
     public WeaponMount weaponMount;
-    
+
     [Header("Equipment:")]
     public WeaponController weaponController;
 
@@ -37,5 +37,12 @@ public class ShipSlot : MonoBehaviour
                 return;
         }
     }
+    public void RemoveWeapon()
+    {
+        if (weaponController != null)
+        {
+            Destroy(weaponController.gameObject);
+            weaponController = null;
+        }
+    }
 }
-
