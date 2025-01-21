@@ -1,8 +1,8 @@
 using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,11 +12,11 @@ public class GameManager : MonoBehaviour
     public ShipConfigObject selectedShipConfig;
     public WFC_Script wfcScript;
 
-    [Header("Player Info:")]
-    public string playerName;
+    [Header("Player Info:")] public string playerName;
+
     public int score, scoreMultiplier = 1;
     public TextMeshProUGUI scoreView;
-    public event Action OnPlayerShipSpawned;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -31,16 +31,15 @@ public class GameManager : MonoBehaviour
 
         SceneManager.sceneLoaded += OnSceneLoaded;
 
-        if (IsGameScene())
-        {
-            SetupGameScene();
-        }
+        if (IsGameScene()) SetupGameScene();
     }
 
     private void OnDestroy()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
+
+    public event Action OnPlayerShipSpawned;
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
@@ -57,15 +56,11 @@ public class GameManager : MonoBehaviour
         playerHud.SetActive(false);
         Debug.Log("GameManager: playerHud set to inactive.");
 
-        GameObject wfcObject = GameObject.FindGameObjectWithTag("WFC");
+        var wfcObject = GameObject.FindGameObjectWithTag("WFC");
         if (wfcObject != null)
-        {
             wfcScript = wfcObject.GetComponent<WFC_Script>();
-        }
         else
-        {
             Debug.LogWarning("WFC object with tag 'WFC' not found!");
-        }
 
         StartCoroutine(WaitForWorldGeneration());
     }
@@ -128,21 +123,21 @@ public class GameManager : MonoBehaviour
 
         foreach (var slotConfig in selectedShipConfig.weaponSlots)
         {
-            Transform slotTransform = FindSlotOnShip(slotConfig.slotName);
+            var slotTransform = FindSlotOnShip(slotConfig.slotName);
             if (slotTransform == null)
             {
                 Debug.LogWarning($"Slot '{slotConfig.slotName}' not found on the ship!");
                 continue;
             }
 
-            GameObject weaponPrefab = weaponList.GetObjectByName(slotConfig.weaponName);
+            var weaponPrefab = weaponList.GetObjectByName(slotConfig.weaponName);
             if (weaponPrefab == null)
             {
                 Debug.LogWarning($"Weapon '{slotConfig.weaponName}' not found in weapon list!");
                 continue;
             }
 
-            GameObject weaponInstance = Instantiate(weaponPrefab, slotTransform);
+            var weaponInstance = Instantiate(weaponPrefab, slotTransform);
             weaponInstance.transform.localPosition = Vector3.zero;
             weaponInstance.transform.localRotation = Quaternion.identity;
             weaponInstance.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
@@ -151,13 +146,9 @@ public class GameManager : MonoBehaviour
 
     private Transform FindSlotOnShip(string slotName)
     {
-        foreach (Transform child in currentEquippedShip.GetComponentsInChildren<Transform>())
-        {
+        foreach (var child in currentEquippedShip.GetComponentsInChildren<Transform>())
             if (child.name == slotName)
-            {
                 return child;
-            }
-        }
         return null;
     }
 

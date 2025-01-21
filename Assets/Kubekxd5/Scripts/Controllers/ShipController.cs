@@ -2,25 +2,33 @@ using UnityEngine;
 
 public class ShipController : MonoBehaviour
 {
+    public enum ShipClass
+    {
+        Interceptor,
+        Assault,
+        Tank,
+        Bomber,
+        Stealth
+    }
+
     public SlotsManager slotManagerRef;
 
-    [Header("Ship Stats:")] 
-    public string shipName;
+    [Header("Ship Stats:")] public string shipName;
+
     public ShipClass shipClass;
-    public enum ShipClass { Interceptor, Assault, Tank, Bomber, Stealth }
     public float health;
     public float hullLevel, energyShield, damageReduction;
     public float shieldRegenRate, healthRegenRate;
     public float speed, maxSpeed, maneuverability, boostCharge;
 
-    [Header("Sprint Stats:")]
-    public float sprintMultiplier = 2f; // Boost multiplier during sprint
-    public ParticleSystem sprintParticles; // Particle system to visualize sprint
+    [Header("Sprint Stats:")] public float sprintMultiplier = 2f; // Boost multiplier during sprint
 
-    private Rigidbody _rb;
+    public ParticleSystem sprintParticles; // Particle system to visualize sprint
     private CameraController _mainCamera;
 
-    private bool isSprinting = false;
+    private Rigidbody _rb;
+
+    private bool isSprinting;
 
     private void Start()
     {
@@ -32,23 +40,20 @@ public class ShipController : MonoBehaviour
             _mainCamera.FindPlayerShip();
         }
 
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        var enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (var enemy in enemies)
         {
-            EnemyTower enemyTower = enemy.GetComponent<EnemyTower>();
-            if (enemyTower != null)
-            {
-                enemyTower.player = transform;
-            }
+            var enemyTower = enemy.GetComponent<EnemyTower>();
+            if (enemyTower != null) enemyTower.player = transform;
         }
     }
 
     public void HandleMovement()
     {
-        float forwardInput = Input.GetAxis("Vertical");
-        float turnInput = Input.GetAxis("Horizontal");
+        var forwardInput = Input.GetAxis("Vertical");
+        var turnInput = Input.GetAxis("Horizontal");
 
-        float currentSpeed = isSprinting ? speed * sprintMultiplier : speed;
+        var currentSpeed = isSprinting ? speed * sprintMultiplier : speed;
 
         transform.Translate(Vector3.forward * (forwardInput * currentSpeed * Time.deltaTime));
 
@@ -60,18 +65,12 @@ public class ShipController : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift) && boostCharge > 0)
         {
             isSprinting = true;
-            if (sprintParticles != null && !sprintParticles.isPlaying)
-            {
-                sprintParticles.Play();
-            }
+            if (sprintParticles != null && !sprintParticles.isPlaying) sprintParticles.Play();
         }
         else
         {
             isSprinting = false;
-            if (sprintParticles != null && sprintParticles.isPlaying)
-            {
-                sprintParticles.Stop();
-            }
+            if (sprintParticles != null && sprintParticles.isPlaying) sprintParticles.Stop();
         }
 
         if (isSprinting)

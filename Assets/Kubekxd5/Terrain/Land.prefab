@@ -169,6 +169,7 @@ MonoBehaviour:
   - {fileID: -2448720132383446743}
   - {fileID: -2079152192882818857, guid: 9dfcdbc9685a8d640b2754a6e1894ecc, type: 3}
   - {fileID: 6494817886629018918, guid: 547328ab89dbe58498f1318c363fddde, type: 3}
+  - {fileID: -2448720132383446743, guid: 0a3af7181af26234c8e53f2e27911ecf, type: 3}
   bottomNeighbours:
   - {fileID: -6500280634162185340, guid: eec14389044076b4c96619e1e48eff59, type: 3}
   - {fileID: -2448720132383446743}
@@ -180,6 +181,7 @@ MonoBehaviour:
   - {fileID: -2448720132383446743}
   - {fileID: -2079152192882818857, guid: 9dfcdbc9685a8d640b2754a6e1894ecc, type: 3}
   - {fileID: 6494817886629018918, guid: 547328ab89dbe58498f1318c363fddde, type: 3}
+  - {fileID: -2448720132383446743, guid: 0a3af7181af26234c8e53f2e27911ecf, type: 3}
   points:
   - {fileID: 2347779043356579364}
   - {fileID: 7390344696501896666}

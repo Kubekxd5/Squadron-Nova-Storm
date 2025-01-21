@@ -1,21 +1,20 @@
-using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
 public class Buff : MonoBehaviour
 {
-    [Header("Buff skibidi")]
-    public BuffType buffType;
+    [Header("Buff skibidi")] public BuffType buffType;
+
     public Sprite icon;
     public float dropChance;
     public float value;
+
+    [HideInInspector] public string buffName;
 
     private void OnValidate()
     {
         buffName = buffType.ToString();
     }
-
-    [HideInInspector]
-    public string buffName;
 }
 
 public enum BuffType
@@ -34,8 +33,8 @@ public enum BuffType
 
 public class BuffManager : MonoBehaviour
 {
-    [Header("Buff Config")]
-    public Buff[] buffs;
+    [Header("Buff Config")] public Buff[] buffs;
+
     public GameObject buffPrefab;
     public Transform buffDropPoint;
 
@@ -43,11 +42,8 @@ public class BuffManager : MonoBehaviour
     {
         foreach (var buff in buffs)
         {
-            float randomValue = Random.Range(0f, 100f);
-            if (randomValue <= buff.dropChance)
-            {
-                SpawnBuff(buff);
-            }
+            var randomValue = Random.Range(0f, 100f);
+            if (randomValue <= buff.dropChance) SpawnBuff(buff);
         }
     }
 
@@ -55,13 +51,10 @@ public class BuffManager : MonoBehaviour
     {
         if (buffPrefab == null || buffDropPoint == null) return;
 
-        GameObject buffInstance = Instantiate(buffPrefab, buffDropPoint.position, Quaternion.identity);
-        BuffDisplay buffDisplay = buffInstance.GetComponent<BuffDisplay>();
+        var buffInstance = Instantiate(buffPrefab, buffDropPoint.position, Quaternion.identity);
+        var buffDisplay = buffInstance.GetComponent<BuffDisplay>();
 
-        if (buffDisplay != null)
-        {
-            buffDisplay.SetBuff(buff);
-        }
+        if (buffDisplay != null) buffDisplay.SetBuff(buff);
     }
 
     public void OnEnemyDefeated()
@@ -72,19 +65,9 @@ public class BuffManager : MonoBehaviour
 
 public class BuffDisplay : MonoBehaviour
 {
-    [Header("Buff UI")]
-    public SpriteRenderer iconRenderer;
+    [Header("Buff UI")] public SpriteRenderer iconRenderer;
 
     private Buff currentBuff;
-
-    public void SetBuff(Buff buff)
-    {
-        currentBuff = buff;
-        if (iconRenderer != null)
-        {
-            iconRenderer.sprite = buff.icon;
-        }
-    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -96,22 +79,22 @@ public class BuffDisplay : MonoBehaviour
         }
     }
 
+    public void SetBuff(Buff buff)
+    {
+        currentBuff = buff;
+        if (iconRenderer != null) iconRenderer.sprite = buff.icon;
+    }
+
     private void ApplyBuff(GameObject player)
     {
         if (currentBuff == null) return;
 
-        ShipController shipController = player.GetComponent<ShipController>();
-        WeaponController weaponController = player.GetComponentInChildren<WeaponController>();
+        var shipController = player.GetComponent<ShipController>();
+        var weaponController = player.GetComponentInChildren<WeaponController>();
 
-        if (shipController != null)
-        {
-            ApplyBuffToShip(shipController);
-        }
+        if (shipController != null) ApplyBuffToShip(shipController);
 
-        if (weaponController != null)
-        {
-            ApplyBuffToWeapon(weaponController);
-        }
+        if (weaponController != null) ApplyBuffToWeapon(weaponController);
     }
 
     private void ApplyBuffToShip(ShipController shipController)
@@ -174,9 +157,8 @@ public class BuffDisplay : MonoBehaviour
     {
         if (currentBuff == null) return;
 
-        PlayerStats playerStats = player.GetComponent<PlayerStats>();
+        var playerStats = player.GetComponent<PlayerStats>();
         if (playerStats != null)
-        {
             switch (currentBuff.buffType)
             {
                 case BuffType.GodMode:
@@ -186,51 +168,43 @@ public class BuffDisplay : MonoBehaviour
                     Debug.LogWarning($"Oj soooooory nie dziala: {currentBuff.buffName}");
                     break;
             }
-        }
     }
 }
 
 public class PlayerStats : MonoBehaviour
 {
-    [Header("god mode?")]
-    private bool isGodModeActive = false;
-    public bool isDead { get; private set; } = false;
-    private bool godModeEnabled => isGodModeActive;
     public GameObject deathUI;
+
+    public bool isDead { get; private set; }
+    [field: Header("god mode?")] private bool godModeEnabled { get; set; }
 
     public void EnableGodMode(float duration)
     {
-        if (!isGodModeActive)
+        if (!godModeEnabled)
         {
-            isGodModeActive = true;
+            godModeEnabled = true;
             StartCoroutine(GodModeCoroutine(duration));
         }
     }
 
-    private System.Collections.IEnumerator GodModeCoroutine(float duration)
+    private IEnumerator GodModeCoroutine(float duration)
     {
         yield return new WaitForSeconds(duration);
-        isGodModeActive = false;
+        godModeEnabled = false;
     }
 
     public void TakeDamage(float amount)
     {
         if (godModeEnabled) return;
-        ShipController shipController = GetComponent<ShipController>();
+        var shipController = GetComponent<ShipController>();
         shipController.health -= amount;
         shipController.health = Mathf.Max(shipController.health, 0);
-        if (shipController.health <= 0)
-        {
-            Die();
-        }
+        if (shipController.health <= 0) Die();
     }
 
     private void Die()
     {
         isDead = true;
-        if (deathUI != null)
-        {
-            deathUI.SetActive(true);
-        }
+        if (deathUI != null) deathUI.SetActive(true);
     }
 }

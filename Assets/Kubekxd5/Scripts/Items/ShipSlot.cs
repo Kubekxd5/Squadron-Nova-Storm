@@ -8,17 +8,15 @@ public class ShipSlot : MonoBehaviour
         Secondary,
         Hangar,
         Special
-    };
+    }
 
-    [Header("Weapon Mount:")]
-    public WeaponMount weaponMount;
+    [Header("Weapon Mount:")] public WeaponMount weaponMount;
 
-    [Header("Equipment:")]
-    public WeaponController weaponController;
+    [Header("Equipment:")] public WeaponController weaponController;
 
     public void AddNewWeapon()
     {
-        SlotsManager slotsManager = transform.GetComponentInParent<SlotsManager>();
+        var slotsManager = transform.GetComponentInParent<SlotsManager>();
         switch (weaponMount)
         {
             case WeaponMount.Primary:
@@ -37,6 +35,7 @@ public class ShipSlot : MonoBehaviour
                 return;
         }
     }
+
     public void RemoveWeapon()
     {
         if (weaponController != null)

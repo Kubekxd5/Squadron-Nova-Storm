@@ -1,25 +1,25 @@
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class SlotsManager : MonoBehaviour
 {
-    [Header("Weapons:")]
-    public List<WeaponController> primaryWeapons = new List<WeaponController>();
-    public List<WeaponController> secondaryWeapons = new List<WeaponController>();
-    public List<WeaponController> hangarBayWeapons = new List<WeaponController>();
-    public List<WeaponController> specialWeapons = new List<WeaponController>();
+    [Header("Weapons:")] public List<WeaponController> primaryWeapons = new();
 
-    [Header("Slots transform")]
-    public Transform[] primarySlot;
+    public List<WeaponController> secondaryWeapons = new();
+    public List<WeaponController> hangarBayWeapons = new();
+    public List<WeaponController> specialWeapons = new();
+
+    [Header("Slots transform")] public Transform[] primarySlot;
+
     public Transform[] secondarySlot;
     public Transform[] hangarBaySlot;
     public Transform[] specialSlot;
-    
+
     public IEnumerable<Transform> allSlots
     {
         get
         {
-            List<Transform> slots = new List<Transform>();
+            var slots = new List<Transform>();
             if (primarySlot != null) slots.AddRange(primarySlot);
             if (secondarySlot != null) slots.AddRange(secondarySlot);
             if (hangarBaySlot != null) slots.AddRange(hangarBaySlot);
@@ -46,6 +46,7 @@ public class SlotsManager : MonoBehaviour
                 break;
         }
     }
+
     public void AddPrimaryWeapon(WeaponController weapon)
     {
         AddWeaponToCategory(weapon, "Primary");
@@ -65,36 +66,24 @@ public class SlotsManager : MonoBehaviour
     {
         AddWeaponToCategory(weapon, "Special");
     }
-    
+
     public void FirePrimaryWeapons()
     {
-        foreach (var weapon in primaryWeapons)
-        {
-            weapon.Shoot();
-        }
+        foreach (var weapon in primaryWeapons) weapon.Shoot();
     }
-    
+
     public void FireSecondaryWeapons()
     {
-        foreach (var weapon in secondaryWeapons)
-        {
-            weapon.Shoot();
-        }
+        foreach (var weapon in secondaryWeapons) weapon.Shoot();
     }
-    
+
     public void FireHangarBay()
     {
-        foreach (var hangar in hangarBayWeapons)
-        {
-            hangar.Shoot();
-        }
+        foreach (var hangar in hangarBayWeapons) hangar.Shoot();
     }
-    
+
     public void FireSpecialWeapon()
     {
-        foreach (var special in specialWeapons)
-        {
-            special.Shoot();
-        }
+        foreach (var special in specialWeapons) special.Shoot();
     }
 }

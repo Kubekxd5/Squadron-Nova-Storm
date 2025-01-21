@@ -1,28 +1,26 @@
-using UnityEngine;
-using UnityEngine.UI;
 using System.Collections.Generic;
-using System.Linq;
 using TMPro;
+using UnityEngine;
 
 public class GarageShipManager : MonoBehaviour
 {
-    [Header("UI_Components")]
-    public TMP_Dropdown shipDropdown;
+    [Header("UI_Components")] public TMP_Dropdown shipDropdown;
+
     public TextMeshProUGUI shipTypeTextField;
 
-    [Header("Lists")]
-    public GameObject shipsList;
+    [Header("Lists")] public GameObject shipsList;
+
     public GameObject weaponList;
 
     public Transform equippedShipParent;
     public InventoryManager InventoryManager;
 
-    public List<GameObject> availableWeapons = new List<GameObject>();
-    private List<GameObject> _availableShips = new List<GameObject>();
+    public List<GameObject> availableWeapons = new();
     public GameObject currentEquippedShip;
 
-    [Header("Config Object")]
-    public ShipConfigObject shipConfig;
+    [Header("Config Object")] public ShipConfigObject shipConfig;
+
+    private readonly List<GameObject> _availableShips = new();
 
     private void Start()
     {
@@ -40,7 +38,8 @@ public class GarageShipManager : MonoBehaviour
         foreach (Transform ship in shipsList.transform)
         {
             _availableShips.Add(ship.gameObject);
-            shipDropdown.options.Add(new TMP_Dropdown.OptionData(ship.gameObject.GetComponent<ShipController>().shipName));
+            shipDropdown.options.Add(
+                new TMP_Dropdown.OptionData(ship.gameObject.GetComponent<ShipController>().shipName));
         }
 
         if (_availableShips.Count > 0)
@@ -59,19 +58,13 @@ public class GarageShipManager : MonoBehaviour
     {
         availableWeapons.Clear();
 
-        foreach (Transform child in weaponList.transform)
-        {
-            availableWeapons.Add(child.gameObject);
-        }
+        foreach (Transform child in weaponList.transform) availableWeapons.Add(child.gameObject);
     }
 
     private void UpdateShipConfig()
     {
-        if (shipConfig == null)
-        {
-            return;
-        }
-        
+        if (shipConfig == null) return;
+
         shipConfig.ships = new List<GameObject>(_availableShips);
         shipConfig.equippedWeapons = new List<GameObject>(availableWeapons);
     }
@@ -84,10 +77,7 @@ public class GarageShipManager : MonoBehaviour
 
     private void EquipShip(GameObject selectedShip)
     {
-        if (currentEquippedShip != null)
-        {
-            Destroy(currentEquippedShip);
-        }
+        if (currentEquippedShip != null) Destroy(currentEquippedShip);
 
         currentEquippedShip = Instantiate(selectedShip, equippedShipParent);
         currentEquippedShip.transform.localPosition = Vector3.zero;
@@ -101,52 +91,30 @@ public class GarageShipManager : MonoBehaviour
 
     public void SaveConfig(int index)
     {
-        if (shipConfig == null)
-        {
-            return;
-        }
+        if (shipConfig == null) return;
 
-        if (currentEquippedShip == null)
-        {
-            return;
-        }
+        if (currentEquippedShip == null) return;
 
         shipConfig.shipIndex = index;
 
-        ShipController shipController = currentEquippedShip.GetComponent<ShipController>();
-        if (shipController == null)
+        var shipController = currentEquippedShip.GetComponent<ShipController>();
+        if (shipController == null) return;
+
+        if (shipController.slotManagerRef == null) return;
+
+        if (shipController.slotManagerRef.allSlots == null) return;
+
+        var equippedWeapons = new List<GameObject>();
+
+        foreach (var slot in shipController.slotManagerRef.allSlots)
         {
-            return;
-        }
+            if (slot == null) continue;
 
-        if (shipController.slotManagerRef == null)
-        {
-            return;
-        }
-
-        if (shipController.slotManagerRef.allSlots == null)
-        {
-            return;
-        }
-
-        List<GameObject> equippedWeapons = new List<GameObject>();
-
-        foreach (Transform slot in shipController.slotManagerRef.allSlots)
-        {
-            if (slot == null)
-            {
-                continue;
-            }
-
-            ShipSlot shipSlot = slot.GetComponent<ShipSlot>();
+            var shipSlot = slot.GetComponent<ShipSlot>();
             if (shipSlot != null && shipSlot.weaponController != null)
-            {
                 equippedWeapons.Add(shipSlot.weaponController.gameObject);
-            }
             else
-            {
                 Debug.LogWarning("Empty or unequipped slot: " + slot.name);
-            }
         }
     }
 }

@@ -1,46 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
-    [Header("UI Components")]
-    public Transform inventoryMenu;
+    [Header("UI Components")] public Transform inventoryMenu;
+
     public GameObject inventoryItemPrefab;
 
-    [Header("References")]
-    public GarageShipManager garageManager;
+    [Header("References")] public GarageShipManager garageManager;
 
     public SlotsManager slotsManager;
-    public List<GameObject> currentInventorySlots = new List<GameObject>();
+    public List<GameObject> currentInventorySlots = new();
 
-    [Header("Offset Settings")]
-    public float slotVerticalOffset = 50f;
-    private float currentYOffset = 0f;
+    [Header("Offset Settings")] public float slotVerticalOffset = 50f;
+
+    private float currentYOffset;
 
     public void SelectNewShip()
     {
         currentYOffset = 0;
 
-        foreach (var slot in currentInventorySlots)
-        {
-            Destroy(slot);
-        }
+        foreach (var slot in currentInventorySlots) Destroy(slot);
         currentInventorySlots.Clear();
 
-        GameObject currentShip = garageManager.currentEquippedShip;
-        if (currentShip == null)
-        {
-            return;
-        }
+        var currentShip = garageManager.currentEquippedShip;
+        if (currentShip == null) return;
 
         slotsManager = currentShip.GetComponent<ShipController>().slotManagerRef;
-        if (slotsManager == null)
-        {
-            return;
-        }
+        if (slotsManager == null) return;
 
         StartCoroutine(RefreshInventoryAfterDelay());
     }
@@ -61,33 +51,27 @@ public class InventoryManager : MonoBehaviour
 
     private void PopulateCategory(Transform[] slots, ShipSlot.WeaponMount weaponMount)
     {
-        if (slots == null || slots.Length == 0)
-        {
-            return;
-        }
+        if (slots == null || slots.Length == 0) return;
 
-        for (int i = 0; i < slots.Length; i++)
+        for (var i = 0; i < slots.Length; i++)
         {
-            ShipSlot shipSlot = slots[i].GetComponent<ShipSlot>();
-            if (shipSlot == null)
-            {
-                continue;
-            }
+            var shipSlot = slots[i].GetComponent<ShipSlot>();
+            if (shipSlot == null) continue;
 
-            GameObject newSlot = Instantiate(inventoryItemPrefab, inventoryMenu);
+            var newSlot = Instantiate(inventoryItemPrefab, inventoryMenu);
             newSlot.transform.localScale = Vector3.one;
             newSlot.SetActive(true);
             currentInventorySlots.Add(newSlot);
 
-            TextMeshProUGUI slotText = newSlot.GetComponentInChildren<TextMeshProUGUI>();
+            var slotText = newSlot.GetComponentInChildren<TextMeshProUGUI>();
             slotText.text = $"{weaponMount} Slot {i + 1}";
 
-            RectTransform rectTransform = newSlot.GetComponent<RectTransform>();
+            var rectTransform = newSlot.GetComponent<RectTransform>();
             rectTransform.anchoredPosition = new Vector2(0, -currentYOffset);
 
             currentYOffset += slotVerticalOffset;
 
-            TMP_Dropdown weaponDropdown = newSlot.GetComponentInChildren<TMP_Dropdown>();
+            var weaponDropdown = newSlot.GetComponentInChildren<TMP_Dropdown>();
             PopulateWeaponDropdown(weaponDropdown, shipSlot, weaponMount);
         }
     }
@@ -96,30 +80,27 @@ public class InventoryManager : MonoBehaviour
     {
         dropdown.ClearOptions();
 
-        List<string> options = new List<string> { "None" };
+        var options = new List<string> { "None" };
         foreach (var weapon in garageManager.availableWeapons)
         {
-            WeaponController weaponController = weapon.GetComponent<WeaponController>();
-        
-            // Convert WeaponController.WeaponMount to ShipSlot.WeaponMount
-            ShipSlot.WeaponMount convertedMount = (ShipSlot.WeaponMount)(int)weaponController.weaponMount;
+            var weaponController = weapon.GetComponent<WeaponController>();
 
-            if (convertedMount == weaponMount)
-            {
-                options.Add(weaponController.weaponName);
-            }
+            // Convert WeaponController.WeaponMount to ShipSlot.WeaponMount
+            var convertedMount = (ShipSlot.WeaponMount)(int)weaponController.weaponMount;
+
+            if (convertedMount == weaponMount) options.Add(weaponController.weaponName);
         }
 
         dropdown.AddOptions(options);
 
         if (shipSlot.weaponController != null)
         {
-            int index = options.IndexOf(shipSlot.weaponController.weaponName);
+            var index = options.IndexOf(shipSlot.weaponController.weaponName);
             dropdown.value = index >= 0 ? index : 0;
         }
 
         dropdown.onValueChanged.RemoveAllListeners();
-        dropdown.onValueChanged.AddListener((selectedIndex) =>
+        dropdown.onValueChanged.AddListener(selectedIndex =>
         {
             HandleWeaponSelection(shipSlot, dropdown.options[selectedIndex].text);
             RefreshInventory();
@@ -134,8 +115,8 @@ public class InventoryManager : MonoBehaviour
 
             if (garageManager.shipConfig != null)
             {
-                ShipConfigObject config = garageManager.shipConfig;
-                ShipConfigObject.ShipSlotConfig slotConfig = config.weaponSlots.FirstOrDefault(slot => slot.slotName == shipSlot.name);
+                var config = garageManager.shipConfig;
+                var slotConfig = config.weaponSlots.FirstOrDefault(slot => slot.slotName == shipSlot.name);
                 if (slotConfig != null)
                 {
                     slotConfig.slotName = null;
@@ -145,17 +126,15 @@ public class InventoryManager : MonoBehaviour
         }
         else
         {
-            GameObject weaponPrefab = garageManager.shipConfig.equippedWeapons.FirstOrDefault(w => w.GetComponent<WeaponController>().weaponName == selectedWeaponName);
+            var weaponPrefab = garageManager.shipConfig.equippedWeapons.FirstOrDefault(w =>
+                w.GetComponent<WeaponController>().weaponName == selectedWeaponName);
 
             if (weaponPrefab != null)
             {
-                if (shipSlot.weaponController != null)
-                {
-                    Destroy(shipSlot.weaponController.gameObject);
-                }
+                if (shipSlot.weaponController != null) Destroy(shipSlot.weaponController.gameObject);
 
-                GameObject weaponInstance = Instantiate(weaponPrefab, shipSlot.transform);
-                WeaponController weaponController = weaponInstance.GetComponent<WeaponController>();
+                var weaponInstance = Instantiate(weaponPrefab, shipSlot.transform);
+                var weaponController = weaponInstance.GetComponent<WeaponController>();
                 weaponInstance.transform.localPosition = Vector3.zero;
                 weaponInstance.transform.localRotation = Quaternion.identity;
                 weaponInstance.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
@@ -164,21 +143,18 @@ public class InventoryManager : MonoBehaviour
 
                 if (garageManager.shipConfig != null)
                 {
-                    ShipConfigObject.ShipSlotConfig newSlotConfig = new ShipConfigObject.ShipSlotConfig
+                    var newSlotConfig = new ShipConfigObject.ShipSlotConfig
                     {
                         slotName = shipSlot.name,
                         weaponName = shipSlot.weaponController.weaponName
                     };
 
-                    int existingIndex = garageManager.shipConfig.weaponSlots.FindIndex(slot => slot.slotName == shipSlot.name);
+                    var existingIndex =
+                        garageManager.shipConfig.weaponSlots.FindIndex(slot => slot.slotName == shipSlot.name);
                     if (existingIndex >= 0)
-                    {
                         garageManager.shipConfig.weaponSlots[existingIndex] = newSlotConfig;
-                    }
                     else
-                    {
                         garageManager.shipConfig.weaponSlots.Add(newSlotConfig);
-                    }
                 }
             }
             else
@@ -191,15 +167,12 @@ public class InventoryManager : MonoBehaviour
 
     private void RefreshInventory()
     {
-        foreach (GameObject slot in currentInventorySlots)
+        foreach (var slot in currentInventorySlots)
         {
-            TMP_Dropdown dropdown = slot.GetComponentInChildren<TMP_Dropdown>();
-            ShipSlot shipSlot = slot.GetComponentInParent<ShipSlot>();
+            var dropdown = slot.GetComponentInChildren<TMP_Dropdown>();
+            var shipSlot = slot.GetComponentInParent<ShipSlot>();
 
-            if (shipSlot != null)
-            {
-                PopulateWeaponDropdown(dropdown, shipSlot, shipSlot.weaponMount);
-            }
+            if (shipSlot != null) PopulateWeaponDropdown(dropdown, shipSlot, shipSlot.weaponMount);
         }
     }
 }

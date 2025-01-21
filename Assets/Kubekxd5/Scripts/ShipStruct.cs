@@ -1,14 +1,14 @@
 using System;
 using System.Collections.Generic;
 
-[System.Serializable]
+[Serializable]
 public class ShipData
 {
     public string shipName;
     public List<WeaponData> weapons;
 }
 
-[System.Serializable]
+[Serializable]
 public class WeaponData
 {
     public string weaponName;

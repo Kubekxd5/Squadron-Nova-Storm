@@ -19,7 +19,9 @@ public class Projectile : MonoBehaviour
 
         if (_particleSystem != null)
         {
-            float calculatedLifetime = weaponController.projectileSpeed > 0 ? weaponController.range / weaponController.projectileSpeed : 0.1f;
+            var calculatedLifetime = weaponController.projectileSpeed > 0
+                ? weaponController.range / weaponController.projectileSpeed
+                : 0.1f;
 
             var mainModule = _particleSystem.main;
             mainModule.startLifetime = calculatedLifetime;
@@ -30,9 +32,7 @@ public class Projectile : MonoBehaviour
             emissionModule.burstCount = weaponController.projectileAmount;
 
             if (subEmmiters != null && subEmmiters.Length > 0)
-            {
                 foreach (var subEmitter in subEmmiters)
-                {
                     if (subEmitter != null)
                     {
                         var subMain = subEmitter.main;
@@ -42,12 +42,8 @@ public class Projectile : MonoBehaviour
                     {
                         Debug.LogWarning("Projectile: One of the sub-emitters is null.");
                     }
-                }
-            }
             else
-            {
                 Debug.Log("Projectile: No sub-emitters assigned or array is empty.");
-            }
         }
         else
         {
@@ -63,11 +59,11 @@ public class Projectile : MonoBehaviour
 
         if (other.layer == LayerMask.NameToLayer("Player"))
         {
-            ShipController ship = other.GetComponent<ShipController>();
+            var ship = other.GetComponent<ShipController>();
 
             if (ship != null)
             {
-                float actualDamage = weaponController.damageValue * weaponController.damageMultiplier;
+                var actualDamage = weaponController.damageValue * weaponController.damageMultiplier;
                 ship.TakeDamage(actualDamage);
                 Debug.Log($"Particle hit player {ship.shipName} and dealt {actualDamage} damage.");
             }
@@ -79,11 +75,11 @@ public class Projectile : MonoBehaviour
 
         if (other.layer == LayerMask.NameToLayer("Enemy"))
         {
-            EnemyClass enemy = other.GetComponent<EnemyClass>();
+            var enemy = other.GetComponent<EnemyClass>();
 
             if (enemy != null)
             {
-                float actualDamage = weaponController.damageValue * weaponController.damageMultiplier;
+                var actualDamage = weaponController.damageValue * weaponController.damageMultiplier;
                 enemy.TakeDamage(actualDamage);
                 Debug.Log($"Particle hit {other.name} and dealt {actualDamage} damage.");
             }
@@ -93,5 +89,4 @@ public class Projectile : MonoBehaviour
             }
         }
     }
-
 }

@@ -1,12 +1,10 @@
-using System;
 using System.Linq;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class Tile : MonoBehaviour
 {
-    [Header("Tile settings:")]
-    public float weight = 1f;
+    [Header("Tile settings:")] public float weight = 1f;
+
     public Tile[] upNeighbours;
     public Tile[] rightNeighbours;
     public Tile[] bottomNeighbours;
@@ -14,19 +12,15 @@ public class Tile : MonoBehaviour
 
     [Header("Spawn Points")] public Transform[] points;
     [Range(0f, 1f)] public float spawnChance = 0.5f;
-    public Boolean canSpawn;
-    
+    public bool canSpawn;
+
     [Header("Buildings")] public GameObject[] buildings;
     public float[] buildingWeights;
 
-    
 
     private void Awake()
     {
-        if (canSpawn)
-        {
-            ActivateSpawnPoints();
-        }
+        if (canSpawn) ActivateSpawnPoints();
     }
 
     private void ActivateSpawnPoints()
@@ -37,30 +31,25 @@ public class Tile : MonoBehaviour
             return;
         }
 
-        foreach (Transform spawnPoint in points)
-        {
+        foreach (var spawnPoint in points)
             if (Random.value <= spawnChance)
-            {
                 SpawnBuilding(spawnPoint);
-            }
-        }
     }
-    
+
     private void SpawnBuilding(Transform spawnPoint)
     {
-        int selectedBuildingIndex = GetWeightedRandomIndex(buildingWeights);
+        var selectedBuildingIndex = GetWeightedRandomIndex(buildingWeights);
 
         if (selectedBuildingIndex != -1)
         {
-            Quaternion prefabRotation = buildings[selectedBuildingIndex].transform.rotation;
+            var prefabRotation = buildings[selectedBuildingIndex].transform.rotation;
             Instantiate(buildings[selectedBuildingIndex], spawnPoint.position, prefabRotation);
-
         }
     }
-    
+
     private int GetWeightedRandomIndex(float[] weights)
     {
-        float totalWeight = weights.Sum();
+        var totalWeight = weights.Sum();
 
         if (totalWeight <= 0f)
         {
@@ -68,16 +57,13 @@ public class Tile : MonoBehaviour
             return -1;
         }
 
-        float randomValue = Random.value * totalWeight;
-        float cumulativeWeight = 0f;
+        var randomValue = Random.value * totalWeight;
+        var cumulativeWeight = 0f;
 
-        for (int i = 0; i < weights.Length; i++)
+        for (var i = 0; i < weights.Length; i++)
         {
             cumulativeWeight += weights[i];
-            if (randomValue <= cumulativeWeight)
-            {
-                return i;
-            }
+            if (randomValue <= cumulativeWeight) return i;
         }
 
         return -1;

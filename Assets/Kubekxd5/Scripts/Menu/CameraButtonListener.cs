@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -8,10 +7,10 @@ public class CameraButtonListener : MonoBehaviour, IPointerClickHandler, IPointe
     public int index;
     public GarageCameraController cameraController;
     private Outline outline;
+
     private void Start()
     {
         outline = gameObject.GetComponent<Outline>();
-        
     }
 
     public void OnPointerClick(PointerEventData pointerEventData)

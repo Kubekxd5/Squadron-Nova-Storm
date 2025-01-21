@@ -13,24 +13,18 @@ public class ShipManager : MonoBehaviour
 
     private IEnumerator InitializeShip()
     {
-        yield return new WaitUntil(() => GameManager.Instance != null && GameManager.Instance.currentEquippedShip != null);
+        yield return new WaitUntil(() =>
+            GameManager.Instance != null && GameManager.Instance.currentEquippedShip != null);
 
-        GameObject playerShip = GameManager.Instance.currentEquippedShip;
+        var playerShip = GameManager.Instance.currentEquippedShip;
 
         if (playerShip != null)
-        {
             PositionShipInSlot(playerShip);
-        }
         else
-        {
             Debug.LogWarning("ShipManager: No ship found even after waiting. Check GameManager logic.");
-        }
 
-        GameObject playerCamera = GameObject.FindWithTag("MainCamera");
-        if (playerCamera != null)
-        {
-            playerCamera.GetComponent<CameraController>()?.FindPlayerShip();
-        }
+        var playerCamera = GameObject.FindWithTag("MainCamera");
+        if (playerCamera != null) playerCamera.GetComponent<CameraController>()?.FindPlayerShip();
     }
 
     private void PositionShipInSlot(GameObject ship)

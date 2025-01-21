@@ -4,13 +4,13 @@ public class CameraController : MonoBehaviour
 {
     public GameObject playerShip;
 
-    [Header("Zoom Settings")]
-    public float minZoom = 5f;
+    [Header("Zoom Settings")] public float minZoom = 5f;
+
     public float maxZoom = 20f;
     public float zoomSpeed = 5f;
 
-    [Header("Camera Offset Settings")]
-    public float forwardOffset = 5f;
+    [Header("Camera Offset Settings")] public float forwardOffset = 5f;
+
     public float followRange = 5f;
 
     private Vector3 _baseOffset;
@@ -18,23 +18,7 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
-        if (GameManager.Instance != null)
-        {
-            GameManager.Instance.OnPlayerShipSpawned += OnPlayerShipSpawned;
-        }
-    }
-
-    private void OnDestroy()
-    {
-        if (GameManager.Instance != null)
-        {
-            GameManager.Instance.OnPlayerShipSpawned -= OnPlayerShipSpawned;
-        }
-    }
-
-    private void OnPlayerShipSpawned()
-    {
-        FindPlayerShip();
+        if (GameManager.Instance != null) GameManager.Instance.OnPlayerShipSpawned += OnPlayerShipSpawned;
     }
 
     private void LateUpdate()
@@ -47,14 +31,24 @@ public class CameraController : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        if (GameManager.Instance != null) GameManager.Instance.OnPlayerShipSpawned -= OnPlayerShipSpawned;
+    }
+
+    private void OnPlayerShipSpawned()
+    {
+        FindPlayerShip();
+    }
+
     private void HandleZoom()
     {
-        float scrollInput = Input.GetAxis("Mouse ScrollWheel");
+        var scrollInput = Input.GetAxis("Mouse ScrollWheel");
         if (scrollInput != 0)
         {
             // Adjust the _baseOffset.y based on scroll input
             _baseOffset.y -= scrollInput * zoomSpeed;
-            
+
             // Clamp the zoom level between minZoom and maxZoom
             _baseOffset.y = Mathf.Clamp(_baseOffset.y, minZoom, maxZoom);
         }
@@ -63,10 +57,10 @@ public class CameraController : MonoBehaviour
     private void UpdateCursorOffset()
     {
         // Convert mouse position to viewport position (range from 0 to 1 on both axes)
-        Vector3 mouseViewportPos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+        var mouseViewportPos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
 
         // Center the viewport range around (0,0) instead of (0.5,0.5)
-        Vector3 centeredViewportPos = new Vector3(mouseViewportPos.x - 0.5f, 0, mouseViewportPos.y - 0.5f);
+        var centeredViewportPos = new Vector3(mouseViewportPos.x - 0.5f, 0, mouseViewportPos.y - 0.5f);
 
         // Calculate cursor offset within the follow range, using local axes of the player ship
         _cursorOffset = Vector3.ClampMagnitude(centeredViewportPos * followRange, followRange);
@@ -76,10 +70,10 @@ public class CameraController : MonoBehaviour
     private void UpdateCameraPositionAndRotation()
     {
         // Calculate the base offset and forward offset based on the player's local space
-        Vector3 forwardPosition = playerShip.transform.position + playerShip.transform.forward * forwardOffset;
+        var forwardPosition = playerShip.transform.position + playerShip.transform.forward * forwardOffset;
 
         // Combine the base zoom offset, forward offset, and local cursor offset to determine final camera position
-        Vector3 targetPosition = forwardPosition + new Vector3(_cursorOffset.x, _baseOffset.y, _cursorOffset.z);
+        var targetPosition = forwardPosition + new Vector3(_cursorOffset.x, _baseOffset.y, _cursorOffset.z);
         transform.position = targetPosition;
 
         // Rotate the camera to look at the player from the top, keeping rotation in sync with the player's rotation
@@ -90,12 +84,8 @@ public class CameraController : MonoBehaviour
     {
         playerShip = GameObject.FindGameObjectWithTag("PlayerShip");
         if (playerShip != null)
-        {
             _baseOffset = transform.position - playerShip.transform.position;
-        }
         else
-        {
             Debug.LogWarning("No player ship found. Please assign a ship or ensure it has the 'PlayerShip' tag.");
-        }
     }
 }

@@ -9,28 +9,23 @@ public class RotateAroundCenter : MonoBehaviour
     {
         rotateSpeed = 30;
     }
-    void Update()
+
+    private void Update()
     {
         transform.RotateAround(centerPoint.position, Vector3.up, rotateSpeed * Time.deltaTime);
         gameObject.transform.LookAt(centerPoint);
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            ChangeRotationSpeed(KeyCode.UpArrow);
-        }
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            ChangeRotationSpeed(KeyCode.DownArrow);
-        }
-
+        if (Input.GetKeyDown(KeyCode.UpArrow)) ChangeRotationSpeed(KeyCode.UpArrow);
+        if (Input.GetKeyDown(KeyCode.DownArrow)) ChangeRotationSpeed(KeyCode.DownArrow);
     }
 
-    void ChangeRotationSpeed(KeyCode keycode)
+    private void ChangeRotationSpeed(KeyCode keycode)
     {
-        if(keycode == KeyCode.DownArrow)
+        if (keycode == KeyCode.DownArrow)
         {
             rotateSpeed -= 5;
             if (rotateSpeed < 10) rotateSpeed = 10;
         }
+
         if (keycode == KeyCode.UpArrow)
         {
             rotateSpeed += 5;

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,8 +13,8 @@ public class EnemyLogic : MonoBehaviour
 
     public MovementType movementType;
 
-    [Header("General Settings")]
-    public Transform targetObject; // Object to follow (non-player)
+    [Header("General Settings")] public Transform targetObject; // Object to follow (non-player)
+
     public Transform playerObject; // Reference to the player's transform
     public float speed = 5f;
     public float stoppingDistance = 2f;
@@ -24,31 +23,33 @@ public class EnemyLogic : MonoBehaviour
 
     [Header("Obstacle Avoidance Settings")]
     public float avoidanceDistance = 3f; // Distance to detect obstacles
+
     public float avoidanceStrength = 2f; // How strongly the enemy avoids obstacles
     public LayerMask obstacleLayer; // Layer for obstacles to avoid
 
-    [Header("Weapon Settings")]
-    public List<WeaponController> equippedWeapons;
+    [Header("Weapon Settings")] public List<WeaponController> equippedWeapons;
 
-    [Header("Patrol Settings")]
-    public float patrolRadius = 10f;
+    [Header("Patrol Settings")] public float patrolRadius = 10f;
+
     public int patrolPointsCount = 5;
-    private Vector3[] patrolPoints;
-    private int currentPatrolIndex = 0;
 
-    [Header("Idle Settings")]
-    public float idleRotationInterval = 3f;
-    private float nextIdleRotationTime;
+    [Header("Idle Settings")] public float idleRotationInterval = 3f;
+
+    private float currentAngle;
+    private int currentPatrolIndex;
 
     private bool isPlayerDetected;
+    private float nextIdleRotationTime;
+    private Vector3[] patrolPoints;
+    private float targetAngle;
 
-    void Start()
+    private void Start()
     {
         GeneratePatrolPoints();
         FindPlayerObject();
     }
 
-    void Update()
+    private void Update()
     {
         DetectPlayer();
 
@@ -75,7 +76,7 @@ public class EnemyLogic : MonoBehaviour
     {
         if (playerObject == null)
         {
-            GameObject player = GameObject.FindGameObjectWithTag("PlayerShip");
+            var player = GameObject.FindGameObjectWithTag("PlayerShip");
             if (player != null)
             {
                 playerObject = player.transform;
@@ -90,13 +91,10 @@ public class EnemyLogic : MonoBehaviour
 
         if (playerObject != null)
         {
-            float distanceToPlayer = Vector3.Distance(transform.position, playerObject.position);
+            var distanceToPlayer = Vector3.Distance(transform.position, playerObject.position);
             isPlayerDetected = distanceToPlayer <= detectionRange;
 
-            if (isPlayerDetected)
-            {
-                movementType = MovementType.Chase;
-            }
+            if (isPlayerDetected) movementType = MovementType.Chase;
         }
         else
         {
@@ -112,18 +110,15 @@ public class EnemyLogic : MonoBehaviour
             return;
         }
 
-        Vector3 directionToPlayer = (playerObject.position - transform.position).normalized;
+        var directionToPlayer = (playerObject.position - transform.position).normalized;
 
         // Rotate towards the player
-        Quaternion targetRotation = Quaternion.LookRotation(directionToPlayer);
+        var targetRotation = Quaternion.LookRotation(directionToPlayer);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 
         // Move toward the player unless within stopping distance
-        float distanceToPlayer = Vector3.Distance(transform.position, playerObject.position);
-        if (distanceToPlayer > stoppingDistance)
-        {
-            MoveWithAvoidance(directionToPlayer);
-        }
+        var distanceToPlayer = Vector3.Distance(transform.position, playerObject.position);
+        if (distanceToPlayer > stoppingDistance) MoveWithAvoidance(directionToPlayer);
     }
 
     private void FollowTargetAndRotateToPlayer()
@@ -134,18 +129,15 @@ public class EnemyLogic : MonoBehaviour
             return;
         }
 
-        Vector3 directionToTarget = (targetObject.position - transform.position).normalized;
+        var directionToTarget = (targetObject.position - transform.position).normalized;
 
         // Follow the target object
-        float distanceToTarget = Vector3.Distance(transform.position, targetObject.position);
-        if (distanceToTarget > stoppingDistance)
-        {
-            MoveWithAvoidance(directionToTarget);
-        }
+        var distanceToTarget = Vector3.Distance(transform.position, targetObject.position);
+        if (distanceToTarget > stoppingDistance) MoveWithAvoidance(directionToTarget);
 
         // Rotate to face the player
-        Vector3 directionToPlayer = (playerObject.position - transform.position).normalized;
-        Quaternion targetRotation = Quaternion.LookRotation(directionToPlayer);
+        var directionToPlayer = (playerObject.position - transform.position).normalized;
+        var targetRotation = Quaternion.LookRotation(directionToPlayer);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
 
@@ -153,26 +145,19 @@ public class EnemyLogic : MonoBehaviour
     {
         if (patrolPoints == null || patrolPoints.Length == 0) return;
 
-        Vector3 targetPoint = patrolPoints[currentPatrolIndex];
-        Vector3 directionToPoint = (targetPoint - transform.position).normalized;
+        var targetPoint = patrolPoints[currentPatrolIndex];
+        var directionToPoint = (targetPoint - transform.position).normalized;
 
-        float distanceToPoint = Vector3.Distance(transform.position, targetPoint);
+        var distanceToPoint = Vector3.Distance(transform.position, targetPoint);
         if (distanceToPoint > stoppingDistance)
-        {
             MoveWithAvoidance(directionToPoint);
-        }
         else
-        {
             currentPatrolIndex = (currentPatrolIndex + 1) % patrolPoints.Length;
-        }
 
-        Quaternion targetRotation = Quaternion.LookRotation(directionToPoint);
+        var targetRotation = Quaternion.LookRotation(directionToPoint);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
 
-    private float currentAngle;
-    private float targetAngle;
-    
     private void Idle()
     {
         if (Time.time >= nextIdleRotationTime)
@@ -188,15 +173,9 @@ public class EnemyLogic : MonoBehaviour
     private void TryShoot()
     {
         if (equippedWeapons != null && equippedWeapons.Count > 0 && isPlayerDetected)
-        {
             foreach (var weapon in equippedWeapons)
-            {
                 if (weapon != null)
-                {
                     weapon.Shoot();
-                }
-            }
-        }
     }
 
     private void GeneratePatrolPoints()
@@ -208,32 +187,30 @@ public class EnemyLogic : MonoBehaviour
         }
 
         patrolPoints = new Vector3[patrolPointsCount];
-        Vector3 center = transform.position;
+        var center = transform.position;
 
-        for (int i = 0; i < patrolPointsCount; i++)
+        for (var i = 0; i < patrolPointsCount; i++)
         {
-            float angle = Random.Range(0f, 360f);
-            float distance = Random.Range(0f, patrolRadius);
-            float x = center.x + distance * Mathf.Cos(angle * Mathf.Deg2Rad);
-            float z = center.z + distance * Mathf.Sin(angle * Mathf.Deg2Rad);
+            var angle = Random.Range(0f, 360f);
+            var distance = Random.Range(0f, patrolRadius);
+            var x = center.x + distance * Mathf.Cos(angle * Mathf.Deg2Rad);
+            var z = center.z + distance * Mathf.Sin(angle * Mathf.Deg2Rad);
             patrolPoints[i] = new Vector3(x, center.y, z);
         }
     }
 
     private void MoveWithAvoidance(Vector3 directionToTarget)
     {
-        Vector3 avoidanceVector = Vector3.zero;
+        var avoidanceVector = Vector3.zero;
         RaycastHit hit;
 
         // Cast a sphere in the forward direction to detect obstacles
         if (Physics.SphereCast(transform.position, 3f, transform.forward, out hit, avoidanceDistance, obstacleLayer))
-        {
             // Calculate avoidance direction
             avoidanceVector = Vector3.Cross(hit.normal, Vector3.up) * avoidanceStrength;
-        }
 
         // Combine target movement and avoidance
-        Vector3 movementDirection = directionToTarget + avoidanceVector;
+        var movementDirection = directionToTarget + avoidanceVector;
         movementDirection = movementDirection.normalized;
 
         transform.position += movementDirection * speed * Time.deltaTime;
