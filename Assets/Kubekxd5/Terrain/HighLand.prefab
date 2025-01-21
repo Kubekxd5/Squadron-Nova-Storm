@@ -168,7 +168,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0479e400a3f3fd045b77855209e72570, type: 2}
+  - {fileID: 2100000, guid: 1b8b0494a0e611a4ab10159e6e6df004, type: 2}
   - {fileID: 2100000, guid: 29d7f143ba110b246ba3704f153061de, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -252,11 +252,25 @@ MonoBehaviour:
   buildings:
   - {fileID: 4946237678607886026, guid: f508ec1fc5ff1ca47a30cbd7eff764eb, type: 3}
   - {fileID: 214067221229052251, guid: fda8218ab0ec4884989b814154e7e9be, type: 3}
-  - {fileID: 7379733687132742633, guid: 1ffc233add044e845a587798fbf3806d, type: 3}
+  - {fileID: 5298188078433474796, guid: f49e36194352d0f41ba62bcadbcdb9cb, type: 3}
+  - {fileID: 8830033917950900582, guid: 1de2aa0f40c7b9e489c91ea9022a00a8, type: 3}
+  - {fileID: 3704877281611089424, guid: 9ffecb34d0b85564da59d77fdea71a24, type: 3}
+  - {fileID: 8617730474902522081, guid: 1b76691513577bc4394f6ecffe2bc9fa, type: 3}
+  - {fileID: 1408804543949560512, guid: 5e53b52ec2f6f8d4cbf9f94afdb749d2, type: 3}
+  - {fileID: 1101510273961363646, guid: d925f73e2fbc8c741afd70c43d695e3b, type: 3}
+  - {fileID: 4325469787532069350, guid: 77eac73a07b5f5e439567297355ef249, type: 3}
+  - {fileID: 2189782991814415599, guid: a714103e18468234c9fb19d3ab78463c, type: 3}
   buildingWeights:
-  - 0.5
-  - 0.3
+  - 0.1
+  - 0.1
+  - 0.1
+  - 0.15
+  - 0.1
   - 0.2
+  - 0.1
+  - 0.05
+  - 0.1
+  - 0.1
 --- !u!1 &3679036498959574285
 GameObject:
   m_ObjectHideFlags: 0

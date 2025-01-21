@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6041019611607946795
 Transform:
   m_ObjectHideFlags: 0
@@ -327,14 +327,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6041019611607946795}
     m_Modifications:
-    - target: {fileID: 4165754816026944552, guid: bfb8f3deb6af62e4fb40b3466508ee97, type: 3}
-      propertyPath: weaponSfx
-      value: 
-      objectReference: {fileID: 7396834618744921431}
-    - target: {fileID: 4165754816026944552, guid: bfb8f3deb6af62e4fb40b3466508ee97, type: 3}
-      propertyPath: 'weaponVfx.Array.data[0]'
-      value: 
-      objectReference: {fileID: 9039338485575442590}
     - target: {fileID: 6180484456696254828, guid: bfb8f3deb6af62e4fb40b3466508ee97, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.07040768
@@ -723,14 +715,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7427227072604708342, guid: 4fdc0e95413a5204d88fc29a22a6d214, type: 3}
-      propertyPath: weaponSfx
-      value: 
-      objectReference: {fileID: 7396834618744921431}
-    - target: {fileID: 7427227072604708342, guid: 4fdc0e95413a5204d88fc29a22a6d214, type: 3}
-      propertyPath: 'weaponVfx.Array.data[0]'
-      value: 
-      objectReference: {fileID: 9039338485575442590}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

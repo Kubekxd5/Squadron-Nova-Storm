@@ -104,6 +104,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[3]'
       value: 
       objectReference: {fileID: 2100000, guid: 87858f841225a034e88a69165fe0934d, type: 2}
+    - target: {fileID: -2781543562559180548, guid: d607a81a1c46cc24cb2cc9389b279062, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d607a81a1c46cc24cb2cc9389b279062, type: 3}
       propertyPath: m_Name
       value: 1_Railgun
@@ -114,7 +118,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: d607a81a1c46cc24cb2cc9389b279062, type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 2155770097362383529}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d607a81a1c46cc24cb2cc9389b279062, type: 3}
       insertIndex: 1
@@ -146,16 +153,94 @@ MonoBehaviour:
   explosionRadius: 0
   fireRate: 0.1
   range: 100
-  weaponCooldown: 0.1
   projectileSpeed: 100
   projectileAmount: 1
   projectileInterval: 0
+  usesHeat: 1
   overheatThreshold: 100
   ammoMax: 0
   ammoCurrent: 0
+  weaponCooldown: 0.1
+  coolingRate: 10
   weaponUpgradeModule: {fileID: 0}
   weaponVfx:
-  - {fileID: 0}
+  - {fileID: 3490275904122025585}
   weaponSfx: {fileID: 0}
   overheatEffect: {fileID: 0}
   isEquippedByPlayer: 0
+--- !u!4 &2994323205580091644 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d607a81a1c46cc24cb2cc9389b279062, type: 3}
+  m_PrefabInstance: {fileID: 3316690475631646487}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7367449719718145351
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2994323205580091644}
+    m_Modifications:
+    - target: {fileID: 5015706152454984596, guid: ace159fef920354489f3dd9b30981bf6, type: 3}
+      propertyPath: m_Name
+      value: RailgunProjectile
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922938211259932654, guid: ace159fef920354489f3dd9b30981bf6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922938211259932654, guid: ace159fef920354489f3dd9b30981bf6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.1615
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922938211259932654, guid: ace159fef920354489f3dd9b30981bf6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.0269
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922938211259932654, guid: ace159fef920354489f3dd9b30981bf6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071063
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922938211259932654, guid: ace159fef920354489f3dd9b30981bf6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071073
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922938211259932654, guid: ace159fef920354489f3dd9b30981bf6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.000001851252
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922938211259932654, guid: ace159fef920354489f3dd9b30981bf6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.0000018510719
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922938211259932654, guid: ace159fef920354489f3dd9b30981bf6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922938211259932654, guid: ace159fef920354489f3dd9b30981bf6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922938211259932654, guid: ace159fef920354489f3dd9b30981bf6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9000195553712221672, guid: ace159fef920354489f3dd9b30981bf6, type: 3}
+      propertyPath: weaponController
+      value: 
+      objectReference: {fileID: 1588960439430779097}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ace159fef920354489f3dd9b30981bf6, type: 3}
+--- !u!4 &2155770097362383529 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8922938211259932654, guid: ace159fef920354489f3dd9b30981bf6, type: 3}
+  m_PrefabInstance: {fileID: 7367449719718145351}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &3490275904122025585 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6219896652721134390, guid: ace159fef920354489f3dd9b30981bf6, type: 3}
+  m_PrefabInstance: {fileID: 7367449719718145351}
+  m_PrefabAsset: {fileID: 0}

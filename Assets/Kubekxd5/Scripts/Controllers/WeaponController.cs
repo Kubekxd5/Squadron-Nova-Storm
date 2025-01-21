@@ -5,47 +5,36 @@ public class WeaponController : MonoBehaviour
     [Header("Weapon Info:")] 
     public string weaponName;
 
-    public enum WeaponDmgType
-    {
-        Plasma,
-        Energy,
-        Explosive,
-        Kinetic
-    };
-
+    public enum WeaponDmgType { Plasma, Energy, Explosive, Kinetic };
     [Header("Weapon Damage Type:")] 
     public WeaponDmgType weaponDmgType;
 
-    public enum WeaponMount
-    {
-        Primary,
-        Secondary,
-        Hangar,
-        Special
-    };
-
+    public enum WeaponMount { Primary, Secondary, Hangar, Special };
     [Header("Weapon Mount:")] 
     public WeaponMount weaponMount;
 
     [Header("Weapon Stats:")] 
-    public float damageValue;
-    [Range(0.0f, 2.0f)] public float damageMultiplier;
-    public float piercing;
-    [Range(0.0f, 10.0f)] public float explosionRadius;
+    public float damageValue = 10f;
+    [Range(0.0f, 2.0f)] public float damageMultiplier = 1f;
+    public float piercing = 0f;
+    [Range(0.0f, 10.0f)] public float explosionRadius = 0f;
 
     [Header("Fire Control:")]
-    public float fireRate;
-    public float range;
-    public float weaponCooldown;
+    public float fireRate = 0.5f;
+    public float range = 20f;
 
     [Header("Projectile Properties:")]
-    public float projectileSpeed;
-    public int projectileAmount;
-    public float projectileInterval;
+    public float projectileSpeed = 10f;
+    public int projectileAmount = 1;
+    public float projectileInterval = 0.1f;
 
     [Header("Overheat & Ammo:")]
-    public float overheatThreshold;
-    public int ammoMax, ammoCurrent;
+    public bool usesHeat = true;  // New boolean to check if the weapon uses heat for overheat
+    public float overheatThreshold = 100f;
+    public int ammoMax = 100;
+    public int ammoCurrent = 100;
+    public float weaponCooldown = 0f;
+    public float coolingRate = 10f;
 
     [Header("Upgrade Module:")] 
     public GameObject weaponUpgradeModule;
@@ -58,76 +47,106 @@ public class WeaponController : MonoBehaviour
     public bool isEquippedByPlayer;
 
     private float _nextFireTime;
+    private float _currentHeat;
+    private bool _isOverheating;
     private ShipSlot _parentSlot;
 
     private void Start()
     {
         _parentSlot = gameObject.GetComponentInParent<ShipSlot>();
         _nextFireTime = 0f;
-        if (GetComponentInParent<ShipSlot>())
+
+        if (_parentSlot != null)
         {
-            GetComponentInParent<ShipSlot>().weaponController = this;
-            GetComponentInParent<ShipSlot>().AddNewWeapon();
-            Debug.Log($"{this.weaponName} equipped in {weaponMount} slot.");
+            _parentSlot.weaponController = this;
+            _parentSlot.AddNewWeapon();
+            isEquippedByPlayer = true;
+            ChangeProjectileLayerMask();
+            Debug.Log($"{weaponName} equipped in {weaponMount} slot.");
+        }
+        else
+        {
+            Debug.LogWarning("WeaponController: Parent slot not found. Weapon may not function correctly.");
         }
 
-        ChangeProjectileLayerMask();
+        if (weaponVfx == null || weaponVfx.Length == 0)
+        {
+            Debug.LogWarning("WeaponController: No weapon visual effects assigned.");
+        }
+
+        if (weaponSfx == null)
+        {
+            Debug.LogWarning("WeaponController: No weapon sound effects assigned.");
+        }
     }
 
     public void Shoot()
     {
-        if (Time.time >= _nextFireTime && ammoCurrent > 0 && ammoMax != 0)
+        if (_isOverheating)
         {
-            _nextFireTime = Time.time + fireRate;
-            ammoCurrent--;
-            foreach (var weaponvfx in weaponVfx)
-            {
-                weaponvfx.Play();
-            }
-            weaponSfx.Play();
+            Debug.LogWarning("WeaponController: Weapon is overheating!");
+            return;
         }
-        else if (ammoCurrent <= 0 && ammoMax != 0)
+
+        if (ammoMax == 0 || ammoCurrent > 0)
         {
-            //Debug.Log("Out of ammo!");
-        }
-        else if (ammoMax == 0)
-        {
-            _nextFireTime = Time.time + fireRate;
-            ammoCurrent--;
-            foreach (var weaponvfx in weaponVfx)
+            if (Time.time >= _nextFireTime)
             {
-                weaponvfx.Play();
+                _nextFireTime = Time.time + fireRate;
+
+                if (ammoMax > 0) ammoCurrent--;
+
+                if (usesHeat)  // Only accumulate heat if the weapon uses heat
+                {
+                    _currentHeat += damageValue;
+                    if (_currentHeat >= overheatThreshold)
+                    {
+                        _isOverheating = true;
+                        _nextFireTime = Time.time + weaponCooldown;
+                        overheatEffect?.Play();
+                        Debug.LogWarning("WeaponController: Weapon overheated!");
+                    }
+                }
+
+                if (weaponVfx != null)
+                {
+                    foreach (var weaponvfx in weaponVfx)
+                    {
+                        weaponvfx?.Play();
+                    }
+                }
+                weaponSfx?.Play();
             }
-            weaponSfx.Play();
+        }
+        else
+        {
+            Debug.LogWarning("WeaponController: Out of ammo.");
         }
     }
 
-    public void EquipWeapon()
+    private void Update()
     {
-        isEquippedByPlayer = true;
-        ChangeProjectileLayerMask();
-        Debug.Log($"{weaponName} is equipped by player.");
-    }
-
-    public void UnequipWeapon()
-    {
-        isEquippedByPlayer = false;
-        ChangeProjectileLayerMask();
-        Debug.Log($"{weaponName} is unequipped.");
+        if (_isOverheating && usesHeat)
+        {
+            _currentHeat -= Time.deltaTime * coolingRate;
+            if (_currentHeat <= 0)
+            {
+                _currentHeat = 0;
+                _isOverheating = false;
+                Debug.Log("WeaponController: Weapon cooled down.");
+            }
+        }
     }
 
     private void ChangeProjectileLayerMask()
     {
-        foreach (var particle in weaponVfx)
+        if (weaponVfx != null)
         {
-            var collisionModule = particle.collision;
-            if (isEquippedByPlayer)
+            foreach (var particle in weaponVfx)
             {
-                collisionModule.collidesWith = LayerMask.GetMask("Enemy");
-            }
-            else
-            {
-                collisionModule.collidesWith = LayerMask.GetMask("Player");
+                if (particle == null) continue;
+                var collisionModule = particle.collision;
+                collisionModule.collidesWith = isEquippedByPlayer ? LayerMask.GetMask("Enemy") : LayerMask.GetMask("Player");
             }
         }
     }

@@ -101,7 +101,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 89412303ffcb55f4584231006cfc08bc, type: 2}
+  - {fileID: 2100000, guid: be2a0d3d54431e146ab0c6642d1b1f16, type: 2}
   - {fileID: 2100000, guid: 29d7f143ba110b246ba3704f153061de, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -183,10 +183,12 @@ MonoBehaviour:
   canSpawn: 1
   buildings:
   - {fileID: 4946237678607886026, guid: f508ec1fc5ff1ca47a30cbd7eff764eb, type: 3}
-  - {fileID: 7379733687132742633, guid: 1ffc233add044e845a587798fbf3806d, type: 3}
+  - {fileID: 843929427308727542, guid: e6b8c0d6148138e4497c9d032d9f3a4e, type: 3}
+  - {fileID: 1408804543949560512, guid: 5e53b52ec2f6f8d4cbf9f94afdb749d2, type: 3}
   buildingWeights:
   - 0.6
   - 0.11
+  - 0.22
 --- !u!1 &6476283911807045653
 GameObject:
   m_ObjectHideFlags: 0

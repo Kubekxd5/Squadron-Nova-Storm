@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1209122786070384620
 Transform:
   m_ObjectHideFlags: 0
@@ -52,6 +52,26 @@ PrefabInstance:
     - target: {fileID: 5850449557047147579, guid: ebc08273840c74548a4a52bb8e5f3e88, type: 3}
       propertyPath: m_Name
       value: PlayerShip6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6248422471812927775, guid: ebc08273840c74548a4a52bb8e5f3e88, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6248422471812927775, guid: ebc08273840c74548a4a52bb8e5f3e88, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6248422471812927775, guid: ebc08273840c74548a4a52bb8e5f3e88, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6248422471812927775, guid: ebc08273840c74548a4a52bb8e5f3e88, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6248422471812927775, guid: ebc08273840c74548a4a52bb8e5f3e88, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6519849194890634881, guid: ebc08273840c74548a4a52bb8e5f3e88, type: 3}
       propertyPath: m_LocalPosition.x

@@ -14,6 +14,16 @@ public class PlayerController : MonoBehaviour
     {
         shipController = GetComponentInChildren<ShipController>();
         slotsManager = GetComponentInChildren<SlotsManager>();
+
+        if (shipController == null)
+        {
+            Debug.LogWarning("PlayerController: ShipController not found.");
+        }
+
+        if (slotsManager == null)
+        {
+            Debug.LogWarning("PlayerController: SlotsManager not found.");
+        }
     }
 
     private void Update()
@@ -23,26 +33,36 @@ public class PlayerController : MonoBehaviour
 
     private void HandleInput()
     {
-        shipController.HandleMovement();
-        
-        if (Input.GetButtonDown("Fire1"))
+        if (shipController != null)
         {
-            slotsManager.FirePrimaryWeapons();
-        }
-        
-        if (Input.GetButtonDown("Fire2"))
-        {
-            slotsManager.FireSecondaryWeapons();
+            shipController.HandleMovement();
         }
 
-        if (Input.GetButtonDown("Jump"))
+        if (slotsManager != null)
         {
-            slotsManager.FireHangarBay();
-        }
+            if (Input.GetButtonDown("Fire1"))
+            {
+                slotsManager.FirePrimaryWeapons();
+            }
 
-        if (Input.GetButtonDown("Fire3"))
+            if (Input.GetButtonDown("Fire2"))
+            {
+                slotsManager.FireSecondaryWeapons();
+            }
+
+            if (Input.GetButtonDown("Jump"))
+            {
+                slotsManager.FireHangarBay();
+            }
+
+            if (Input.GetButtonDown("Fire3"))
+            {
+                slotsManager.FireSpecialWeapon();
+            }
+        }
+        else
         {
-            slotsManager.FireSpecialWeapon();
+            Debug.LogWarning("PlayerController: SlotsManager is null. Cannot handle weapon inputs.");
         }
     }
 }
