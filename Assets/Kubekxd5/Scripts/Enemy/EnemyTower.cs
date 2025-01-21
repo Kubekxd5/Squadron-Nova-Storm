@@ -177,6 +177,6 @@ public class EnemyTower : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, detectionRange > 0 ? detectionRange : 50f); // Use a large value for infinite range visualization
+        Gizmos.DrawWireSphere(transform.position, detectionRange > 0 ? detectionRange : 50f);
     }
 }

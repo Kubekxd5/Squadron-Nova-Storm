@@ -59,7 +59,23 @@ public class Projectile : MonoBehaviour
     {
         Debug.Log($"Particle collision detected with {other.name} on layer {LayerMask.LayerToName(other.layer)}");
 
-        if (weaponController == null || !weaponController.isEquippedByPlayer) return;
+        if (weaponController == null) return;
+
+        if (other.layer == LayerMask.NameToLayer("Player"))
+        {
+            ShipController ship = other.GetComponent<ShipController>();
+
+            if (ship != null)
+            {
+                float actualDamage = weaponController.damageValue * weaponController.damageMultiplier;
+                ship.TakeDamage(actualDamage);
+                Debug.Log($"Particle hit player {ship.shipName} and dealt {actualDamage} damage.");
+            }
+            else
+            {
+                Debug.LogWarning("Projectile: ShipController component not found on collided object.");
+            }
+        }
 
         if (other.layer == LayerMask.NameToLayer("Enemy"))
         {
@@ -77,4 +93,5 @@ public class Projectile : MonoBehaviour
             }
         }
     }
+
 }

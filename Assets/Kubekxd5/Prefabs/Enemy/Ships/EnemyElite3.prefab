@@ -5925,9 +5925,9 @@ MonoBehaviour:
   equippedWeapons:
   - {fileID: 8163764906616851320}
   - {fileID: 6581037149481435582}
-  patrolRadius: 10
-  patrolPointsCount: 5
-  idleRotationInterval: 1
+  patrolRadius: 50
+  patrolPointsCount: 3
+  idleRotationInterval: 3
 --- !u!4 &2936304479587991290 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a0c43a9467d1c4c49991e33d396a259f, type: 3}

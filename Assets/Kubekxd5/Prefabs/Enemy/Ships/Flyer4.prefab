@@ -343,8 +343,8 @@ MonoBehaviour:
   stoppingDistance: 2
   rotationSpeed: 5
   detectionRange: 10
-  avoidanceDistance: 5
-  avoidanceStrength: 10
+  avoidanceDistance: 3
+  avoidanceStrength: 100
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 128

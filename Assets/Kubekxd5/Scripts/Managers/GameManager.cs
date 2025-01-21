@@ -1,14 +1,22 @@
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public ListManager shipsList, weaponList;
-    public GameObject currentEquippedShip;
-    [Header("Selected Ship Configuration")]
+    public GameObject currentEquippedShip, playerHud, renderPreview;
     public ShipConfigObject selectedShipConfig;
+    public WFC_Script wfcScript;
 
+    [Header("Player Info:")]
+    public string playerName;
+    public int score, scoreMultiplier = 1;
+    public TextMeshProUGUI scoreView;
+    public event Action OnPlayerShipSpawned;
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -21,10 +29,73 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
 
+        SceneManager.sceneLoaded += OnSceneLoaded;
+
         if (IsGameScene())
         {
-            SpawnPlayerShip();
+            SetupGameScene();
         }
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (IsGameScene())
+        {
+            SetupGameScene();
+            UpdateScore();
+        }
+    }
+
+    private void SetupGameScene()
+    {
+        renderPreview.SetActive(true);
+        playerHud.SetActive(false);
+        Debug.Log("GameManager: playerHud set to inactive.");
+
+        GameObject wfcObject = GameObject.FindGameObjectWithTag("WFC");
+        if (wfcObject != null)
+        {
+            wfcScript = wfcObject.GetComponent<WFC_Script>();
+        }
+        else
+        {
+            Debug.LogWarning("WFC object with tag 'WFC' not found!");
+        }
+
+        StartCoroutine(WaitForWorldGeneration());
+    }
+
+    private IEnumerator WaitForWorldGeneration()
+    {
+        Debug.Log("Waiting for world generation...");
+        yield return new WaitUntil(() => wfcScript != null && wfcScript.IsGenerationComplete());
+
+        Debug.Log("World generation complete. Activating HUD and spawning ship.");
+        renderPreview.SetActive(false);
+        SpawnPlayerShip();
+        playerHud.SetActive(true);
+    }
+
+    public void UpdateScore()
+    {
+        scoreView.text = $"{playerName} - score: {score}";
+    }
+
+    public void IncreaseScore(int amount)
+    {
+        score += amount;
+        UpdateScore();
+    }
+
+    public void ResetScore()
+    {
+        score = 0;
+        UpdateScore();
     }
 
     public void SpawnPlayerShip()
@@ -42,7 +113,10 @@ public class GameManager : MonoBehaviour
         currentEquippedShip.tag = "PlayerShip";
 
         AttachWeaponsToShip();
+
+        OnPlayerShipSpawned?.Invoke();
     }
+
 
     private void AttachWeaponsToShip()
     {
@@ -87,18 +161,13 @@ public class GameManager : MonoBehaviour
         return null;
     }
 
-    public void ClearSelectedShip()
-    {
-        selectedShipConfig = null;
-    }
-
-    public int GetSelectedShipPrefab()
-    {
-        return selectedShipConfig != null ? selectedShipConfig.shipIndex : 0;
-    }
-
     private bool IsGameScene()
     {
         return SceneManager.GetActiveScene().buildIndex == 1;
+    }
+
+    public void ClearSelectedShip()
+    {
+        selectedShipConfig = null;
     }
 }

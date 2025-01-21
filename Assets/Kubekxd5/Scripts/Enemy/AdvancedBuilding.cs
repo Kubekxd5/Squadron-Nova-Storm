@@ -59,7 +59,6 @@ public class AdvancedBuilding : MonoBehaviour
         else
         {
             _player = null;
-            Debug.LogWarning("No PlayerShip found in the scene.");
         }
     }
 

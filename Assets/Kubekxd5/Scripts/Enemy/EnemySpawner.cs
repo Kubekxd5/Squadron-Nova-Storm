@@ -37,7 +37,10 @@ public class SpawnerModule : MonoBehaviour
             Debug.LogWarning("SpawnerModule: No enemy prefabs assigned. Spawning will not work.");
         }
 
-        FindPlayer();
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.OnPlayerShipSpawned += FindPlayer;
+        }
     }
 
     private void Update()

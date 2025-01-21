@@ -1423,9 +1423,9 @@ MonoBehaviour:
   equippedWeapons:
   - {fileID: 6876500474945997032}
   - {fileID: 5979760531313056984}
-  patrolRadius: 10
-  patrolPointsCount: 5
-  idleRotationInterval: 1
+  patrolRadius: 50
+  patrolPointsCount: 3
+  idleRotationInterval: 3
 --- !u!1 &5718044080674295584
 GameObject:
   m_ObjectHideFlags: 0

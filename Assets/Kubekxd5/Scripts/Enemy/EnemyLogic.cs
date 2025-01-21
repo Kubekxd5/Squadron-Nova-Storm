@@ -170,14 +170,19 @@ public class EnemyLogic : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
 
+    private float currentAngle;
+    private float targetAngle;
+    
     private void Idle()
     {
         if (Time.time >= nextIdleRotationTime)
         {
-            float randomAngle = Random.Range(0, 360);
-            transform.Rotate(0, randomAngle, 0);
+            targetAngle = Random.Range(0, 360);
             nextIdleRotationTime = Time.time + idleRotationInterval;
         }
+
+        currentAngle = Mathf.LerpAngle(currentAngle, targetAngle, Time.deltaTime * rotationSpeed);
+        transform.rotation = Quaternion.Euler(0, currentAngle, 0);
     }
 
     private void TryShoot()

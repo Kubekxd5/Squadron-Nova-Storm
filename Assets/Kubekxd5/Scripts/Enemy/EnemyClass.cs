@@ -29,5 +29,6 @@ public class EnemyClass : MonoBehaviour
     {
         Debug.Log($"{gameObject.name} has been destroyed! Awarding {pointsValue} points.");
         Destroy(gameObject);
+        GameManager.Instance.IncreaseScore(pointsValue);
     }
 }

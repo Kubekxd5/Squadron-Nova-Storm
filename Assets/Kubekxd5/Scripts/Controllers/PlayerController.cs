@@ -1,28 +1,52 @@
+using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [Header("Player Info:")] 
-    public string playerName;
-    public int score, scoreMultiplier;
-
     public ShipController shipController;
     public SlotsManager slotsManager;
-    private ShipManager _shipManager;
-
+    
     private void Start()
     {
-        shipController = GetComponentInChildren<ShipController>();
-        slotsManager = GetComponentInChildren<SlotsManager>();
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.OnPlayerShipSpawned += OnPlayerShipSpawned;
+        }
+    }
+    private void OnPlayerShipSpawned()
+    {
+        StartCoroutine(LookForPlayer());
+    }
+    private IEnumerator LookForPlayer()
+    {
+        yield return new WaitForSeconds(1f);
+        AssignPlayerShip();
+    }
+    
+    public void AssignPlayerShip()
+    {
+        gameObject.transform.SetParent(transform);
+
+        shipController = gameObject.GetComponentInChildren<ShipController>();
+        slotsManager = gameObject.GetComponentInChildren<SlotsManager>();
 
         if (shipController == null)
         {
-            Debug.LogWarning("PlayerController: ShipController not found.");
+            Debug.LogWarning("PlayerController: ShipController not found on the spawned player ship.");
+        }
+        else
+        {
+            Debug.Log("PlayerController: ShipController successfully assigned.");
         }
 
         if (slotsManager == null)
         {
-            Debug.LogWarning("PlayerController: SlotsManager not found.");
+            Debug.LogWarning("PlayerController: SlotsManager not found on the spawned player ship.");
+        }
+        else
+        {
+            Debug.Log("PlayerController: SlotsManager successfully assigned.");
         }
     }
 
@@ -35,34 +59,31 @@ public class PlayerController : MonoBehaviour
     {
         if (shipController != null)
         {
+            shipController.HandleSprint();
             shipController.HandleMovement();
         }
 
         if (slotsManager != null)
         {
-            if (Input.GetButtonDown("Fire1"))
+            if (Input.GetButton("Fire1"))
             {
                 slotsManager.FirePrimaryWeapons();
             }
 
-            if (Input.GetButtonDown("Fire2"))
+            if (Input.GetButton("Fire2"))
             {
                 slotsManager.FireSecondaryWeapons();
             }
 
-            if (Input.GetButtonDown("Jump"))
+            if (Input.GetButton("Jump"))
             {
                 slotsManager.FireHangarBay();
             }
 
-            if (Input.GetButtonDown("Fire3"))
+            if (Input.GetButton("Fire3"))
             {
                 slotsManager.FireSpecialWeapon();
             }
-        }
-        else
-        {
-            Debug.LogWarning("PlayerController: SlotsManager is null. Cannot handle weapon inputs.");
         }
     }
 }

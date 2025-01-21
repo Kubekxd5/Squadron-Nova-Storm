@@ -5,18 +5,34 @@ public class CameraController : MonoBehaviour
     public GameObject playerShip;
 
     [Header("Zoom Settings")]
-    public float minZoom = 5f;     // Minimum zoom level (closer to player)
-    public float maxZoom = 20f;    // Maximum zoom level (further from player)
-    public float zoomSpeed = 5f;   // Speed of zooming
+    public float minZoom = 5f;
+    public float maxZoom = 20f;
+    public float zoomSpeed = 5f;
 
     [Header("Camera Offset Settings")]
-    public float forwardOffset = 5f; // Distance in front of the player
-    public float followRange = 5f;   // Max distance the camera can follow the cursor around the ship
+    public float forwardOffset = 5f;
+    public float followRange = 5f;
 
-    private Vector3 _baseOffset;      // The default offset from the player ship
-    private Vector3 _cursorOffset;    // Additional offset based on cursor position
+    private Vector3 _baseOffset;
+    private Vector3 _cursorOffset;
 
     private void Start()
+    {
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.OnPlayerShipSpawned += OnPlayerShipSpawned;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.OnPlayerShipSpawned -= OnPlayerShipSpawned;
+        }
+    }
+
+    private void OnPlayerShipSpawned()
     {
         FindPlayerShip();
     }
@@ -72,10 +88,7 @@ public class CameraController : MonoBehaviour
 
     public void FindPlayerShip()
     {
-        if (playerShip == null)
-        {
-            playerShip = GameObject.FindGameObjectWithTag("PlayerShip");
-        }
+        playerShip = GameObject.FindGameObjectWithTag("PlayerShip");
         if (playerShip != null)
         {
             _baseOffset = transform.position - playerShip.transform.position;

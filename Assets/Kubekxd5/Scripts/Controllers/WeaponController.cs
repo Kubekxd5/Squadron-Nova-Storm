@@ -84,7 +84,7 @@ public class WeaponController : MonoBehaviour
     {
         if (_isOverheating)
         {
-            Debug.LogWarning("WeaponController: Weapon is overheating!");
+            //Debug.Log("WeaponController: Weapon is overheating!");
             return;
         }
 

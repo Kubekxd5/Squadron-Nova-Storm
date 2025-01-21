@@ -16,6 +16,8 @@ public class WFC_Script : MonoBehaviour
     public Tile tile2;  // Second tile to fill the rest
     private int _dimension;
     private int iteration;
+    
+    public bool IsGenerationComplete() => generationStopped;
 
     private List<Cell> cellsToProcess;  // List of cells that need to be processed
     public float timeLimit = 5f;  // Time in seconds after which filling occurs

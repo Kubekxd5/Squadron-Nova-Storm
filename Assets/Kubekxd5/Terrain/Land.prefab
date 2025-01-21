@@ -162,33 +162,41 @@ MonoBehaviour:
   - {fileID: -6500280634162185340, guid: eec14389044076b4c96619e1e48eff59, type: 3}
   - {fileID: -2448720132383446743}
   - {fileID: -2079152192882818857, guid: 9dfcdbc9685a8d640b2754a6e1894ecc, type: 3}
+  - {fileID: 6494817886629018918, guid: 547328ab89dbe58498f1318c363fddde, type: 3}
+  - {fileID: -2448720132383446743, guid: 0a3af7181af26234c8e53f2e27911ecf, type: 3}
   rightNeighbours:
   - {fileID: -6500280634162185340, guid: eec14389044076b4c96619e1e48eff59, type: 3}
   - {fileID: -2448720132383446743}
   - {fileID: -2079152192882818857, guid: 9dfcdbc9685a8d640b2754a6e1894ecc, type: 3}
+  - {fileID: 6494817886629018918, guid: 547328ab89dbe58498f1318c363fddde, type: 3}
   bottomNeighbours:
   - {fileID: -6500280634162185340, guid: eec14389044076b4c96619e1e48eff59, type: 3}
   - {fileID: -2448720132383446743}
   - {fileID: -2079152192882818857, guid: 9dfcdbc9685a8d640b2754a6e1894ecc, type: 3}
+  - {fileID: 6494817886629018918, guid: 547328ab89dbe58498f1318c363fddde, type: 3}
+  - {fileID: -2448720132383446743, guid: 0a3af7181af26234c8e53f2e27911ecf, type: 3}
   leftNeighbours:
   - {fileID: -6500280634162185340, guid: eec14389044076b4c96619e1e48eff59, type: 3}
   - {fileID: -2448720132383446743}
   - {fileID: -2079152192882818857, guid: 9dfcdbc9685a8d640b2754a6e1894ecc, type: 3}
+  - {fileID: 6494817886629018918, guid: 547328ab89dbe58498f1318c363fddde, type: 3}
   points:
   - {fileID: 2347779043356579364}
   - {fileID: 7390344696501896666}
   - {fileID: 5150830206598249992}
   - {fileID: 3678860877242239918}
-  spawnChance: 0.064
+  spawnChance: 0.075
   canSpawn: 1
   buildings:
   - {fileID: 4946237678607886026, guid: f508ec1fc5ff1ca47a30cbd7eff764eb, type: 3}
   - {fileID: 843929427308727542, guid: e6b8c0d6148138e4497c9d032d9f3a4e, type: 3}
-  - {fileID: 1408804543949560512, guid: 5e53b52ec2f6f8d4cbf9f94afdb749d2, type: 3}
+  - {fileID: 1101510273961363646, guid: d925f73e2fbc8c741afd70c43d695e3b, type: 3}
+  - {fileID: 8830033917950900582, guid: 1de2aa0f40c7b9e489c91ea9022a00a8, type: 3}
   buildingWeights:
   - 0.6
-  - 0.11
-  - 0.22
+  - 0.3
+  - 0.3
+  - 0.05
 --- !u!1 &6476283911807045653
 GameObject:
   m_ObjectHideFlags: 0

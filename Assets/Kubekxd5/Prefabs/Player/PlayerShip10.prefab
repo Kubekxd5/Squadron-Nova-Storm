@@ -989,6 +989,7 @@ GameObject:
   - component: {fileID: 6519849194890634881}
   - component: {fileID: 7547698400953472555}
   - component: {fileID: -11511950169838088}
+  - component: {fileID: 6049323789887295511}
   m_Layer: 6
   m_Name: PlayerShip10
   m_TagString: PlayerShip
@@ -1012,6 +1013,7 @@ Transform:
   - {fileID: 6446743493396253748}
   - {fileID: 6079612305950956284}
   - {fileID: 2772478801437258662}
+  - {fileID: 3257826149164892060}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7547698400953472555
@@ -1030,7 +1032,7 @@ MonoBehaviour:
   shipName: Daedalus
   shipClass: 2
   health: 100
-  hullIntegrity: 100
+  hullLevel: 0
   energyShield: 100
   damageReduction: 100
   shieldRegenRate: 100
@@ -1039,6 +1041,8 @@ MonoBehaviour:
   maxSpeed: 10
   maneuverability: 10
   boostCharge: 10
+  sprintMultiplier: 2
+  sprintParticles: {fileID: 7305310447896001371}
 --- !u!54 &-11511950169838088
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1066,6 +1070,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &6049323789887295511
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5850449557047147579}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.21842523, y: 0.036483254, z: 0.17396085}
+  m_Center: {x: 0, y: -0.002982931, z: 0.010018957}
 --- !u!1 &6754632204052156848
 GameObject:
   m_ObjectHideFlags: 0
@@ -1306,6 +1331,73 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponMount: 0
   weaponController: {fileID: 0}
+--- !u!1001 &3129847631691489716
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6519849194890634881}
+    m_Modifications:
+    - target: {fileID: 457515900508184104, guid: 447df3d61a5ae6344a60ae330dd850d7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 457515900508184104, guid: 447df3d61a5ae6344a60ae330dd850d7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.0061
+      objectReference: {fileID: 0}
+    - target: {fileID: 457515900508184104, guid: 447df3d61a5ae6344a60ae330dd850d7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.0835
+      objectReference: {fileID: 0}
+    - target: {fileID: 457515900508184104, guid: 447df3d61a5ae6344a60ae330dd850d7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.000000104308114
+      objectReference: {fileID: 0}
+    - target: {fileID: 457515900508184104, guid: 447df3d61a5ae6344a60ae330dd850d7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 457515900508184104, guid: 447df3d61a5ae6344a60ae330dd850d7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 457515900508184104, guid: 447df3d61a5ae6344a60ae330dd850d7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 457515900508184104, guid: 447df3d61a5ae6344a60ae330dd850d7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -180
+      objectReference: {fileID: 0}
+    - target: {fileID: 457515900508184104, guid: 447df3d61a5ae6344a60ae330dd850d7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 457515900508184104, guid: 447df3d61a5ae6344a60ae330dd850d7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9073928623377769784, guid: 447df3d61a5ae6344a60ae330dd850d7, type: 3}
+      propertyPath: m_Name
+      value: Sprint
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 447df3d61a5ae6344a60ae330dd850d7, type: 3}
+--- !u!4 &3257826149164892060 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 457515900508184104, guid: 447df3d61a5ae6344a60ae330dd850d7, type: 3}
+  m_PrefabInstance: {fileID: 3129847631691489716}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &7305310447896001371 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5624678120106482415, guid: 447df3d61a5ae6344a60ae330dd850d7, type: 3}
+  m_PrefabInstance: {fileID: 3129847631691489716}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4176006129776074051
 PrefabInstance:
   m_ObjectHideFlags: 0

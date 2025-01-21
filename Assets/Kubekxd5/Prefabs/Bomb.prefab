@@ -54,15 +54,17 @@ MonoBehaviour:
   damageMultiplier: 1
   piercing: 1
   explosionRadius: 10
-  fireRate: 10
+  fireRate: 0.1
   range: 50
-  weaponCooldown: 0
   projectileSpeed: 5
-  projectileAmount: 5
-  projectileInterval: 2
-  overheatThreshold: 100
+  projectileAmount: 1
+  projectileInterval: 1
+  usesHeat: 0
+  overheatThreshold: 0
   ammoMax: 0
   ammoCurrent: 0
+  weaponCooldown: 0
+  coolingRate: 0
   weaponUpgradeModule: {fileID: 0}
   weaponVfx:
   - {fileID: 657478123639879477}
@@ -112,6 +114,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ce32c341d9041024484cb0745bbb44e1, type: 3}
+  m_Resource: {fileID: 8300000, guid: ce32c341d9041024484cb0745bbb44e1, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.1
   m_Pitch: 1
@@ -283,6 +286,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -346,6 +352,10 @@ PrefabInstance:
     - target: {fileID: 662441435528584567, guid: 98ceb19843f2b674687e906f1e324a66, type: 3}
       propertyPath: InitialModule.startSpeed.scalar
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 662441435528584567, guid: 98ceb19843f2b674687e906f1e324a66, type: 3}
+      propertyPath: CollisionModule.collidesWith.m_Bits
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 662441435528584567, guid: 98ceb19843f2b674687e906f1e324a66, type: 3}
       propertyPath: InitialModule.gravityModifier.scalar
@@ -716,7 +726,7 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6276817667065600452, guid: 98ceb19843f2b674687e906f1e324a66, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 343b1126fc68a0649aeaa234272e5f43, type: 2}
     - target: {fileID: 6421541088677593759, guid: 98ceb19843f2b674687e906f1e324a66, type: 3}
@@ -771,6 +781,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponController: {fileID: 0}
+  subEmmiters: []
 --- !u!4 &2637687526958625773 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2644827889250572719, guid: 98ceb19843f2b674687e906f1e324a66, type: 3}

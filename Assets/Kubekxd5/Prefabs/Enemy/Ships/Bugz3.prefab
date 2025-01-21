@@ -623,10 +623,10 @@ MonoBehaviour:
   rotationSpeed: 5
   detectionRange: 10
   avoidanceDistance: 3
-  avoidanceStrength: 2
+  avoidanceStrength: 100
   obstacleLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   equippedWeapons: []
   patrolRadius: 10
   patrolPointsCount: 5

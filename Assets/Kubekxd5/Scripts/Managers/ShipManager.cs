@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class ShipManager : MonoBehaviour
@@ -7,24 +8,22 @@ public class ShipManager : MonoBehaviour
 
     private void Start()
     {
-        if (GameManager.Instance == null)
-        {
-            Debug.LogError("GameManager instance not found. Ensure GameManager is present in the scene.");
-            return;
-        }
+        StartCoroutine(InitializeShip());
+    }
+
+    private IEnumerator InitializeShip()
+    {
+        yield return new WaitUntil(() => GameManager.Instance != null && GameManager.Instance.currentEquippedShip != null);
 
         GameObject playerShip = GameManager.Instance.currentEquippedShip;
-
-        if (playerShip == null)
-        {
-            Debug.LogWarning("No ship was instantiated by the GameManager. Spawning default ship.");
-            GameManager.Instance.SpawnPlayerShip();
-            playerShip = GameManager.Instance.currentEquippedShip;
-        }
 
         if (playerShip != null)
         {
             PositionShipInSlot(playerShip);
+        }
+        else
+        {
+            Debug.LogWarning("ShipManager: No ship found even after waiting. Check GameManager logic.");
         }
 
         GameObject playerCamera = GameObject.FindWithTag("MainCamera");
