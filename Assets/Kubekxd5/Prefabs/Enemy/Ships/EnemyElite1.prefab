@@ -1411,10 +1411,10 @@ MonoBehaviour:
   movementType: 3
   targetObject: {fileID: 0}
   playerObject: {fileID: 0}
-  speed: 6
-  stoppingDistance: 3
+  speed: 5
+  stoppingDistance: 7
   rotationSpeed: 3
-  detectionRange: 15
+  detectionRange: 16
   avoidanceDistance: 6
   avoidanceStrength: 4
   obstacleLayer:

@@ -5794,15 +5794,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a0c43a9467d1c4c49991e33d396a259f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 25.463
+      value: 25.68
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a0c43a9467d1c4c49991e33d396a259f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.629
+      value: 4.2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a0c43a9467d1c4c49991e33d396a259f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.708
+      value: 11.91
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a0c43a9467d1c4c49991e33d396a259f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5843,7 +5843,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: a0c43a9467d1c4c49991e33d396a259f, type: 3}
       propertyPath: 'm_Materials.Array.data[2]'
       value: 
-      objectReference: {fileID: 2100000, guid: 6591eee435bc8be48926e7aa9b54ea7c, type: 2}
+      objectReference: {fileID: 2100000, guid: 4d3a7be83c2df0044890c6e8894976e6, type: 2}
     - target: {fileID: -7511558181221131132, guid: a0c43a9467d1c4c49991e33d396a259f, type: 3}
       propertyPath: 'm_Materials.Array.data[3]'
       value: 
@@ -5914,9 +5914,9 @@ MonoBehaviour:
   targetObject: {fileID: 0}
   playerObject: {fileID: 0}
   speed: 6
-  stoppingDistance: 3
+  stoppingDistance: 4
   rotationSpeed: 3
-  detectionRange: 15
+  detectionRange: 12
   avoidanceDistance: 6
   avoidanceStrength: 4
   obstacleLayer:
