@@ -5,7 +5,9 @@ public class EnemyClass : MonoBehaviour
     [Header("Enemy Stats")] public float maxHealth = 100f;
 
     [Header("Points Settings")] public int pointsValue = 10;
-
+    
+    public GameObject deathParticlePrefab;
+    
     private float currentHealth;
 
     private void Start()
@@ -24,6 +26,14 @@ public class EnemyClass : MonoBehaviour
     private void Die()
     {
         Debug.Log($"{gameObject.name} has been destroyed! Awarding {pointsValue} points.");
+        if (deathParticlePrefab != null)
+        {
+            Instantiate(deathParticlePrefab, transform.position, Quaternion.identity);
+        }
+        else
+        {
+            //Debug.LogWarning("DeathParticle prefab not assigned.");
+        }
         Destroy(gameObject);
         GameManager.Instance.IncreaseScore(pointsValue);
     }

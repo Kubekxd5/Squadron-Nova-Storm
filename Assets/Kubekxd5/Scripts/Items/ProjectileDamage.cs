@@ -88,5 +88,21 @@ public class Projectile : MonoBehaviour
                 Debug.LogWarning("Projectile: EnemyClass component not found on collided object.");
             }
         }
+        
+        if (other.layer == LayerMask.NameToLayer("GroundEnemy"))
+        {
+            var enemy = other.GetComponent<EnemyClass>();
+
+            if (enemy != null)
+            {
+                var actualDamage = weaponController.damageValue * weaponController.damageMultiplier;
+                enemy.TakeDamage(actualDamage);
+                Debug.Log($"Particle hit {other.name} and dealt {actualDamage} damage.");
+            }
+            else
+            {
+                Debug.LogWarning("Projectile: EnemyClass component not found on collided object.");
+            }
+        }
     }
 }

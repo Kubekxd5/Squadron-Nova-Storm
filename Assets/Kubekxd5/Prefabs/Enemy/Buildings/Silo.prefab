@@ -11,13 +11,12 @@ GameObject:
   - component: {fileID: 86496205013511050}
   - component: {fileID: 6618510302403952665}
   - component: {fileID: 2772961300025787746}
-  - component: {fileID: 6439638760686026671}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &86496205013511050
 Transform:
@@ -87,27 +86,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &6439638760686026671
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2151064957827503466}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4946237678607886026
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,12 +99,12 @@ GameObject:
   - component: {fileID: 7011218536150602437}
   - component: {fileID: 1866350836750330704}
   - component: {fileID: 231512715371535508}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Silo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &6144066533132856572
 Transform:
@@ -230,5 +208,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9c1eb17e876e9845bdc7f2a0dd9db56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 2
-  pointsValue: 10
+  maxHealth: 3
+  pointsValue: 20
+  deathParticlePrefab: {fileID: 0}

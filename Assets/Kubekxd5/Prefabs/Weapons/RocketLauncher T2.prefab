@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8093123396156030487
+--- !u!1 &1778178843818801258
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,37 +8,37 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1549750930776113233}
-  - component: {fileID: 4863786631468663445}
+  - component: {fileID: 7868395994130155665}
+  - component: {fileID: 2594885745712542292}
   m_Layer: 6
-  m_Name: AudioSource (3)
+  m_Name: AudioSource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1549750930776113233
+--- !u!4 &7868395994130155665
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8093123396156030487}
+  m_GameObject: {fileID: 1778178843818801258}
   serializedVersion: 2
-  m_LocalRotation: {x: 2.3092636e-14, y: -0, z: 1, w: 0.0000026077034}
-  m_LocalPosition: {x: -0.15615846, y: 1.5359793, z: -0.32110348}
-  m_LocalScale: {x: 9.449997, y: 9.239998, z: 9.449999}
+  m_LocalRotation: {x: 0.000000033685097, y: -0.7071068, z: -0.7071068, w: -5.43427e-10}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 9.449995, y: 9.239997, z: 9.449997}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7701518356914725190}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &4863786631468663445
+--- !u!82 &2594885745712542292
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8093123396156030487}
+  m_GameObject: {fileID: 1778178843818801258}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -156,6 +156,73 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1001 &4310851540273859331
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7701518356914725190}
+    m_Modifications:
+    - target: {fileID: 1112605125859084212, guid: 1c963502ceb74fa4d98463c6ad6aad37, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1112605125859084212, guid: 1c963502ceb74fa4d98463c6ad6aad37, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1112605125859084212, guid: 1c963502ceb74fa4d98463c6ad6aad37, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1112605125859084212, guid: 1c963502ceb74fa4d98463c6ad6aad37, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1112605125859084212, guid: 1c963502ceb74fa4d98463c6ad6aad37, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.00000020861623
+      objectReference: {fileID: 0}
+    - target: {fileID: 1112605125859084212, guid: 1c963502ceb74fa4d98463c6ad6aad37, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -2.0888508e-14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1112605125859084212, guid: 1c963502ceb74fa4d98463c6ad6aad37, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 2.0888508e-14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1112605125859084212, guid: 1c963502ceb74fa4d98463c6ad6aad37, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1112605125859084212, guid: 1c963502ceb74fa4d98463c6ad6aad37, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1112605125859084212, guid: 1c963502ceb74fa4d98463c6ad6aad37, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 8139461223059116048, guid: 1c963502ceb74fa4d98463c6ad6aad37, type: 3}
+      propertyPath: m_Name
+      value: Overheat (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1c963502ceb74fa4d98463c6ad6aad37, type: 3}
+--- !u!198 &1628497798801952041 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3263613004580685354, guid: 1c963502ceb74fa4d98463c6ad6aad37, type: 3}
+  m_PrefabInstance: {fileID: 4310851540273859331}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3793153304132062391 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1112605125859084212, guid: 1c963502ceb74fa4d98463c6ad6aad37, type: 3}
+  m_PrefabInstance: {fileID: 4310851540273859331}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7565240314594155319
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -412,10 +479,13 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9bce36d6a4c50d4479002e4fcfc3e604, type: 3}
       insertIndex: 0
-      addedObject: {fileID: 3846758297928297883}
+      addedObject: {fileID: 3793153304132062391}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9bce36d6a4c50d4479002e4fcfc3e604, type: 3}
       insertIndex: 1
-      addedObject: {fileID: 1549750930776113233}
+      addedObject: {fileID: 7868395994130155665}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9bce36d6a4c50d4479002e4fcfc3e604, type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 3846758297928297883}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9bce36d6a4c50d4479002e4fcfc3e604, type: 3}
       insertIndex: 1
@@ -447,18 +517,20 @@ MonoBehaviour:
   explosionRadius: 0
   fireRate: 0.1
   range: 20
-  weaponCooldown: 0.1
   projectileSpeed: 50
   projectileAmount: 1
   projectileInterval: 0
+  usesHeat: 1
   overheatThreshold: 100
   ammoMax: 0
   ammoCurrent: 0
+  weaponCooldown: 0.1
+  coolingRate: 10
   weaponUpgradeModule: {fileID: 0}
   weaponVfx:
   - {fileID: 1794482417909672259}
-  weaponSfx: {fileID: 4863786631468663445}
-  overheatEffect: {fileID: 0}
+  weaponSfx: {fileID: 2594885745712542292}
+  overheatEffect: {fileID: 1628497798801952041}
   isEquippedByPlayer: 0
 --- !u!4 &7701518356914725190 stripped
 Transform:

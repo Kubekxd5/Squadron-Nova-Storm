@@ -22,6 +22,7 @@ public class ShipController : MonoBehaviour
     public float speed, maxSpeed, maneuverability, boostCharge;
 
     [Header("Sprint Stats:")] public float sprintMultiplier = 2f; // Boost multiplier during sprint
+    public float sprintCooldownTime = 3f; // Cooldown duration
 
     public ParticleSystem sprintParticles; // Particle system to visualize sprint
     private CameraController _mainCamera;
@@ -29,16 +30,12 @@ public class ShipController : MonoBehaviour
     private Rigidbody _rb;
 
     private bool isSprinting;
+    private bool isOnCooldown; // Tracks if sprint is on cooldown
+    private float sprintCooldownTimer; // Tracks remaining cooldown time
 
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
-
-        if (transform.parent.GetComponent<PlayerController>() == true)
-        {
-            _mainCamera = GameObject.FindWithTag("MainCamera").GetComponent<CameraController>();
-            _mainCamera.FindPlayerShip();
-        }
 
         var enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (var enemy in enemies)
@@ -62,7 +59,17 @@ public class ShipController : MonoBehaviour
 
     public void HandleSprint()
     {
-        if (Input.GetKey(KeyCode.LeftShift) && boostCharge > 0)
+        if (isOnCooldown)
+        {
+            sprintCooldownTimer -= Time.deltaTime;
+            if (sprintCooldownTimer <= 0)
+            {
+                isOnCooldown = false;
+                Debug.Log("Sprint is ready to use again!");
+            }
+        }
+
+        if (Input.GetKey(KeyCode.LeftShift) && boostCharge > 0 && !isOnCooldown)
         {
             isSprinting = true;
             if (sprintParticles != null && !sprintParticles.isPlaying) sprintParticles.Play();
@@ -70,21 +77,34 @@ public class ShipController : MonoBehaviour
         else
         {
             isSprinting = false;
-            if (sprintParticles != null && sprintParticles.isPlaying) sprintParticles.Stop();
+            if (sprintParticles != null && sprintParticles.isPlaying)
+            {
+                sprintParticles.Stop();
+                sprintParticles.Clear();
+            }
         }
 
         if (isSprinting)
         {
             boostCharge -= Time.deltaTime * 10f;
             boostCharge = Mathf.Max(boostCharge, 0);
+
+            if (boostCharge == 0)
+            {
+                isOnCooldown = true;
+                sprintCooldownTimer = sprintCooldownTime;
+                Debug.Log("Sprint depleted. Cooldown started.");
+            }
         }
         else
         {
-            boostCharge += Time.deltaTime * 5f;
-            boostCharge = Mathf.Min(boostCharge, 100f);
+            if (!isOnCooldown)
+            {
+                boostCharge += Time.deltaTime * 5f;
+                boostCharge = Mathf.Min(boostCharge, 100f);
+            }
         }
     }
-
 
     public void TakeDamage(float damageAmount)
     {

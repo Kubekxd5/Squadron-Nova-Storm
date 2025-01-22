@@ -77,7 +77,8 @@ public class WeaponController : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("WeaponController: Parent slot not found. Weapon may not function correctly.");
+            isEquippedByPlayer = false; // Mark as not equipped by the player
+            Debug.Log($"{weaponName} is an enemy weapon and will not interact with player functionalities.");
         }
 
         if (weaponVfx == null || weaponVfx.Length == 0)
@@ -85,6 +86,7 @@ public class WeaponController : MonoBehaviour
 
         if (weaponSfx == null) Debug.LogWarning("WeaponController: No weapon sound effects assigned.");
     }
+
 
     private void Update()
     {
@@ -141,12 +143,24 @@ public class WeaponController : MonoBehaviour
     private void ChangeProjectileLayerMask()
     {
         if (weaponVfx != null)
+        {
             foreach (var particle in weaponVfx)
             {
                 if (particle == null) continue;
+
                 var collisionModule = particle.collision;
-                collisionModule.collidesWith =
-                    isEquippedByPlayer ? LayerMask.GetMask("Enemy") : LayerMask.GetMask("Player");
+
+                if (weaponMount == WeaponMount.Hangar)
+                {
+                    collisionModule.collidesWith = LayerMask.GetMask("GroundEnemy");
+                }
+                else
+                {
+                    collisionModule.collidesWith =
+                        isEquippedByPlayer ? LayerMask.GetMask("Enemy") : LayerMask.GetMask("Player");
+                }
             }
+        }
     }
+
 }

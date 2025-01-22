@@ -9,13 +9,21 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public ListManager shipsList, weaponList;
     public GameObject currentEquippedShip, playerHud, renderPreview;
+    public TMP_InputField inputField;
     public ShipConfigObject selectedShipConfig;
     public WFC_Script wfcScript;
 
-    [Header("Player Info:")] public string playerName;
-
-    public int score, scoreMultiplier = 1;
+    [Header("Player Info:")]
+    public string playerName;
+    public int score;
+    private int scoreMultiplier = 1;
     public TextMeshProUGUI scoreView;
+
+    [Header("Combo System:")]
+    public float comboDuration = 5f;
+    private int currentKillCount = 0;
+    private float comboTimer = 0f;
+    private bool isComboActive = false;
 
     private void Awake()
     {
@@ -31,12 +39,34 @@ public class GameManager : MonoBehaviour
 
         SceneManager.sceneLoaded += OnSceneLoaded;
 
+        if (inputField != null)
+        {
+            inputField.onEndEdit.AddListener(SetPlayerName);
+        }
+
         if (IsGameScene()) SetupGameScene();
+    }
+
+    private void Update()
+    {
+        if (isComboActive)
+        {
+            comboTimer -= Time.deltaTime;
+            if (comboTimer <= 0f)
+            {
+                ResetCombo();
+            }
+        }
     }
 
     private void OnDestroy()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
+
+        if (inputField != null)
+        {
+            inputField.onEndEdit.RemoveListener(SetPlayerName);
+        }
     }
 
     public event Action OnPlayerShipSpawned;
@@ -75,22 +105,84 @@ public class GameManager : MonoBehaviour
         SpawnPlayerShip();
         playerHud.SetActive(true);
     }
-
+    
+    private void SetPlayerName(string name)
+    {
+        if (!string.IsNullOrWhiteSpace(name))
+        {
+            playerName = name.Trim();
+            Debug.Log($"Player name set to: {playerName}");
+            UpdateScore(); // Update score display to include the new name
+        }
+        else
+        {
+            Debug.LogWarning("Player name cannot be empty!");
+        }
+    }
+    
     public void UpdateScore()
     {
-        scoreView.text = $"{playerName} - score: {score}";
+        string multiplierText = scoreMultiplier > 1 ? $" x{scoreMultiplier}" : string.Empty;
+
+        // Update text color based on multiplier
+        Color multiplierColor = GetMultiplierColor(scoreMultiplier);
+        scoreView.color = multiplierColor;
+
+        scoreView.text = $"{(string.IsNullOrEmpty(playerName) ? "Player" : playerName)} - score: {score}{multiplierText}";
+    }
+
+    private Color GetMultiplierColor(int multiplier)
+    {
+        switch (multiplier)
+        {
+            case 2: return Color.cyan;
+            case 3: return Color.yellow;
+            case 4: return new Color(1f, 0.5f, 0f);
+            case 5: return Color.red;
+            case 6: return Color.magenta;
+            default: return Color.white;
+        }
     }
 
     public void IncreaseScore(int amount)
     {
-        score += amount;
+        score += amount * scoreMultiplier;
+        UpdateScore();
+        HandleCombo();
+    }
+
+    private void HandleCombo()
+    {
+        currentKillCount++;
+        comboTimer = comboDuration;
+
+        if (currentKillCount >= GetKillsForNextMultiplier())
+        {
+            scoreMultiplier = Mathf.Min(scoreMultiplier + 1, 6); // Cap multiplier at 6
+            currentKillCount = 0; // Reset kill count for the next multiplier
+        }
+
+        isComboActive = true;
+        UpdateScore();
+    }
+
+    private int GetKillsForNextMultiplier()
+    {
+        return scoreMultiplier < 3 ? 4 : 8; // First 2 multipliers require 4 kills, then 8 kills for subsequent multipliers
+    }
+
+    private void ResetCombo()
+    {
+        isComboActive = false;
+        scoreMultiplier = 1;
+        currentKillCount = 0;
         UpdateScore();
     }
 
     public void ResetScore()
     {
         score = 0;
-        UpdateScore();
+        ResetCombo();
     }
 
     public void SpawnPlayerShip()
@@ -111,7 +203,6 @@ public class GameManager : MonoBehaviour
 
         OnPlayerShipSpawned?.Invoke();
     }
-
 
     private void AttachWeaponsToShip()
     {

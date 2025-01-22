@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5166205924602025292}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: SpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a4a122a3e62f8545b42bd62b0898387, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weight: 0.5
+  weight: 0.1
   upNeighbours:
   - {fileID: -6500280634162185340, guid: eec14389044076b4c96619e1e48eff59, type: 3}
   - {fileID: 6494817886629018918, guid: 547328ab89dbe58498f1318c363fddde, type: 3}
@@ -254,7 +254,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 6591eee435bc8be48926e7aa9b54ea7c, type: 2}
     - target: {fileID: -5568371526223589888, guid: 1fb2a0bb9362de84fb833d8530a0e40b, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1fb2a0bb9362de84fb833d8530a0e40b, type: 3}
       propertyPath: m_Name
@@ -262,11 +262,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1fb2a0bb9362de84fb833d8530a0e40b, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1fb2a0bb9362de84fb833d8530a0e40b, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 7202271454713460447, guid: 1fb2a0bb9362de84fb833d8530a0e40b, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -292,6 +292,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1fb2a0bb9362de84fb833d8530a0e40b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 9189112651992958068}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1fb2a0bb9362de84fb833d8530a0e40b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4517814534777242352}
   m_SourcePrefab: {fileID: 100100000, guid: 1fb2a0bb9362de84fb833d8530a0e40b, type: 3}
 --- !u!4 &3425960861143202555 stripped
 Transform:
@@ -321,7 +324,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 10
-  pointsValue: 10
+  pointsValue: 40
+  deathParticlePrefab: {fileID: 8596137704382848992, guid: 6533ef17a3883454e84802ec2c9769fc, type: 3}
 --- !u!114 &7711364271889217918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -371,3 +375,24 @@ MonoBehaviour:
   rotatingObjects:
   - {fileID: 3425960861143202555}
   rotateOnDetection: 1
+--- !u!65 &4517814534777242352
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9183025575816519067}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.024826761, y: 0.028157584, z: 0.029001642}
+  m_Center: {x: 0, y: -0.0017309792, z: 0.00397783}

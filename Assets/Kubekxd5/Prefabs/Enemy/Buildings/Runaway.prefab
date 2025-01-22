@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4174678223021853255}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: SpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 87858f841225a034e88a69165fe0934d, type: 2}
     - target: {fileID: -5568371526223589888, guid: 269c8b8ef9e8e544dbf4058894f72807, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -5568371526223589888, guid: 269c8b8ef9e8e544dbf4058894f72807, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 269c8b8ef9e8e544dbf4058894f72807, type: 3}
       propertyPath: m_Name
@@ -113,11 +117,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 269c8b8ef9e8e544dbf4058894f72807, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 269c8b8ef9e8e544dbf4058894f72807, type: 3}
       propertyPath: m_TagString
       value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 269c8b8ef9e8e544dbf4058894f72807, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7202271454713460447, guid: 269c8b8ef9e8e544dbf4058894f72807, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -195,8 +203,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9c1eb17e876e9845bdc7f2a0dd9db56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 2
-  pointsValue: 10
+  maxHealth: 5
+  pointsValue: 25
+  deathParticlePrefab: {fileID: 0}
 --- !u!114 &4879453075213134935
 MonoBehaviour:
   m_ObjectHideFlags: 0

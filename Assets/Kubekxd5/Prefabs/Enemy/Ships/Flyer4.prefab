@@ -322,8 +322,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9c1eb17e876e9845bdc7f2a0dd9db56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1
-  pointsValue: 10
+  maxHealth: 4
+  pointsValue: 25
+  deathParticlePrefab: {fileID: 8596137704382848992, guid: 6533ef17a3883454e84802ec2c9769fc, type: 3}
 --- !u!114 &4424240077305936359
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -102,10 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  weapon: {fileID: 1348804663916482893}
-  gunfireVfx:
-  - {fileID: 491457764583202097}
-  gunfireSfx: {fileID: 0}
+  equippedWeapons: []
   minShootInterval: 1
   maxShootInterval: 3
   aimPrecision: 0.1
@@ -5878,6 +5875,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a0c43a9467d1c4c49991e33d396a259f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3862416799201901390}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a0c43a9467d1c4c49991e33d396a259f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1055405227722931225}
   m_SourcePrefab: {fileID: 100100000, guid: a0c43a9467d1c4c49991e33d396a259f, type: 3}
 --- !u!1 &2590706618090562624 stripped
 GameObject:
@@ -5896,8 +5896,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9c1eb17e876e9845bdc7f2a0dd9db56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
-  pointsValue: 100
+  maxHealth: 15
+  pointsValue: 50
+  deathParticlePrefab: {fileID: 8596137704382848992, guid: 6533ef17a3883454e84802ec2c9769fc, type: 3}
 --- !u!114 &3862416799201901390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5928,6 +5929,21 @@ MonoBehaviour:
   patrolRadius: 50
   patrolPointsCount: 3
   idleRotationInterval: 3
+--- !u!114 &1055405227722931225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2590706618090562624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9c1eb17e876e9845bdc7f2a0dd9db56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  pointsValue: 10
+  deathParticlePrefab: {fileID: 0}
 --- !u!4 &2936304479587991290 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a0c43a9467d1c4c49991e33d396a259f, type: 3}

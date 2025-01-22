@@ -14,7 +14,6 @@ public class EnemyLogic : MonoBehaviour
     public MovementType movementType;
 
     [Header("General Settings")] public Transform targetObject; // Object to follow (non-player)
-
     public Transform playerObject; // Reference to the player's transform
     public float speed = 5f;
     public float stoppingDistance = 2f;
@@ -110,7 +109,12 @@ public class EnemyLogic : MonoBehaviour
             return;
         }
 
+        // Constrain the direction to match the player's Y position
         var directionToPlayer = (playerObject.position - transform.position).normalized;
+        directionToPlayer.y = 0; // Remove any vertical component
+
+        // Set the enemy's height to the player's height
+        var targetPosition = new Vector3(transform.position.x, playerObject.position.y, transform.position.z);
 
         // Rotate towards the player
         var targetRotation = Quaternion.LookRotation(directionToPlayer);
@@ -118,7 +122,11 @@ public class EnemyLogic : MonoBehaviour
 
         // Move toward the player unless within stopping distance
         var distanceToPlayer = Vector3.Distance(transform.position, playerObject.position);
-        if (distanceToPlayer > stoppingDistance) MoveWithAvoidance(directionToPlayer);
+        if (distanceToPlayer > stoppingDistance)
+        {
+            MoveWithAvoidance(directionToPlayer);
+            transform.position = new Vector3(transform.position.x, targetPosition.y, transform.position.z);
+        }
     }
 
     private void FollowTargetAndRotateToPlayer()
@@ -206,13 +214,18 @@ public class EnemyLogic : MonoBehaviour
 
         // Cast a sphere in the forward direction to detect obstacles
         if (Physics.SphereCast(transform.position, 3f, transform.forward, out hit, avoidanceDistance, obstacleLayer))
+        {
             // Calculate avoidance direction
             avoidanceVector = Vector3.Cross(hit.normal, Vector3.up) * avoidanceStrength;
+        }
 
         // Combine target movement and avoidance
         var movementDirection = directionToTarget + avoidanceVector;
         movementDirection = movementDirection.normalized;
 
-        transform.position += movementDirection * speed * Time.deltaTime;
+        // Ensure the enemy stays at the player's height
+        var targetY = playerObject.position.y;
+        transform.position += new Vector3(movementDirection.x, 0, movementDirection.z) * speed * Time.deltaTime;
+        transform.position = new Vector3(transform.position.x, targetY, transform.position.z);
     }
 }

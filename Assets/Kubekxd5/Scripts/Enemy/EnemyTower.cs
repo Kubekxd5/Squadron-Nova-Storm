@@ -1,36 +1,36 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyTower : MonoBehaviour
 {
-    [Header("Player Settings")] public Transform player;
+    [Header("Player Settings")]
+    public Transform player;
 
-    [Header("Weapon Settings")] public GameObject weapon;
+    [Header("Weapon Settings")]
+    public List<WeaponController> equippedWeapons;
 
-    public ParticleSystem[] gunfireVfx;
-    public AudioSource gunfireSfx;
-
-    [Header("Shooting Settings")] public float minShootInterval = 1f;
-
+    [Header("Shooting Settings")]
+    public float minShootInterval = 1f;
     public float maxShootInterval = 3f;
     public float aimPrecision = 0.1f; // 0 = is ignored
 
-    [Header("Rotation Settings")] public float rotationSpeed = 5f;
-
+    [Header("Rotation Settings")]
+    public float rotationSpeed = 5f;
     public bool rotateXAxis;
     public bool rotateYAxis;
     public bool rotateZAxis;
 
-    [Header("AI Settings")] public bool isAggressive = true;
-
+    [Header("AI Settings")]
+    public bool isAggressive = true;
     public bool isTrap;
     public float detectionRange = 15f; // 0 = infinite range
     public LayerMask playerLayer;
 
-    [Header("Trap Settings")] public Collider trapTrigger; // Assignable trigger collider for traps
+    [Header("Trap Settings")]
+    public Collider trapTrigger; // Assignable trigger collider for traps
 
     private float _currentShootInterval;
-
     private float _shootTimer;
 
     private void Start()
@@ -38,7 +38,8 @@ public class EnemyTower : MonoBehaviour
         player = GameObject.FindWithTag("PlayerShip")?.transform;
         _currentShootInterval = Random.Range(minShootInterval, maxShootInterval);
 
-        if (isTrap && trapTrigger != null) trapTrigger.isTrigger = true;
+        if (isTrap && trapTrigger != null)
+            trapTrigger.isTrigger = true;
     }
 
     private void Update()
@@ -53,12 +54,12 @@ public class EnemyTower : MonoBehaviour
 
             if (IsPlayerInRange() && isAggressive)
             {
-                RotateTowardsPlayer();
+                RotateWeaponsTowardsPlayer();
                 HandleShooting();
             }
             else if (!isAggressive || !isTrap)
             {
-                RotateIndefinitely();
+                RotateWeaponsIndefinitely();
             }
         }
     }
@@ -71,7 +72,7 @@ public class EnemyTower : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!isTrap && !other.CompareTag("PlayerShip")) return;
+        if (!isTrap || !other.CompareTag("PlayerShip")) return;
         Debug.Log("Player entered trap range. Starting to shoot.");
         player = other.transform;
         StartCoroutine(TrapShootingRoutine());
@@ -79,7 +80,7 @@ public class EnemyTower : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (!isTrap && !other.CompareTag("PlayerShip")) return;
+        if (!isTrap || !other.CompareTag("PlayerShip")) return;
         player = null;
     }
 
@@ -87,7 +88,7 @@ public class EnemyTower : MonoBehaviour
     {
         while (player != null)
         {
-            Shoot();
+            TryShoot();
             yield return new WaitForSeconds(Random.Range(minShootInterval, maxShootInterval));
         }
     }
@@ -97,12 +98,14 @@ public class EnemyTower : MonoBehaviour
         var detectedObjects = Physics.OverlapSphere(transform.position,
             detectionRange > 0 ? detectionRange : Mathf.Infinity, playerLayer);
         foreach (var obj in detectedObjects)
+        {
             if (obj.CompareTag("PlayerShip"))
             {
                 player = obj.transform;
                 Debug.Log("Player detected and locked on.");
                 break;
             }
+        }
     }
 
     private bool IsPlayerInRange()
@@ -113,58 +116,77 @@ public class EnemyTower : MonoBehaviour
         return Vector3.Distance(transform.position, player.position) <= detectionRange;
     }
 
-    private void RotateTowardsPlayer()
+    private void RotateWeaponsTowardsPlayer()
     {
-        if (player == null) return;
+        if (player == null || equippedWeapons == null) return;
 
-        var directionToPlayer = player.position - weapon.transform.position;
-        var targetRotation = Quaternion.LookRotation(directionToPlayer);
+        foreach (var weapon in equippedWeapons)
+        {
+            if (weapon == null) continue;
 
-        var targetEulerAngles = targetRotation.eulerAngles;
-        var currentEulerAngles = weapon.transform.eulerAngles;
+            var directionToPlayer = player.position - weapon.transform.position;
+            var targetRotation = Quaternion.LookRotation(directionToPlayer);
 
-        if (!rotateXAxis) targetEulerAngles.x = currentEulerAngles.x;
-        if (!rotateYAxis) targetEulerAngles.y = currentEulerAngles.y;
-        if (!rotateZAxis) targetEulerAngles.z = currentEulerAngles.z;
+            var targetEulerAngles = targetRotation.eulerAngles;
+            var currentEulerAngles = weapon.transform.eulerAngles;
 
-        var constrainedRotation = Quaternion.Euler(targetEulerAngles);
+            if (!rotateXAxis) targetEulerAngles.x = currentEulerAngles.x;
+            if (!rotateYAxis) targetEulerAngles.y = currentEulerAngles.y;
+            if (!rotateZAxis) targetEulerAngles.z = currentEulerAngles.z;
 
-        weapon.transform.rotation = Quaternion.Slerp(
-            weapon.transform.rotation,
-            constrainedRotation,
-            rotationSpeed * Time.deltaTime
-        );
+            var constrainedRotation = Quaternion.Euler(targetEulerAngles);
+
+            weapon.transform.rotation = Quaternion.Slerp(
+                weapon.transform.rotation,
+                constrainedRotation,
+                rotationSpeed * Time.deltaTime
+            );
+        }
     }
 
-    private void RotateIndefinitely()
+    private void RotateWeaponsIndefinitely()
     {
-        var rotation = Vector3.zero;
+        if (equippedWeapons == null) return;
 
-        if (rotateXAxis) rotation.x = rotationSpeed * Time.deltaTime;
-        if (rotateYAxis) rotation.y = rotationSpeed * Time.deltaTime;
-        if (rotateZAxis) rotation.z = rotationSpeed * Time.deltaTime;
+        foreach (var weapon in equippedWeapons)
+        {
+            if (weapon == null) continue;
 
-        weapon.transform.Rotate(rotation, Space.Self);
+            var rotation = Vector3.zero;
+
+            if (rotateXAxis) rotation.x = rotationSpeed * Time.deltaTime;
+            if (rotateYAxis) rotation.y = rotationSpeed * Time.deltaTime;
+            if (rotateZAxis) rotation.z = rotationSpeed * Time.deltaTime;
+
+            weapon.transform.Rotate(rotation, Space.Self);
+        }
     }
 
     private void HandleShooting()
     {
         _shootTimer += Time.deltaTime;
 
-        var directionToPlayer = (player.position - weapon.transform.position).normalized;
-        var aimOffset = Vector3.Angle(weapon.transform.forward, directionToPlayer);
+        if (player == null) return;
+
+        var directionToPlayer = (player.position - transform.position).normalized;
+        var aimOffset = Vector3.Angle(transform.forward, directionToPlayer);
 
         if (_shootTimer >= _currentShootInterval && (aimPrecision == 0 || aimOffset <= aimPrecision))
         {
-            Shoot();
+            TryShoot();
             _shootTimer = 0f;
             _currentShootInterval = Random.Range(minShootInterval, maxShootInterval);
         }
     }
 
-    private void Shoot()
+    private void TryShoot()
     {
-        gunfireSfx.Play();
-        foreach (var gun in gunfireVfx) gun.Play();
+        if (equippedWeapons == null || equippedWeapons.Count == 0) return;
+
+        foreach (var weapon in equippedWeapons)
+        {
+            if (weapon != null)
+                weapon.Shoot();
+        }
     }
 }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2648400969362154010}
   - component: {fileID: 8410800471171558197}
   - component: {fileID: 8405553890644417350}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 870a3ee696d4f3b4c89dce4ba1d27c05, type: 2}
     - target: {fileID: 190953871951064470, guid: 02d28c3b806f73c46b3d8b5eec17a830, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 190953871951064470, guid: 02d28c3b806f73c46b3d8b5eec17a830, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 02d28c3b806f73c46b3d8b5eec17a830, type: 3}
       propertyPath: m_Name
@@ -186,11 +190,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 02d28c3b806f73c46b3d8b5eec17a830, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 02d28c3b806f73c46b3d8b5eec17a830, type: 3}
       propertyPath: m_TagString
       value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 02d28c3b806f73c46b3d8b5eec17a830, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -226,8 +234,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9c1eb17e876e9845bdc7f2a0dd9db56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 2
-  pointsValue: 10
+  maxHealth: 3
+  pointsValue: 20
+  deathParticlePrefab: {fileID: 0}
 --- !u!114 &8436740632634552925
 MonoBehaviour:
   m_ObjectHideFlags: 0
