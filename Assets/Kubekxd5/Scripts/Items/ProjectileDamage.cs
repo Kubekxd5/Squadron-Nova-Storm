@@ -57,6 +57,7 @@ public class Projectile : MonoBehaviour
 
         if (weaponController == null) return;
 
+        // Handle collision with Player
         if (other.layer == LayerMask.NameToLayer("Player"))
         {
             var ship = other.GetComponent<ShipController>();
@@ -73,36 +74,56 @@ public class Projectile : MonoBehaviour
             }
         }
 
+        // Handle collision with Air/Space Enemies
         if (other.layer == LayerMask.NameToLayer("Enemy"))
         {
-            var enemy = other.GetComponent<EnemyClass>();
-
-            if (enemy != null)
-            {
-                var actualDamage = weaponController.damageValue * weaponController.damageMultiplier;
-                enemy.TakeDamage(actualDamage);
-                Debug.Log($"Particle hit {other.name} and dealt {actualDamage} damage.");
-            }
-            else
-            {
-                Debug.LogWarning("Projectile: EnemyClass component not found on collided object.");
-            }
+            HandleEnemyCollision(other, "Enemy");
         }
-        
+
+        // Handle collision with Ground Enemies
         if (other.layer == LayerMask.NameToLayer("GroundEnemy"))
         {
-            var enemy = other.GetComponent<EnemyClass>();
+            HandleEnemyCollision(other, "GroundEnemy");
+        }
+    }
 
-            if (enemy != null)
+    private void HandleEnemyCollision(GameObject other, string enemyType)
+    {
+        // Traverse up the hierarchy to find the object with the EnemyClass component
+        var enemy = other.GetComponentInParent<EnemyClass>();
+
+        if (enemy != null)
+        {
+            var hitCollider = other.GetComponent<Collider>();
+            string bodyPartName = null;
+
+            // Check if the hit object corresponds to a body part
+            foreach (var part in enemy.bodyParts)
             {
-                var actualDamage = weaponController.damageValue * weaponController.damageMultiplier;
-                enemy.TakeDamage(actualDamage);
-                Debug.Log($"Particle hit {other.name} and dealt {actualDamage} damage.");
+                if (part.GetComponent<Renderer>() != null && part.GetComponent<Renderer>().gameObject == hitCollider.gameObject)
+                {
+                    bodyPartName = part.partName;
+                    break;
+                }
+            }
+
+            var actualDamage = weaponController.damageValue * weaponController.damageMultiplier;
+
+            // Pass damage to the enemy with the body part name
+            enemy.TakeDamage(actualDamage, bodyPartName);
+
+            if (!string.IsNullOrEmpty(bodyPartName))
+            {
+                Debug.Log($"Particle hit {enemyType} {enemy.name}'s body part {bodyPartName} and dealt {actualDamage} damage.");
             }
             else
             {
-                Debug.LogWarning("Projectile: EnemyClass component not found on collided object.");
+                Debug.Log($"Particle hit {enemyType} {enemy.name} and dealt {actualDamage} damage.");
             }
+        }
+        else
+        {
+            Debug.LogWarning($"Projectile: EnemyClass component not found on {enemyType} object {other.name} or its parent.");
         }
     }
 }

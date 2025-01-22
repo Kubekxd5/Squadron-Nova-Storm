@@ -305,6 +305,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 5
   pointsValue: 25
+  bodyParts: []
   deathParticlePrefab: {fileID: 0}
 --- !u!114 &5606746397611939531
 MonoBehaviour:
@@ -320,7 +321,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   equippedWeapons:
-  - {fileID: 2230372090722795925}
+  - {fileID: 219841687204281932}
   minShootInterval: 1
   maxShootInterval: 3
   aimPrecision: 0.1

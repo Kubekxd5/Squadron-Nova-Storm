@@ -8,7 +8,7 @@ public class EnemyTower : MonoBehaviour
     public Transform player;
 
     [Header("Weapon Settings")]
-    public List<WeaponController> equippedWeapons;
+    public List<GameObject> equippedWeapons;
 
     [Header("Shooting Settings")]
     public float minShootInterval = 1f;
@@ -186,7 +186,10 @@ public class EnemyTower : MonoBehaviour
         foreach (var weapon in equippedWeapons)
         {
             if (weapon != null)
-                weapon.Shoot();
+            {
+                if (weapon.GetComponent<WeaponController>()) weapon.GetComponent<WeaponController>().Shoot();
+                else return;
+            }
         }
     }
 }
