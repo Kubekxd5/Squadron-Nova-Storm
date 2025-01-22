@@ -10,6 +10,7 @@ TagManager:
   - DamageParticle
   - PlayerShip
   - WFC
+  - Buff
   layers:
   - Default
   - TransparentFX

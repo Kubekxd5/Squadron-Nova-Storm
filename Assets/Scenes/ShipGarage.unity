@@ -4228,6 +4228,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 870170643}
   m_CullTransparentMesh: 1
+--- !u!114 &881776359 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 371838533145395383, guid: 0f9ef53bb59c3ed47a8f5281f843f842, type: 3}
+  m_PrefabInstance: {fileID: 7397976267605578246}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &900073561
 GameObject:
   m_ObjectHideFlags: 0
@@ -9280,6 +9291,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 8007339603846950994, guid: 0f9ef53bb59c3ed47a8f5281f843f842, type: 3}
+      propertyPath: scoreView
+      value: 
+      objectReference: {fileID: 881776359}
     - target: {fileID: 8007339603846950994, guid: 0f9ef53bb59c3ed47a8f5281f843f842, type: 3}
       propertyPath: inputField
       value: 

@@ -183,7 +183,7 @@ MonoBehaviour:
   - {fileID: 4013771915983477678}
   - {fileID: 484775500136976621}
   - {fileID: 2907829322344447938}
-  spawnChance: 0.15
+  spawnChance: 0.2
   canSpawn: 1
   buildings:
   - {fileID: 1408804543949560512, guid: 5e53b52ec2f6f8d4cbf9f94afdb749d2, type: 3}

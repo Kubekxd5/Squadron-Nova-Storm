@@ -262,7 +262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9c1eb17e876e9845bdc7f2a0dd9db56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 500
   pointsValue: 200
   bodyParts:
   - {fileID: 4077864288792645258}
@@ -272,6 +272,13 @@ MonoBehaviour:
   - {fileID: 2077469107014761900}
   - {fileID: 8656783810666073648}
   deathParticlePrefab: {fileID: 8596137704382848992, guid: d78366828af60174ab8d5ceb1380cfc2, type: 3}
+  itemObjectsPrefabs:
+  - {fileID: 2987748434512253659, guid: 423d71f23ef6be5448fe9a2498114f08, type: 3}
+  - {fileID: 3139962902707759319, guid: f8dbdb2b89c57f74c818a199657602d7, type: 3}
+  - {fileID: 7504348036118553978, guid: 37a81d208cdc78f4aafc46d8107f31e7, type: 3}
+  - {fileID: 4529911826554256913, guid: 73e7e7457f7214a4fa307db04c968d55, type: 3}
+  itemSpawnHeight: 5
+  itemSpawnChance: 1
 --- !u!1 &6045224351774759935
 GameObject:
   m_ObjectHideFlags: 0

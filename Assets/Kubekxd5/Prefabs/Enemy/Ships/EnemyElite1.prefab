@@ -1359,6 +1359,13 @@ MonoBehaviour:
   pointsValue: 50
   bodyParts: []
   deathParticlePrefab: {fileID: 8596137704382848992, guid: 6533ef17a3883454e84802ec2c9769fc, type: 3}
+  itemObjectsPrefabs:
+  - {fileID: 2987748434512253659, guid: 423d71f23ef6be5448fe9a2498114f08, type: 3}
+  - {fileID: 3139962902707759319, guid: f8dbdb2b89c57f74c818a199657602d7, type: 3}
+  - {fileID: 7504348036118553978, guid: 37a81d208cdc78f4aafc46d8107f31e7, type: 3}
+  - {fileID: 4529911826554256913, guid: 73e7e7457f7214a4fa307db04c968d55, type: 3}
+  itemSpawnHeight: 5
+  itemSpawnChance: 0.33
 --- !u!114 &5777031622830528169
 MonoBehaviour:
   m_ObjectHideFlags: 0

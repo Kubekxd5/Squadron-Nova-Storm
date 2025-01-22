@@ -5820,6 +5820,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 9016252427473273300, guid: 4fdc0e95413a5204d88fc29a22a6d214, type: 3}
+      propertyPath: CollisionModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9016252427473273300, guid: 4fdc0e95413a5204d88fc29a22a6d214, type: 3}
+      propertyPath: CollisionModule.collidesWith.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5980,6 +5988,13 @@ MonoBehaviour:
   pointsValue: 50
   bodyParts: []
   deathParticlePrefab: {fileID: 8596137704382848992, guid: 6533ef17a3883454e84802ec2c9769fc, type: 3}
+  itemObjectsPrefabs:
+  - {fileID: 2987748434512253659, guid: 423d71f23ef6be5448fe9a2498114f08, type: 3}
+  - {fileID: 3139962902707759319, guid: f8dbdb2b89c57f74c818a199657602d7, type: 3}
+  - {fileID: 7504348036118553978, guid: 37a81d208cdc78f4aafc46d8107f31e7, type: 3}
+  - {fileID: 4529911826554256913, guid: 73e7e7457f7214a4fa307db04c968d55, type: 3}
+  itemSpawnHeight: 5
+  itemSpawnChance: 0.33
 --- !u!114 &3862416799201901390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6223,6 +6238,14 @@ PrefabInstance:
     - target: {fileID: 8918229895560857698, guid: 4fdc0e95413a5204d88fc29a22a6d214, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 9016252427473273300, guid: 4fdc0e95413a5204d88fc29a22a6d214, type: 3}
+      propertyPath: CollisionModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9016252427473273300, guid: 4fdc0e95413a5204d88fc29a22a6d214, type: 3}
+      propertyPath: CollisionModule.collidesWith.m_Bits
+      value: 64
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

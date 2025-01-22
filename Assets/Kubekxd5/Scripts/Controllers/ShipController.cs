@@ -13,28 +13,31 @@ public class ShipController : MonoBehaviour
 
     public SlotsManager slotManagerRef;
 
-    [Header("Ship Stats:")] public string shipName;
-
+    [Header("Ship Stats:")] 
+    public string shipName;
     public ShipClass shipClass;
-    public float health;
+    public float currentHealth, maxHealth;
     public float hullLevel, energyShield, damageReduction;
     public float shieldRegenRate, healthRegenRate;
     public float speed, maxSpeed, maneuverability, boostCharge;
 
-    [Header("Sprint Stats:")] public float sprintMultiplier = 2f; // Boost multiplier during sprint
+    [Header("Sprint Stats:")] 
+    public float sprintMultiplier = 2f; // Boost multiplier during sprint
     public float sprintCooldownTime = 3f; // Cooldown duration
 
     public ParticleSystem sprintParticles; // Particle system to visualize sprint
-    private CameraController _mainCamera;
 
+    private CameraController _mainCamera;
     private Rigidbody _rb;
 
     private bool isSprinting;
     private bool isOnCooldown; // Tracks if sprint is on cooldown
     private float sprintCooldownTimer; // Tracks remaining cooldown time
+    public bool isImmortal; // Tracks if the ship is currently immune to damage
 
     private void Start()
     {
+        currentHealth = maxHealth;
         _rb = GetComponent<Rigidbody>();
 
         var enemies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -108,12 +111,18 @@ public class ShipController : MonoBehaviour
 
     public void TakeDamage(float damageAmount)
     {
-        health -= damageAmount;
-        Debug.Log($"{shipName} took {damageAmount} damage. Remaining health: {health}");
-
-        if (health <= 0)
+        if (isImmortal)
         {
-            health = 0;
+            Debug.Log($"{shipName} is immune to damage due to immortality.");
+            return;
+        }
+
+        currentHealth -= damageAmount;
+        Debug.Log($"{shipName} took {damageAmount} damage. Remaining health: {currentHealth}");
+
+        if (currentHealth <= 0)
+        {
+            currentHealth = 0;
             Debug.Log($"{shipName} has been destroyed!");
         }
     }

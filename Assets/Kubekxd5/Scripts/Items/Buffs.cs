@@ -1,210 +1,112 @@
-using System.Collections;
 using UnityEngine;
 
 public class Buff : MonoBehaviour
 {
-    [Header("Buff skibidi")] public BuffType buffType;
-
-    public Sprite icon;
-    public float dropChance;
-    public float value;
-
-    [HideInInspector] public string buffName;
-
-    private void OnValidate()
+    public enum BuffType
     {
-        buffName = buffType.ToString();
+        HealthRestore,
+        SpeedBoost,
+        DamageReduction,
+        Immortality,
+        ScoreMultiplier // New buff type
     }
-}
 
-public enum BuffType
-{
-    Shield,
-    SpeedBoost,
-    ShieldRegenRate,
-    DamageReduction,
-    WeaponDamage,
-    FireRate,
-    Ammo,
-    ProjectileAmount,
-    PiercingDamage,
-    GodMode
-}
+    [Header("Buff Settings")]
+    public BuffType buffType;
+    public int buffValue; // The value of the buff (e.g., +50 currentHealth, +20 speed, 2x score multiplier)
+    public float duration;  // Duration of temporary buffs (e.g., speed boost, immortality, score multiplier)
 
-public class BuffManager : MonoBehaviour
-{
-    [Header("Buff Config")] public Buff[] buffs;
+    [Header("Buff Lifetime")]
+    public float despawnTime = 15f; // Time before the buff despawns if not collected
 
-    public GameObject buffPrefab;
-    public Transform buffDropPoint;
-
-    private void DropBuff()
+    private void Start()
     {
-        foreach (var buff in buffs)
+        // Start a timer to despawn the buff after the specified time
+        Invoke(nameof(DespawnBuff), despawnTime);
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        Debug.Log("Collided with: " + other.name);
+        if (other.CompareTag("PlayerShip"))
         {
-            var randomValue = Random.Range(0f, 100f);
-            if (randomValue <= buff.dropChance) SpawnBuff(buff);
+            ShipController playerShip = other.GetComponent<ShipController>();
+            Debug.Log("got with: " + playerShip);
+            if (playerShip != null)
+            {
+                Debug.Log("for sure: " + playerShip);
+                ApplyBuff(playerShip);
+                Destroy(gameObject);
+            }
         }
     }
 
-    private void SpawnBuff(Buff buff)
+    private void ApplyBuff(ShipController ship)
     {
-        if (buffPrefab == null || buffDropPoint == null) return;
-
-        var buffInstance = Instantiate(buffPrefab, buffDropPoint.position, Quaternion.identity);
-        var buffDisplay = buffInstance.GetComponent<BuffDisplay>();
-
-        if (buffDisplay != null) buffDisplay.SetBuff(buff);
-    }
-
-    public void OnEnemyDefeated()
-    {
-        DropBuff();
-    }
-}
-
-public class BuffDisplay : MonoBehaviour
-{
-    [Header("Buff UI")] public SpriteRenderer iconRenderer;
-
-    private Buff currentBuff;
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
+        switch (buffType)
         {
-            ApplyBuff(other.gameObject);
-            ApplyGod(other.gameObject);
-            Destroy(gameObject);
-        }
-    }
-
-    public void SetBuff(Buff buff)
-    {
-        currentBuff = buff;
-        if (iconRenderer != null) iconRenderer.sprite = buff.icon;
-    }
-
-    private void ApplyBuff(GameObject player)
-    {
-        if (currentBuff == null) return;
-
-        var shipController = player.GetComponent<ShipController>();
-        var weaponController = player.GetComponentInChildren<WeaponController>();
-
-        if (shipController != null) ApplyBuffToShip(shipController);
-
-        if (weaponController != null) ApplyBuffToWeapon(weaponController);
-    }
-
-    private void ApplyBuffToShip(ShipController shipController)
-    {
-        switch (currentBuff.buffType)
-        {
-            case BuffType.Shield:
-                shipController.energyShield += currentBuff.value;
+            case BuffType.HealthRestore:
+                ship.currentHealth = Mathf.Min(ship.currentHealth + buffValue, ship.maxHealth);
+                Debug.Log($"Health restored by {buffValue}. Current health: {ship.currentHealth}");
                 break;
 
             case BuffType.SpeedBoost:
-                shipController.speed = Mathf.Min(shipController.speed + currentBuff.value, shipController.maxSpeed);
-                break;
-
-            case BuffType.ShieldRegenRate:
-                shipController.shieldRegenRate += currentBuff.value;
+                StartCoroutine(TemporarySpeedBoost(ship));
                 break;
 
             case BuffType.DamageReduction:
-                shipController.damageReduction += currentBuff.value;
+                ship.damageReduction += buffValue;
+                Debug.Log($"Damage reduction increased by {buffValue}%. Current reduction: {ship.damageReduction}%");
                 break;
 
-            default:
-                Debug.LogWarning($"Oj soooooory nie dziala: {currentBuff.buffName}");
-                break;
-        }
-    }
-
-    private void ApplyBuffToWeapon(WeaponController weaponController)
-    {
-        switch (currentBuff.buffType)
-        {
-            case BuffType.WeaponDamage:
-                weaponController.damageValue += currentBuff.value;
+            case BuffType.Immortality:
+                StartCoroutine(TemporaryImmortality(ship));
                 break;
 
-            case BuffType.FireRate:
-                weaponController.fireRate = Mathf.Max(0.1f, weaponController.fireRate - currentBuff.value);
-                break;
-
-            case BuffType.Ammo:
-                weaponController.ammoMax += Mathf.RoundToInt(currentBuff.value);
-                break;
-
-            case BuffType.ProjectileAmount:
-                weaponController.projectileAmount += Mathf.RoundToInt(currentBuff.value);
-                break;
-
-            case BuffType.PiercingDamage:
-                weaponController.piercing += currentBuff.value;
-                break;
-
-            default:
-                Debug.LogWarning($"Oj soooooory nie dziala: {currentBuff.buffName}");
+            case BuffType.ScoreMultiplier:
+                StartCoroutine(TemporaryScoreMultiplier());
                 break;
         }
     }
 
-    private void ApplyGod(GameObject player)
+    private System.Collections.IEnumerator TemporarySpeedBoost(ShipController ship)
     {
-        if (currentBuff == null) return;
+        float originalSpeed = ship.speed;
+        ship.speed *= 1 + (buffValue / 100f);
+        Debug.Log($"Speed boosted by {buffValue}%. New speed: {ship.speed}");
 
-        var playerStats = player.GetComponent<PlayerStats>();
-        if (playerStats != null)
-            switch (currentBuff.buffType)
-            {
-                case BuffType.GodMode:
-                    playerStats.EnableGodMode(currentBuff.value);
-                    break;
-                default:
-                    Debug.LogWarning($"Oj soooooory nie dziala: {currentBuff.buffName}");
-                    break;
-            }
-    }
-}
-
-public class PlayerStats : MonoBehaviour
-{
-    public GameObject deathUI;
-
-    public bool isDead { get; private set; }
-    [field: Header("god mode?")] private bool godModeEnabled { get; set; }
-
-    public void EnableGodMode(float duration)
-    {
-        if (!godModeEnabled)
-        {
-            godModeEnabled = true;
-            StartCoroutine(GodModeCoroutine(duration));
-        }
-    }
-
-    private IEnumerator GodModeCoroutine(float duration)
-    {
         yield return new WaitForSeconds(duration);
-        godModeEnabled = false;
+
+        ship.speed = originalSpeed;
+        Debug.Log($"Speed boost expired. Speed reverted to: {ship.speed}");
     }
 
-    public void TakeDamage(float amount)
+    private System.Collections.IEnumerator TemporaryImmortality(ShipController ship)
     {
-        if (godModeEnabled) return;
-        var shipController = GetComponent<ShipController>();
-        shipController.health -= amount;
-        shipController.health = Mathf.Max(shipController.health, 0);
-        if (shipController.health <= 0) Die();
+        ship.isImmortal = true;
+        Debug.Log($"Immortality granted for {duration} seconds.");
+
+        yield return new WaitForSeconds(duration);
+
+        ship.isImmortal = false;
+        Debug.Log("Immortality expired.");
     }
 
-    private void Die()
+    private System.Collections.IEnumerator TemporaryScoreMultiplier()
     {
-        isDead = true;
-        if (deathUI != null) deathUI.SetActive(true);
+        int defaultMultiplier = GameManager.Instance.scoreMultiplier;
+        GameManager.Instance.scoreMultiplier = buffValue; // Apply multiplier
+        Debug.Log($"Score multiplier set to {GameManager.Instance.scoreMultiplier} for {duration} seconds.");
+
+        yield return new WaitForSeconds(duration);
+
+        GameManager.Instance.scoreMultiplier = defaultMultiplier; // Revert multiplier
+        Debug.Log("Score multiplier expired.");
+    }
+
+    private void DespawnBuff()
+    {
+        Debug.Log($"Buff {buffType} despawned after {despawnTime} seconds.");
+        Destroy(gameObject);
     }
 }

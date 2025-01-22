@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     [Header("Player Info:")]
     public string playerName;
     public int score;
-    private int scoreMultiplier = 1;
+    public int scoreMultiplier = 1;
     public TextMeshProUGUI scoreView;
 
     [Header("Combo System:")]

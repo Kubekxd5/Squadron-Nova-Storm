@@ -36,7 +36,7 @@ public class ShipStatsMenu : MonoBehaviour
 
     private void UpdateUI()
     {
-        if (healthText != null) healthText.text = $"Health: {Mathf.RoundToInt(shipController.health)}";
+        if (healthText != null) healthText.text = $"Health: {Mathf.RoundToInt(shipController.maxHealth)}";
 
         if (hullLevelText != null) hullLevelText.text = $"Hull: {Mathf.RoundToInt(shipController.hullLevel)} / 5";
 

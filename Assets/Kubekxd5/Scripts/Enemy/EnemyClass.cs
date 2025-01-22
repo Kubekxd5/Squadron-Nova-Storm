@@ -12,7 +12,12 @@ public class EnemyClass : MonoBehaviour
     [Header("Body Parts")]
     public List<BodyPart> bodyParts = new List<BodyPart>();
 
+    [Header("Death Settings")]
     public GameObject deathParticlePrefab;
+    public List<GameObject> itemObjectsPrefabs = new List<GameObject>();
+    public float itemSpawnHeight;
+    [Range(0f, 1f)]
+    public float itemSpawnChance = 0.5f;
 
     private float currentHealth;
 
@@ -47,7 +52,7 @@ public class EnemyClass : MonoBehaviour
         // Apply remaining damage to the main body (if no body part was hit or body part multiplier is applied)
         ApplyDamageToMainBody(finalDamage);
 
-        Debug.Log($"{gameObject.name} took {finalDamage} damage. Remaining health: {currentHealth}");
+        Debug.Log($"{gameObject.name} took {finalDamage} damage. Remaining currentHealth: {currentHealth}");
 
         if (currentHealth <= 0) Die();
     }
@@ -55,7 +60,7 @@ public class EnemyClass : MonoBehaviour
     public void ApplyDamageToMainBody(float damage)
     {
         currentHealth -= damage;
-        Debug.Log($"{gameObject.name} main body took {damage} damage. Remaining health: {currentHealth}");
+        Debug.Log($"{gameObject.name} main body took {damage} damage. Remaining currentHealth: {currentHealth}");
 
         if (currentHealth <= 0) Die();
     }
@@ -64,13 +69,24 @@ public class EnemyClass : MonoBehaviour
     {
         Debug.Log($"{gameObject.name} has been destroyed! Awarding {pointsValue} points.");
 
+        // Instantiate death particles
         if (deathParticlePrefab != null)
         {
             Instantiate(deathParticlePrefab, transform.position, Quaternion.identity);
         }
 
+        // Attempt to spawn an item object
+        if (itemObjectsPrefabs.Count > 0 && Random.value <= itemSpawnChance)
+        {
+            Vector3 spawnPosition = new Vector3(transform.position.x, itemSpawnHeight, transform.position.z);
+            GameObject selectedItem = itemObjectsPrefabs[Random.Range(0, itemObjectsPrefabs.Count)];
+            Instantiate(selectedItem, spawnPosition, Quaternion.identity);
+        }
+
+        // Destroy the enemy
         Destroy(gameObject);
 
+        // Award points
         GameManager.Instance.IncreaseScore(pointsValue);
     }
 }

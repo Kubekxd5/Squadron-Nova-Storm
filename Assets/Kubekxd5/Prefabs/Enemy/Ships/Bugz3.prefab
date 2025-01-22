@@ -652,6 +652,10 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 64fb0988189f6a14d83c6f24d6ae3dff, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 64fb0988189f6a14d83c6f24d6ae3dff, type: 3}
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
@@ -699,7 +703,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 1
   pointsValue: 5
+  bodyParts: []
   deathParticlePrefab: {fileID: 8596137704382848992, guid: 6533ef17a3883454e84802ec2c9769fc, type: 3}
+  itemObjectsPrefabs:
+  - {fileID: 2987748434512253659, guid: 423d71f23ef6be5448fe9a2498114f08, type: 3}
+  - {fileID: 4529911826554256913, guid: 73e7e7457f7214a4fa307db04c968d55, type: 3}
+  itemSpawnHeight: 5
+  itemSpawnChance: 0.01
 --- !u!114 &4393029159527640749
 MonoBehaviour:
   m_ObjectHideFlags: 0
