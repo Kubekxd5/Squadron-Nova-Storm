@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3505935024413297128}
   m_Layer: 7
   m_Name: Health
-  m_TagString: Enemy
+  m_TagString: Buff
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105,7 +105,7 @@ SphereCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
-  m_ProvidesContacts: 1
+  m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 0.6
@@ -126,6 +126,7 @@ MonoBehaviour:
   buffValue: 50
   duration: 0
   despawnTime: 10
+  detectionRadius: 0.15
 --- !u!1 &5808107045852515173
 GameObject:
   m_ObjectHideFlags: 0

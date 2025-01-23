@@ -18,25 +18,49 @@ public class Buff : MonoBehaviour
 
     [Header("Buff Lifetime")]
     public float despawnTime = 15f; // Time before the buff despawns if not collected
+    public float detectionRadius = 1f; // The detection radius for nearby ships
+
+    private MeshRenderer meshRenderer;
+    private Collider buffCollider;
+    private bool isEffectActive = false;
 
     private void Start()
     {
+        // Cache the MeshRenderer and Collider
+        meshRenderer = GetComponent<MeshRenderer>();
+        buffCollider = GetComponent<Collider>();
+
         // Start a timer to despawn the buff after the specified time
         Invoke(nameof(DespawnBuff), despawnTime);
     }
 
-    private void OnTriggerStay(Collider other)
+    private void Update()
     {
-        Debug.Log("Collided with: " + other.name);
-        if (other.CompareTag("PlayerShip"))
+        if (!isEffectActive) // Only check if the effect is not already active
         {
-            ShipController playerShip = other.GetComponent<ShipController>();
-            Debug.Log("got with: " + playerShip);
-            if (playerShip != null)
+            CheckForPlayerShip();
+        }
+    }
+
+    private void CheckForPlayerShip()
+    {
+        // Use Physics.OverlapSphere to detect nearby colliders
+        Collider[] colliders = Physics.OverlapSphere(transform.position, detectionRadius);
+        foreach (var collider in colliders)
+        {
+            if (collider.CompareTag("PlayerShip"))
             {
-                Debug.Log("for sure: " + playerShip);
-                ApplyBuff(playerShip);
-                Destroy(gameObject);
+                ShipController playerShip = collider.GetComponent<ShipController>();
+                if (playerShip != null)
+                {
+                    Debug.Log($"Buff detected PlayerShip: {playerShip.shipName}");
+                    ApplyBuff(playerShip);
+
+                    DisableBuffVisuals(collider.gameObject);
+
+                    CancelInvoke(nameof(DespawnBuff));
+                    break;
+                }
             }
         }
     }
@@ -46,8 +70,9 @@ public class Buff : MonoBehaviour
         switch (buffType)
         {
             case BuffType.HealthRestore:
-                ship.currentHealth = Mathf.Min(ship.currentHealth + buffValue, ship.maxHealth);
+                ship.currentHealth = Mathf.Clamp(ship.currentHealth + buffValue, 0, ship.maxHealth);
                 Debug.Log($"Health restored by {buffValue}. Current health: {ship.currentHealth}");
+                Destroy(gameObject); // Destroy immediately for non-temporary buffs
                 break;
 
             case BuffType.SpeedBoost:
@@ -57,6 +82,7 @@ public class Buff : MonoBehaviour
             case BuffType.DamageReduction:
                 ship.damageReduction += buffValue;
                 Debug.Log($"Damage reduction increased by {buffValue}%. Current reduction: {ship.damageReduction}%");
+                Destroy(gameObject); // Destroy immediately for non-temporary buffs
                 break;
 
             case BuffType.Immortality:
@@ -71,18 +97,22 @@ public class Buff : MonoBehaviour
 
     private System.Collections.IEnumerator TemporarySpeedBoost(ShipController ship)
     {
+        isEffectActive = true; // Mark effect as active
         float originalSpeed = ship.speed;
         ship.speed *= 1 + (buffValue / 100f);
+        ship.maneuverability *= 1 + (buffValue / 100f);
         Debug.Log($"Speed boosted by {buffValue}%. New speed: {ship.speed}");
 
         yield return new WaitForSeconds(duration);
 
         ship.speed = originalSpeed;
         Debug.Log($"Speed boost expired. Speed reverted to: {ship.speed}");
+        Destroy(gameObject); // Destroy buff after effect ends
     }
 
     private System.Collections.IEnumerator TemporaryImmortality(ShipController ship)
     {
+        isEffectActive = true;
         ship.isImmortal = true;
         Debug.Log($"Immortality granted for {duration} seconds.");
 
@@ -90,10 +120,12 @@ public class Buff : MonoBehaviour
 
         ship.isImmortal = false;
         Debug.Log("Immortality expired.");
+        Destroy(gameObject); // Destroy buff after effect ends
     }
 
     private System.Collections.IEnumerator TemporaryScoreMultiplier()
     {
+        isEffectActive = true; // Mark effect as active
         int defaultMultiplier = GameManager.Instance.scoreMultiplier;
         GameManager.Instance.scoreMultiplier = buffValue; // Apply multiplier
         Debug.Log($"Score multiplier set to {GameManager.Instance.scoreMultiplier} for {duration} seconds.");
@@ -102,11 +134,27 @@ public class Buff : MonoBehaviour
 
         GameManager.Instance.scoreMultiplier = defaultMultiplier; // Revert multiplier
         Debug.Log("Score multiplier expired.");
+        Destroy(gameObject);
+    }
+
+    private void DisableBuffVisuals(GameObject shipPosition)
+    {
+        transform.parent = shipPosition.transform;
+        transform.localPosition = Vector3.zero;
+        if (meshRenderer != null) meshRenderer.enabled = false;
+        if (buffCollider != null) buffCollider.enabled = false;
+        Debug.Log("Buff visuals and collider disabled.");
     }
 
     private void DespawnBuff()
     {
         Debug.Log($"Buff {buffType} despawned after {despawnTime} seconds.");
         Destroy(gameObject);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, detectionRadius);
     }
 }

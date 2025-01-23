@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 7007934218227459240}
   - component: {fileID: 8117682310383403415}
   - component: {fileID: -6500280634162185340}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HighLand
   m_TagString: Untagged
   m_Icon: {fileID: 0}

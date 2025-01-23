@@ -1030,18 +1030,21 @@ MonoBehaviour:
   slotManagerRef: {fileID: 8016691015039915098}
   shipName: Daedalus
   shipClass: 2
-  health: 100
-  hullLevel: 0
-  energyShield: 100
-  damageReduction: 100
-  shieldRegenRate: 100
-  healthRegenRate: 100
-  speed: 10
-  maxSpeed: 10
+  currentHealth: 300
+  maxHealth: 300
+  hullLevel: 5
+  energyShield: 0
+  damageReduction: 0
+  shieldRegenRate: 0
+  healthRegenRate: 0
+  speed: 15
   maneuverability: 10
-  boostCharge: 10
+  boostCharge: 100
+  maxBoost: 100
   sprintMultiplier: 2
+  sprintCooldownTime: 3
   sprintParticles: {fileID: 7305310447896001371}
+  isImmortal: 0
 --- !u!54 &-11511950169838088
 Rigidbody:
   m_ObjectHideFlags: 0

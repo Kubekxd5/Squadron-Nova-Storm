@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class ShipController : MonoBehaviour
@@ -16,10 +17,10 @@ public class ShipController : MonoBehaviour
     [Header("Ship Stats:")] 
     public string shipName;
     public ShipClass shipClass;
-    public float currentHealth, maxHealth;
+    public float currentHealth, maxHealth = 100f; // Added default maxHealth value
     public float hullLevel, energyShield, damageReduction;
     public float shieldRegenRate, healthRegenRate;
-    public float speed, maxSpeed, maneuverability, boostCharge;
+    public float speed, maneuverability, boostCharge, maxBoost = 100f; // Added default maxBoost value
 
     [Header("Sprint Stats:")] 
     public float sprintMultiplier = 2f; // Boost multiplier during sprint
@@ -37,7 +38,10 @@ public class ShipController : MonoBehaviour
 
     private void Start()
     {
-        currentHealth = maxHealth;
+        // Initialize health and boost
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        boostCharge = Mathf.Clamp(boostCharge, 0, maxBoost);
+
         _rb = GetComponent<Rigidbody>();
 
         var enemies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -90,7 +94,7 @@ public class ShipController : MonoBehaviour
         if (isSprinting)
         {
             boostCharge -= Time.deltaTime * 10f;
-            boostCharge = Mathf.Max(boostCharge, 0);
+            boostCharge = Mathf.Clamp(boostCharge, 0, maxBoost);
 
             if (boostCharge == 0)
             {
@@ -104,7 +108,7 @@ public class ShipController : MonoBehaviour
             if (!isOnCooldown)
             {
                 boostCharge += Time.deltaTime * 5f;
-                boostCharge = Mathf.Min(boostCharge, 100f);
+                boostCharge = Mathf.Clamp(boostCharge, 0, maxBoost);
             }
         }
     }
@@ -118,6 +122,7 @@ public class ShipController : MonoBehaviour
         }
 
         currentHealth -= damageAmount;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth); // Ensure health doesn't drop below 0 or exceed maxHealth
         Debug.Log($"{shipName} took {damageAmount} damage. Remaining health: {currentHealth}");
 
         if (currentHealth <= 0)
@@ -125,5 +130,12 @@ public class ShipController : MonoBehaviour
             currentHealth = 0;
             Debug.Log($"{shipName} has been destroyed!");
         }
+    }
+
+    public void Heal(float healAmount)
+    {
+        currentHealth += healAmount;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth); // Ensure health doesn't exceed maxHealth
+        Debug.Log($"{shipName} healed by {healAmount}. Current health: {currentHealth}");
     }
 }

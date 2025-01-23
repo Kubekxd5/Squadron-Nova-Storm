@@ -5984,7 +5984,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9c1eb17e876e9845bdc7f2a0dd9db56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 15
+  maxHealth: 50
   pointsValue: 50
   bodyParts: []
   deathParticlePrefab: {fileID: 8596137704382848992, guid: 6533ef17a3883454e84802ec2c9769fc, type: 3}
@@ -5994,7 +5994,7 @@ MonoBehaviour:
   - {fileID: 7504348036118553978, guid: 37a81d208cdc78f4aafc46d8107f31e7, type: 3}
   - {fileID: 4529911826554256913, guid: 73e7e7457f7214a4fa307db04c968d55, type: 3}
   itemSpawnHeight: 5
-  itemSpawnChance: 0.33
+  itemSpawnChance: 0.5
 --- !u!114 &3862416799201901390
 MonoBehaviour:
   m_ObjectHideFlags: 0

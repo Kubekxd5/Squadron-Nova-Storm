@@ -778,18 +778,21 @@ MonoBehaviour:
   slotManagerRef: {fileID: 8016691015039915098}
   shipName: Mig
   shipClass: 0
-  health: 100
-  hullLevel: 0
-  energyShield: 100
-  damageReduction: 100
-  shieldRegenRate: 100
-  healthRegenRate: 100
+  currentHealth: 150
+  maxHealth: 150
+  hullLevel: 3
+  energyShield: 0
+  damageReduction: 0
+  shieldRegenRate: 0
+  healthRegenRate: 0
   speed: 35
-  maxSpeed: 10
-  maneuverability: 5
-  boostCharge: 10
+  maneuverability: 15
+  boostCharge: 100
+  maxBoost: 100
   sprintMultiplier: 2
+  sprintCooldownTime: 3
   sprintParticles: {fileID: 8173004089518294204}
+  isImmortal: 0
 --- !u!54 &-11511950169838088
 Rigidbody:
   m_ObjectHideFlags: 0

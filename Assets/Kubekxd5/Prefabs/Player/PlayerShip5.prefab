@@ -71,13 +71,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2855971919484539302}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.6087612, y: -0, z: -0, w: 0.79335356}
-  m_LocalPosition: {x: 0, y: -0.0242, z: 0.0046}
+  m_LocalRotation: {x: 0.60355324, y: -0.07945887, z: 0.10355286, w: 0.78656644}
+  m_LocalPosition: {x: 0.0098, y: -0.0242, z: 0.0046}
   m_LocalScale: {x: 0.29289, y: 0.29289, z: 0.29289}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2772478801437258662}
-  m_LocalEulerAnglesHint: {x: 75, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 75, y: 0, z: 15}
 --- !u!114 &6523143868468977992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,6 +127,7 @@ Transform:
   - {fileID: 4330675552590954704}
   - {fileID: 7641706171398492810}
   - {fileID: 2648561476762598279}
+  - {fileID: 7186120445496578096}
   m_Father: {fileID: 6519849194890634881}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8016691015039915098
@@ -153,6 +154,7 @@ MonoBehaviour:
   - {fileID: 7641706171398492810}
   hangarBaySlot:
   - {fileID: 2648561476762598279}
+  - {fileID: 7186120445496578096}
   specialSlot: []
 --- !u!1 &3786113060620246250
 GameObject:
@@ -732,18 +734,21 @@ MonoBehaviour:
   slotManagerRef: {fileID: 8016691015039915098}
   shipName: Pelican
   shipClass: 3
-  health: 100
-  hullLevel: 0
-  energyShield: 100
-  damageReduction: 100
-  shieldRegenRate: 100
-  healthRegenRate: 100
-  speed: 10
-  maxSpeed: 10
-  maneuverability: 5
-  boostCharge: 10
+  currentHealth: 250
+  maxHealth: 250
+  hullLevel: 4
+  energyShield: 0
+  damageReduction: 0
+  shieldRegenRate: 0
+  healthRegenRate: 0
+  speed: 20
+  maneuverability: 20
+  boostCharge: 125
+  maxBoost: 125
   sprintMultiplier: 2
+  sprintCooldownTime: 3
   sprintParticles: {fileID: 350162498095272625}
+  isImmortal: 0
 --- !u!54 &-4315711524529951067
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -940,6 +945,52 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
+--- !u!1 &7424047229819632250
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7186120445496578096}
+  - component: {fileID: 7583681941036240188}
+  m_Layer: 6
+  m_Name: HangarWeapon (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7186120445496578096
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7424047229819632250}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.5880182, y: 0.157559, z: -0.20533499, w: 0.7663207}
+  m_LocalPosition: {x: -0.0098, y: -0.0242, z: 0.0046}
+  m_LocalScale: {x: 0.29289, y: 0.29289, z: 0.29289}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2772478801437258662}
+  m_LocalEulerAnglesHint: {x: 75, y: 0, z: -30}
+--- !u!114 &7583681941036240188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7424047229819632250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e00de03a1f831b4b8bb559f8cc4051d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponMount: 2
+  weaponController: {fileID: 0}
 --- !u!1 &7635511450393505188
 GameObject:
   m_ObjectHideFlags: 0

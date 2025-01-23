@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public ListManager shipsList, weaponList;
-    public GameObject currentEquippedShip, playerHud, renderPreview;
+    public GameObject currentEquippedShip, playerHud, renderPreview, loseMenu;
     public TMP_InputField inputField;
     public ShipConfigObject selectedShipConfig;
     public WFC_Script wfcScript;
@@ -17,13 +17,14 @@ public class GameManager : MonoBehaviour
     public string playerName;
     public int score;
     public int scoreMultiplier = 1;
-    public TextMeshProUGUI scoreView;
+    public TextMeshProUGUI[] scoreView;
 
     [Header("Combo System:")]
     public float comboDuration = 5f;
     private int currentKillCount = 0;
     private float comboTimer = 0f;
     private bool isComboActive = false;
+    private ShipController _shipController;
 
     private void Awake()
     {
@@ -55,6 +56,15 @@ public class GameManager : MonoBehaviour
             if (comboTimer <= 0f)
             {
                 ResetCombo();
+            }
+        }
+
+        if (_shipController != null)
+        {
+            if (_shipController.currentHealth <= 0)
+            {
+                Time.timeScale = 0;
+                loseMenu.SetActive(true);
             }
         }
     }
@@ -103,6 +113,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("World generation complete. Activating HUD and spawning ship.");
         renderPreview.SetActive(false);
         SpawnPlayerShip();
+        _shipController = currentEquippedShip.GetComponent<ShipController>();
         playerHud.SetActive(true);
     }
     
@@ -126,9 +137,11 @@ public class GameManager : MonoBehaviour
 
         // Update text color based on multiplier
         Color multiplierColor = GetMultiplierColor(scoreMultiplier);
-        scoreView.color = multiplierColor;
-
-        scoreView.text = $"{(string.IsNullOrEmpty(playerName) ? "Player" : playerName)} - score: {score}{multiplierText}";
+        foreach (var view in scoreView)
+        {
+            view.color = multiplierColor;
+            view.text = $"{(string.IsNullOrEmpty(playerName) ? "Player" : playerName)} - score: {score}{multiplierText}";
+        }
     }
 
     private Color GetMultiplierColor(int multiplier)
@@ -252,4 +265,13 @@ public class GameManager : MonoBehaviour
     {
         selectedShipConfig = null;
     }
+    
+    public void GoToMainScene()
+    {
+        Time.timeScale = 1;
+        playerHud.SetActive(false);
+        loseMenu.SetActive(false);
+        SceneManager.LoadScene(0);
+    }
+
 }

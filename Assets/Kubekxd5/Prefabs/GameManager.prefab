@@ -34,6 +34,7 @@ Transform:
   - {fileID: 4006537646367300397}
   - {fileID: 7125154256350545225}
   - {fileID: 1811022220524995080}
+  - {fileID: 1240764411861483199}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8007339603846950994
@@ -48,18 +49,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e33c246d0fa97a8429377a48fc59d4be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shipsList: {fileID: 8667488072650023446}
+  shipsList: {fileID: 2998790018109341249}
   weaponList: {fileID: 8279898767669554606}
   currentEquippedShip: {fileID: 0}
   playerHud: {fileID: 6625212168303001323}
   renderPreview: {fileID: 5992221827265792620}
+  loseMenu: {fileID: 6309151655342380451}
   inputField: {fileID: 0}
   selectedShipConfig: {fileID: 11400000, guid: 87b7e868e32aa814ca48ff05eb8d61aa, type: 2}
   wfcScript: {fileID: 0}
   playerName: Kubekxd5
   score: 0
   scoreMultiplier: 1
-  scoreView: {fileID: 0}
+  scoreView:
+  - {fileID: 371838533145395383}
+  - {fileID: 4880788980313059213}
   comboDuration: 5
 --- !u!1001 &1426787392972397611
 PrefabInstance:
@@ -277,6 +281,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7b362e0f506ea74d92b1c7ae4ea3030, type: 3}
+--- !u!114 &371838533145395383 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2982185038765031613, guid: b7b362e0f506ea74d92b1c7ae4ea3030, type: 3}
+  m_PrefabInstance: {fileID: 3191873816158273546}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6625212168303001323 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8627396114657033953, guid: b7b362e0f506ea74d92b1c7ae4ea3030, type: 3}
@@ -295,10 +310,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8057480735030551895}
     m_Modifications:
-    - target: {fileID: 804675130184963951, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: m_Constraints
-      value: 126
-      objectReference: {fileID: 0}
     - target: {fileID: 1209122786070384620, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -204.73769
@@ -339,294 +350,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1827771783029014179, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: health
-      value: 175
-      objectReference: {fileID: 0}
-    - target: {fileID: 1827771783029014179, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: hullLevel
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1827771783029014179, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: boostCharge
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 1827771783029014179, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: energyShield
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1827771783029014179, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: damageReduction
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1827771783029014179, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: healthRegenRate
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1827771783029014179, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: shieldRegenRate
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1923591063976208074, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: hullLevel
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1923591063976208074, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: boostCharge
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 1923591063976208074, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: energyShield
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1923591063976208074, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: damageReduction
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1923591063976208074, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: healthRegenRate
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1923591063976208074, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: shieldRegenRate
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2459574909227242080, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: m_Constraints
-      value: 126
-      objectReference: {fileID: 0}
-    - target: {fileID: 2583517211344972801, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: health
-      value: 80
-      objectReference: {fileID: 0}
-    - target: {fileID: 2583517211344972801, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: hullLevel
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2583517211344972801, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: boostCharge
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 2583517211344972801, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: energyShield
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2583517211344972801, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: damageReduction
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2583517211344972801, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: healthRegenRate
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2583517211344972801, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: shieldRegenRate
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2665949895598184613, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: health
-      value: 125
-      objectReference: {fileID: 0}
-    - target: {fileID: 2665949895598184613, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: hullLevel
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2665949895598184613, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: boostCharge
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 2665949895598184613, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: energyShield
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2665949895598184613, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: damageReduction
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2665949895598184613, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: healthRegenRate
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2665949895598184613, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: shieldRegenRate
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3717313624381285238, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: m_Constraints
-      value: 126
-      objectReference: {fileID: 0}
-    - target: {fileID: 3889069726288414253, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: m_Constraints
-      value: 126
-      objectReference: {fileID: 0}
-    - target: {fileID: 4637320102543133683, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: m_Constraints
-      value: 126
-      objectReference: {fileID: 0}
-    - target: {fileID: 5285347522045130937, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: m_Constraints
-      value: 126
-      objectReference: {fileID: 0}
-    - target: {fileID: 5828720907718294662, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5828720907718294662, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5828720907718294662, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 5828720907718294662, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 5828720907718294662, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 180
-      objectReference: {fileID: 0}
-    - target: {fileID: 6283300302610591776, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: hullLevel
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6283300302610591776, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: boostCharge
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 6283300302610591776, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: energyShield
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6283300302610591776, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: damageReduction
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6283300302610591776, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: healthRegenRate
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6283300302610591776, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: shieldRegenRate
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6484855429495716533, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: health
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 6484855429495716533, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: hullLevel
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6484855429495716533, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: boostCharge
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 6484855429495716533, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: energyShield
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6484855429495716533, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: damageReduction
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6484855429495716533, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: healthRegenRate
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6484855429495716533, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: shieldRegenRate
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6787071786343482218, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: health
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 6787071786343482218, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: hullLevel
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6787071786343482218, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: boostCharge
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 6787071786343482218, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: energyShield
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6787071786343482218, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: damageReduction
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6787071786343482218, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: healthRegenRate
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6787071786343482218, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: shieldRegenRate
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7299949953644829428, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: m_Constraints
-      value: 126
-      objectReference: {fileID: 0}
-    - target: {fileID: 7554183220141296455, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: m_Constraints
-      value: 126
-      objectReference: {fileID: 0}
-    - target: {fileID: 7926743949433151113, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: hullLevel
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7926743949433151113, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: boostCharge
-      value: 125
-      objectReference: {fileID: 0}
-    - target: {fileID: 7926743949433151113, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: energyShield
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7926743949433151113, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: damageReduction
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7926743949433151113, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: healthRegenRate
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7926743949433151113, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: shieldRegenRate
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7992713263745285042, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: health
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 7992713263745285042, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: hullLevel
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7992713263745285042, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: boostCharge
-      value: 80
-      objectReference: {fileID: 0}
-    - target: {fileID: 7992713263745285042, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: energyShield
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7992713263745285042, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: damageReduction
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7992713263745285042, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: healthRegenRate
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7992713263745285042, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: shieldRegenRate
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8027731260481028326, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
       propertyPath: m_Name
       value: Ships List
@@ -635,131 +358,25 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8225674686232060199, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: health
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 8225674686232060199, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: hullLevel
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8225674686232060199, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: boostCharge
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 8225674686232060199, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: energyShield
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8225674686232060199, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: damageReduction
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8225674686232060199, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: healthRegenRate
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8225674686232060199, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: shieldRegenRate
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8326548511521381760, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: m_Constraints
-      value: 126
-      objectReference: {fileID: 0}
-    - target: {fileID: 8755565127945601121, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      propertyPath: m_Constraints
-      value: 126
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8027731260481028326, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8667488072650023446}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
---- !u!1 &362749921331226289 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5451960152216800055, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-  m_PrefabInstance: {fileID: 5666091275838303622}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1814593539783776543 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6309337242037908633, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-  m_PrefabInstance: {fileID: 5666091275838303622}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1856638597644450852 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6297691482806047138, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-  m_PrefabInstance: {fileID: 5666091275838303622}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2314020076111673270 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7979519827537173040, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-  m_PrefabInstance: {fileID: 5666091275838303622}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2434693620252372320 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8027731260481028326, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-  m_PrefabInstance: {fileID: 5666091275838303622}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8667488072650023446
+--- !u!114 &2998790018109341249 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 7438865063738135495, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
+  m_PrefabInstance: {fileID: 5666091275838303622}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2434693620252372320}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68cc70423b7304b43bcc35dddc40f595, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listOfObjects:
-  - {fileID: 3373509540286676259}
-  - {fileID: 7898820390101557596}
-  - {fileID: 6122001154233887639}
-  - {fileID: 1814593539783776543}
-  - {fileID: 7958498716595943733}
-  - {fileID: 1856638597644450852}
-  - {fileID: 362749921331226289}
-  - {fileID: 6039489708334636851}
-  - {fileID: 2314020076111673270}
-  - {fileID: 2963172285808313596}
---- !u!1 &2963172285808313596 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7475608695627000186, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-  m_PrefabInstance: {fileID: 5666091275838303622}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &3373509540286676259 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6949303759988428965, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-  m_PrefabInstance: {fileID: 5666091275838303622}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &6039489708334636851 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2121595762161873589, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-  m_PrefabInstance: {fileID: 5666091275838303622}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &6122001154233887639 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1897220937127577105, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-  m_PrefabInstance: {fileID: 5666091275838303622}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6802217996007137898 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1209122786070384620, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-  m_PrefabInstance: {fileID: 5666091275838303622}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &7898820390101557596 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2539960599720594650, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
-  m_PrefabInstance: {fileID: 5666091275838303622}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &7958498716595943733 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2365440475597526195, guid: 1b952bc8b71241b4c8b91a289bcb9bf3, type: 3}
   m_PrefabInstance: {fileID: 5666091275838303622}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6671317961668380610
@@ -1215,4 +832,134 @@ MonoBehaviour:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1922394152555093913, guid: 197a37e6f5126db41917565f21604443, type: 3}
   m_PrefabInstance: {fileID: 7227177441376898310}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8626786424800037744
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8057480735030551895}
+    m_Modifications:
+    - target: {fileID: 2321074041846128339, guid: ed667fb036a8bb644b20448e2b2ae36c, type: 3}
+      propertyPath: m_Name
+      value: LoseMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 2321074041846128339, guid: ed667fb036a8bb644b20448e2b2ae36c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3099367637287657904, guid: ed667fb036a8bb644b20448e2b2ae36c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8007339603846950994}
+    - target: {fileID: 7386066268302702031, guid: ed667fb036a8bb644b20448e2b2ae36c, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7386066268302702031, guid: ed667fb036a8bb644b20448e2b2ae36c, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7386066268302702031, guid: ed667fb036a8bb644b20448e2b2ae36c, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7386066268302702031, guid: ed667fb036a8bb644b20448e2b2ae36c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7386066268302702031, guid: ed667fb036a8bb644b20448e2b2ae36c, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7386066268302702031, guid: ed667fb036a8bb644b20448e2b2ae36c, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7386066268302702031, guid: ed667fb036a8bb644b20448e2b2ae36c, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7386066268302702031, guid: ed667fb036a8bb644b20448e2b2ae36c, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7386066268302702031, guid: ed667fb036a8bb644b20448e2b2ae36c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7386066268302702031, guid: ed667fb036a8bb644b20448e2b2ae36c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7386066268302702031, guid: ed667fb036a8bb644b20448e2b2ae36c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7386066268302702031, guid: ed667fb036a8bb644b20448e2b2ae36c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7386066268302702031, guid: ed667fb036a8bb644b20448e2b2ae36c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7386066268302702031, guid: ed667fb036a8bb644b20448e2b2ae36c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7386066268302702031, guid: ed667fb036a8bb644b20448e2b2ae36c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7386066268302702031, guid: ed667fb036a8bb644b20448e2b2ae36c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7386066268302702031, guid: ed667fb036a8bb644b20448e2b2ae36c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7386066268302702031, guid: ed667fb036a8bb644b20448e2b2ae36c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7386066268302702031, guid: ed667fb036a8bb644b20448e2b2ae36c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7386066268302702031, guid: ed667fb036a8bb644b20448e2b2ae36c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540611557491471236, guid: ed667fb036a8bb644b20448e2b2ae36c, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ed667fb036a8bb644b20448e2b2ae36c, type: 3}
+--- !u!224 &1240764411861483199 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7386066268302702031, guid: ed667fb036a8bb644b20448e2b2ae36c, type: 3}
+  m_PrefabInstance: {fileID: 8626786424800037744}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4880788980313059213 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3748273880237417725, guid: ed667fb036a8bb644b20448e2b2ae36c, type: 3}
+  m_PrefabInstance: {fileID: 8626786424800037744}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &6309151655342380451 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2321074041846128339, guid: ed667fb036a8bb644b20448e2b2ae36c, type: 3}
+  m_PrefabInstance: {fileID: 8626786424800037744}
   m_PrefabAsset: {fileID: 0}

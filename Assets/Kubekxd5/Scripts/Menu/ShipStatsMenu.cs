@@ -36,16 +36,16 @@ public class ShipStatsMenu : MonoBehaviour
 
     private void UpdateUI()
     {
-        if (healthText != null) healthText.text = $"Health: {Mathf.RoundToInt(shipController.maxHealth)}";
+        if (healthText != null) healthText.text = $"Health: {Mathf.RoundToInt(shipController.currentHealth)}/{shipController.maxHealth}";
 
         if (hullLevelText != null) hullLevelText.text = $"Hull: {Mathf.RoundToInt(shipController.hullLevel)} / 5";
 
-        if (speedText != null) speedText.text = $"Speed: {Mathf.RoundToInt(shipController.speed)} / 40";
+        if (speedText != null) speedText.text = $"Speed: {Mathf.RoundToInt(shipController.speed)}";
 
         if (maneuverabilityText != null)
-            maneuverabilityText.text = $"Maneuverability: {Mathf.RoundToInt(shipController.maneuverability)} / 40";
+            maneuverabilityText.text = $"Maneuverability: {Mathf.RoundToInt(shipController.maneuverability)}";
 
         if (boostChargeText != null)
-            boostChargeText.text = $"Boost Charge: {Mathf.RoundToInt(shipController.boostCharge)}";
+            boostChargeText.text = $"Boost Charge: {Mathf.RoundToInt(shipController.boostCharge)}/{shipController.maxBoost}";
     }
 }

@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 6869670197030448719}
   - component: {fileID: 6890257572036013366}
   - component: {fileID: -2448720132383446743}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LandBoss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -325,7 +325,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 10
   pointsValue: 40
+  bodyParts: []
   deathParticlePrefab: {fileID: 8596137704382848992, guid: 6533ef17a3883454e84802ec2c9769fc, type: 3}
+  itemObjectsPrefabs: []
+  itemSpawnHeight: 0
+  itemSpawnChance: 0.5
 --- !u!114 &7711364271889217918
 MonoBehaviour:
   m_ObjectHideFlags: 0

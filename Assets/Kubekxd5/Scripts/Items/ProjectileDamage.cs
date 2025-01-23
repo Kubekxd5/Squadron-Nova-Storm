@@ -57,7 +57,6 @@ public class Projectile : MonoBehaviour
 
         if (weaponController == null) return;
 
-        // Handle collision with Player
         if (other.layer == LayerMask.NameToLayer("Player"))
         {
             var ship = other.GetComponent<ShipController>();
@@ -74,16 +73,19 @@ public class Projectile : MonoBehaviour
             }
         }
 
-        // Handle collision with Air/Space Enemies
         if (other.layer == LayerMask.NameToLayer("Enemy"))
         {
             HandleEnemyCollision(other, "Enemy");
         }
 
-        // Handle collision with Ground Enemies
         if (other.layer == LayerMask.NameToLayer("GroundEnemy"))
         {
             HandleEnemyCollision(other, "GroundEnemy");
+        }
+
+        if (other.layer == LayerMask.NameToLayer("Ground"))
+        {
+            Debug.Log("Hit Ground layer");
         }
     }
 

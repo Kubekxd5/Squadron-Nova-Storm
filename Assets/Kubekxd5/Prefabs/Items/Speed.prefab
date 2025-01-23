@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 535986254887469187}
   m_Layer: 7
   m_Name: Speed
-  m_TagString: Enemy
+  m_TagString: Buff
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105,7 +105,7 @@ SphereCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
-  m_ProvidesContacts: 1
+  m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 0.6
@@ -122,10 +122,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c725ff55dae2902479566e5c85c45a02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buffType: 2
-  buffValue: 20
+  buffType: 1
+  buffValue: 50
   duration: 10
   despawnTime: 10
+  detectionRadius: 0.15
 --- !u!1 &7488870291964212662
 GameObject:
   m_ObjectHideFlags: 0
