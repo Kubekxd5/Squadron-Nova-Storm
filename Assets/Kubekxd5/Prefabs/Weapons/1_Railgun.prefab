@@ -309,21 +309,21 @@ MonoBehaviour:
   weaponName: Magnetic Accelerator Cannon
   weaponDmgType: 3
   weaponMount: 1
-  damageValue: 1
+  damageValue: 10
   damageMultiplier: 1
   piercing: 1
   explosionRadius: 0
-  fireRate: 0.1
+  fireRate: 1
   range: 100
-  projectileSpeed: 100
+  projectileSpeed: 200
   projectileAmount: 1
   projectileInterval: 0
   usesHeat: 1
-  overheatThreshold: 100
+  overheatThreshold: 10
   ammoMax: 0
   ammoCurrent: 0
   weaponCooldown: 0.1
-  coolingRate: 10
+  coolingRate: 1
   weaponUpgradeModule: {fileID: 0}
   weaponVfx:
   - {fileID: 3490275904122025585}

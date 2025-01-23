@@ -8,9 +8,8 @@ public class GarageShipManager : MonoBehaviour
 
     public TextMeshProUGUI shipTypeTextField;
 
-    [Header("Lists")] public GameObject shipsList;
-
-    public GameObject weaponList;
+    [Header("Lists")] public ListManager shipsList;
+    public ListManager weaponList;
 
     public Transform equippedShipParent;
     public InventoryManager InventoryManager;
@@ -24,6 +23,8 @@ public class GarageShipManager : MonoBehaviour
 
     private void Start()
     {
+        shipsList = GameManager.Instance.shipsList;
+        weaponList = GameManager.Instance.weaponList;
         PopulateDropdown();
         PopulateAvailableWeapons();
         UpdateShipConfig();
@@ -77,18 +78,35 @@ public class GarageShipManager : MonoBehaviour
 
     private void EquipShip(GameObject selectedShip)
     {
-        if (currentEquippedShip != null) Destroy(currentEquippedShip);
+        if (currentEquippedShip != null)
+        {
+            Destroy(currentEquippedShip);
+            currentEquippedShip = null;
+        }
+
+        if (selectedShip == null)
+        {
+            Debug.LogWarning("Selected ship is null!");
+            return;
+        }
 
         currentEquippedShip = Instantiate(selectedShip, equippedShipParent);
         currentEquippedShip.transform.localPosition = Vector3.zero;
         currentEquippedShip.transform.localRotation = Quaternion.identity;
         currentEquippedShip.transform.localScale = new Vector3(5, 5, 5);
         currentEquippedShip.tag = "PlayerShip";
-        shipTypeTextField.text = currentEquippedShip.GetComponent<ShipController>().shipClass.ToString();
 
-        InventoryManager.SelectNewShip();
+        if (currentEquippedShip.TryGetComponent(out ShipController shipController))
+        {
+            shipTypeTextField.text = shipController.shipClass.ToString();
+            InventoryManager.SelectNewShip();
+        }
+        else
+        {
+            Debug.LogWarning("Selected ship does not have a ShipController component!");
+        }
     }
-
+    
     public void SaveConfig(int index)
     {
         if (shipConfig == null) return;

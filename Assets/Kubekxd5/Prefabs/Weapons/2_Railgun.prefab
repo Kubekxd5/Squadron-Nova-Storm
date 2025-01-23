@@ -472,21 +472,21 @@ MonoBehaviour:
   weaponName: Ship-mounted Railgun
   weaponDmgType: 3
   weaponMount: 0
-  damageValue: 1
+  damageValue: 8
   damageMultiplier: 1
   piercing: 1
   explosionRadius: 0
-  fireRate: 0.1
+  fireRate: 0.8
   range: 100
-  projectileSpeed: 100
+  projectileSpeed: 180
   projectileAmount: 1
   projectileInterval: 0
   usesHeat: 1
-  overheatThreshold: 100
+  overheatThreshold: 10
   ammoMax: 0
   ammoCurrent: 0
   weaponCooldown: 0.1
-  coolingRate: 10
+  coolingRate: 1
   weaponUpgradeModule: {fileID: 0}
   weaponVfx:
   - {fileID: 333660630225728381}

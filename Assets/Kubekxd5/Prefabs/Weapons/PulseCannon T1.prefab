@@ -275,16 +275,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 3467198465646823196}
     m_Modifications:
     - target: {fileID: 662441435528584567, guid: 98ceb19843f2b674687e906f1e324a66, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 662441435528584567, guid: 98ceb19843f2b674687e906f1e324a66, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 662441435528584567, guid: 98ceb19843f2b674687e906f1e324a66, type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.55931616
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 662441435528584567, guid: 98ceb19843f2b674687e906f1e324a66, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
-      value: 0
+      value: 0.91115713
       objectReference: {fileID: 0}
     - target: {fileID: 983980527299476143, guid: 98ceb19843f2b674687e906f1e324a66, type: 3}
       propertyPath: m_Layer
@@ -308,35 +312,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1948929503921296415, guid: 98ceb19843f2b674687e906f1e324a66, type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.55931616
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1948929503921296415, guid: 98ceb19843f2b674687e906f1e324a66, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
-      value: 0
+      value: 0.91115713
       objectReference: {fileID: 0}
     - target: {fileID: 2344715196938770574, guid: 98ceb19843f2b674687e906f1e324a66, type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.55931616
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2344715196938770574, guid: 98ceb19843f2b674687e906f1e324a66, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.8215008
       objectReference: {fileID: 0}
     - target: {fileID: 2344768235116913472, guid: 98ceb19843f2b674687e906f1e324a66, type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.55931616
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2344768235116913472, guid: 98ceb19843f2b674687e906f1e324a66, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.8215008
+      objectReference: {fileID: 0}
+    - target: {fileID: 2374601812041660362, guid: 98ceb19843f2b674687e906f1e324a66, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2374601812041660362, guid: 98ceb19843f2b674687e906f1e324a66, type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.55931616
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2374601812041660362, guid: 98ceb19843f2b674687e906f1e324a66, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.91115713
       objectReference: {fileID: 0}
     - target: {fileID: 2374762727786469044, guid: 98ceb19843f2b674687e906f1e324a66, type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.55931616
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2374762727786469044, guid: 98ceb19843f2b674687e906f1e324a66, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.8215008
       objectReference: {fileID: 0}
     - target: {fileID: 2374891167088703220, guid: 98ceb19843f2b674687e906f1e324a66, type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.55931616
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2374891167088703220, guid: 98ceb19843f2b674687e906f1e324a66, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.8215008
       objectReference: {fileID: 0}
     - target: {fileID: 2375581918506573164, guid: 98ceb19843f2b674687e906f1e324a66, type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.55931616
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2375581918506573164, guid: 98ceb19843f2b674687e906f1e324a66, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.8215008
       objectReference: {fileID: 0}
     - target: {fileID: 2463805590423279146, guid: 98ceb19843f2b674687e906f1e324a66, type: 3}
       propertyPath: m_Layer
@@ -436,11 +468,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4102624437879072192, guid: 98ceb19843f2b674687e906f1e324a66, type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.55931616
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4102624437879072192, guid: 98ceb19843f2b674687e906f1e324a66, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
-      value: 0
+      value: 0.91115713
       objectReference: {fileID: 0}
     - target: {fileID: 6421541088677593759, guid: 98ceb19843f2b674687e906f1e324a66, type: 3}
       propertyPath: playOnAwake
@@ -452,11 +484,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6421541088677593759, guid: 98ceb19843f2b674687e906f1e324a66, type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.55931616
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6421541088677593759, guid: 98ceb19843f2b674687e906f1e324a66, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
-      value: 0
+      value: 0.91115713
       objectReference: {fileID: 0}
     - target: {fileID: 8190300339075008965, guid: 98ceb19843f2b674687e906f1e324a66, type: 3}
       propertyPath: m_Layer
@@ -737,13 +769,13 @@ MonoBehaviour:
   weaponName: Charged Pulse Cannon
   weaponDmgType: 0
   weaponMount: 0
-  damageValue: 1
+  damageValue: 2
   damageMultiplier: 1
   piercing: 1
   explosionRadius: 0
-  fireRate: 0.1
+  fireRate: 0.25
   range: 100
-  projectileSpeed: 100
+  projectileSpeed: 70
   projectileAmount: 1
   projectileInterval: 0
   usesHeat: 1

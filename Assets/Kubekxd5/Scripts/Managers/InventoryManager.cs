@@ -78,6 +78,11 @@ public class InventoryManager : MonoBehaviour
 
     private void PopulateWeaponDropdown(TMP_Dropdown dropdown, ShipSlot shipSlot, ShipSlot.WeaponMount weaponMount)
     {
+        if (dropdown == null || shipSlot == null || weaponMount == null)
+        {
+            Debug.LogWarning("Dropdown or required components are null!");
+            return;
+        }
         dropdown.ClearOptions();
 
         var options = new List<string> { "None" };

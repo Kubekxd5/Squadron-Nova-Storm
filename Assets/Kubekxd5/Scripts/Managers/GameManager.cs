@@ -63,6 +63,7 @@ public class GameManager : MonoBehaviour
         {
             if (_shipController.currentHealth <= 0)
             {
+                Destroy(currentEquippedShip);
                 Time.timeScale = 0;
                 loseMenu.SetActive(true);
             }
@@ -83,11 +84,15 @@ public class GameManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (IsGameScene())
+        if (!IsGameScene())
         {
-            SetupGameScene();
-            UpdateScore();
+            playerHud.SetActive(false);
+            loseMenu.SetActive(false);
+            return;
         }
+
+        SetupGameScene();
+        UpdateScore();
     }
 
     private void SetupGameScene()

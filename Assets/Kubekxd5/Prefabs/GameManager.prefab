@@ -58,7 +58,7 @@ MonoBehaviour:
   inputField: {fileID: 0}
   selectedShipConfig: {fileID: 11400000, guid: 87b7e868e32aa814ca48ff05eb8d61aa, type: 2}
   wfcScript: {fileID: 0}
-  playerName: Kubekxd5
+  playerName: Nobody
   score: 0
   scoreMultiplier: 1
   scoreView:
@@ -462,6 +462,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4183834432224469075, guid: d290731c3c53f3d4ab7fd1e89078ceb0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4183834432224469075, guid: d290731c3c53f3d4ab7fd1e89078ceb0, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4183834432224469075, guid: d290731c3c53f3d4ab7fd1e89078ceb0, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.1
+      objectReference: {fileID: 0}
     - target: {fileID: 4580335052659830321, guid: d290731c3c53f3d4ab7fd1e89078ceb0, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -853,6 +865,18 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 8007339603846950994}
+    - target: {fileID: 3449060151890862566, guid: ed667fb036a8bb644b20448e2b2ae36c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3449060151890862566, guid: ed667fb036a8bb644b20448e2b2ae36c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3449060151890862566, guid: ed667fb036a8bb644b20448e2b2ae36c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.3
+      objectReference: {fileID: 0}
     - target: {fileID: 7386066268302702031, guid: ed667fb036a8bb644b20448e2b2ae36c, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -935,7 +959,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8540611557491471236, guid: ed667fb036a8bb644b20448e2b2ae36c, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
-      value: 25
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

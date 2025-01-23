@@ -307,6 +307,9 @@ MonoBehaviour:
   pointsValue: 25
   bodyParts: []
   deathParticlePrefab: {fileID: 0}
+  itemObjectsPrefabs: []
+  itemSpawnHeight: 0
+  itemSpawnChance: 0.5
 --- !u!114 &5606746397611939531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -324,7 +327,7 @@ MonoBehaviour:
   - {fileID: 219841687204281932}
   minShootInterval: 1
   maxShootInterval: 3
-  aimPrecision: 0.1
+  aimPrecision: 0
   rotationSpeed: 1
   rotateXAxis: 1
   rotateYAxis: 1
@@ -381,7 +384,7 @@ MonoBehaviour:
   damageMultiplier: 1
   piercing: 0
   explosionRadius: 0
-  fireRate: 0
+  fireRate: 4
   range: 20
   projectileSpeed: 10
   projectileAmount: 1

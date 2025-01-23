@@ -2561,11 +2561,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 456255965}
   m_CullTransparentMesh: 1
---- !u!1 &515625636 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6910167546553270547, guid: 0f9ef53bb59c3ed47a8f5281f843f842, type: 3}
+--- !u!114 &515625637 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8279898767669554606, guid: 0f9ef53bb59c3ed47a8f5281f843f842, type: 3}
   m_PrefabInstance: {fileID: 7397976267605578246}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68cc70423b7304b43bcc35dddc40f595, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &521906098
 GameObject:
   m_ObjectHideFlags: 0
@@ -7361,9 +7367,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Content: {fileID: 439231961}
-  m_Horizontal: 1
+  m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 1
+  m_MovementType: 0
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -8819,8 +8825,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shipDropdown: {fileID: 406986993}
   shipTypeTextField: {fileID: 1057000541}
-  shipsList: {fileID: 2144721345}
-  weaponList: {fileID: 515625636}
+  shipsList: {fileID: 2144721346}
+  weaponList: {fileID: 515625637}
   equippedShipParent: {fileID: 2003615839}
   InventoryManager: {fileID: 2003615841}
   availableWeapons: []
@@ -9263,11 +9269,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 70}
   m_Pivot: {x: 0.5, y: 1}
---- !u!1 &2144721345 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2434693620252372320, guid: 0f9ef53bb59c3ed47a8f5281f843f842, type: 3}
+--- !u!114 &2144721346 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2998790018109341249, guid: 0f9ef53bb59c3ed47a8f5281f843f842, type: 3}
   m_PrefabInstance: {fileID: 7397976267605578246}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68cc70423b7304b43bcc35dddc40f595, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7397976267605578246
 PrefabInstance:
   m_ObjectHideFlags: 0
